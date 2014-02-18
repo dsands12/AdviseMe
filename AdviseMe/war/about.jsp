@@ -1,7 +1,7 @@
 <html>
 
 	<head>
-		 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css/">
+		 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 		 <title>AdviseMe-About</title>
 		 <h1>About</h1>
 	</head>
@@ -11,7 +11,7 @@
 		Most of the time, class descriptions are vague and students aren't aware of what they're getting into. Often times, students 
 		will take multiple time-consuming classes together, buy books they never end up using, or get catch unawares on the type of 
 		material being taught in a certain course. <b>AdviseMe</b> is here to resolve all those problems and make it easier to plan out 
-		their schedules.  wassup
+		their schedules.
 	</body>
 
 
