@@ -1,7 +1,7 @@
 <html>
 
 	<head>
-		 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css/">
+		 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 		 <title>AdviseMe-About</title>
 		 <h1>About</h1>
 	</head>
