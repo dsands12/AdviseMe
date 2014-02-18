@@ -8,7 +8,7 @@
 	
 	<body>
 		~put useful links here.~
-		please work.
+		please work
 	</body>
 
 
