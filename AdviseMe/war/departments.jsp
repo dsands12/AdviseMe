@@ -2,8 +2,8 @@
 
    <head>
       <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
-      <title>AdviseMe-Courses</title>
-      <h1>Courses</h1>
+      <title>AdviseMe-Departments</title>
+      <h1>Departments</h1>
    </head>
    	<div class="buttonheader">
 	  	<ul>
