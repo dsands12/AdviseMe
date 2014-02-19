@@ -33,8 +33,10 @@ public class addCollegeServlet extends HttpServlet{
 				if(school.getName().equals(schoolName)){
 					school.addCollege(college);
 					ofy().save().entity(school).now();
+					resp.sendRedirect("/home.jsp");
 				}
 			}
+			resp.sendRedirect("/home.jsp"); //TODO: Really should redirect to error page showing that entity was not added.
 		}
 	}
 }

@@ -2,12 +2,11 @@ package webapp.datastoreObjects;
 
 import java.util.ArrayList;
 
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Embed;
 
-@Entity
+@Embed
 public class College implements Comparable<College> {
-	@Id String name="No college name entered.";
+	String name="No college name entered.";
 	ArrayList<Department> departmentList;
 	
 	@SuppressWarnings("unused")
