@@ -22,7 +22,7 @@
 	}else{
  %>   
  		<form action="/addcollege" method="post">
- 	 	<div>
+ 	 	<h3>School:</h3><div>
 		<select name="schoolname" size="1">
 		<%			
 		for(School school: schools){
@@ -40,8 +40,5 @@
     </form> 
     <%
     } %>
-
-	
-	
    </body>
 </html>
