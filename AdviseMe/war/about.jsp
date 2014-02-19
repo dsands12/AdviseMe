@@ -14,5 +14,9 @@
 		their schedules.
 	</body>
 
-
+	<body>
+		<form action="/home.jsp">
+			<div><input type="submit" value="Take Me Home!!" /></div>
+		</form>
+	</body>
 </html>
