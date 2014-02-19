@@ -9,7 +9,7 @@
 	  	<ul>
 	  		<li><a href="home.jsp">Home</a></li>
 	  		<li><a href="courses.jsp">Courses</a></li>
-	  		<li><a href="about.jsp"><About></a></li>
+	  		<li><a href="about.jsp">About</a></li>
 
 	  	</ul>
 	</div>
