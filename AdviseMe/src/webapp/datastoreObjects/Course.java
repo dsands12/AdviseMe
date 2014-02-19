@@ -1,18 +1,29 @@
 package webapp.datastoreObjects;
 
-public class Course {
-	private String title = "No title entered.";
-	private String description= "No description available.";
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
+public class Course implements Comparable<Course> {
+	@Id String courseName ="No course name entered.";
+	String title = "No course title entered.";
+	String description= "No course description available.";
 	
+	@SuppressWarnings("unused")
 	private Course(){}
 	
-	public Course(String title){
-		this.title=title;
+	public Course(String courseName){
+		this.courseName=courseName;
 	}
 	
-	public Course(String title, String description){
+	public Course(String courseName, String title, String description){
+		this.courseName=courseName;
 		this.title=title;
 		this.description=description;
+	}
+	
+	public String getCourseName(){
+		return this.courseName;
 	}
 	
 	public String getTitle(){
@@ -21,6 +32,11 @@ public class Course {
 	
 	public String getDescription(){
 		return description;
+	}
+
+	@Override
+	public int compareTo(Course o) {
+		return o.getCourseName().compareTo(this.getCourseName());
 	}
 	
 }
