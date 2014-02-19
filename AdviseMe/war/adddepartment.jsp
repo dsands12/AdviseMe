@@ -10,7 +10,7 @@
    <head>
       <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
       <title>AdviseMe- Add Departments</title>
-      <h1>Add a Deparment</h1>
+      <h1>Add a Department</h1>
    </head>
    <body>      
   <%

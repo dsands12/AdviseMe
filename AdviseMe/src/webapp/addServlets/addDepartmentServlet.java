@@ -29,6 +29,10 @@ public class addDepartmentServlet extends HttpServlet{
 			//Should be impossible?
 		}else if(collegeName.isEmpty()){
 			//Should be impossible?
+		}else if(departmentName==null){
+			//Should be impossible?
+		}else if(departmentName.isEmpty()){
+			//Should be impossible?
 		}else{
 			//TODO: Need to create check to make sure not adding duplicate departments within college
 			List<School> schoolList=ObjectifyService.ofy().load().type(School.class).list();
