@@ -5,6 +5,13 @@
 		 <title>AdviseMe-About</title>
 		 <h1>About</h1>
 	</head>
+	<div class="buttonheader">
+	  	<ul>
+	  		<li><a href="home.jsp">Home</a></li>
+	  		<li><a href="courses.jsp">Courses</a></li>
+	  		<li><a href="about.jsp"><About></a></li>
+	  	</ul>
+	</div>
 	
 	<body>
 		<b>AdviseMe</b> was created in the hopes of making registration for students at The University of Texas at Austin less stressful. 
