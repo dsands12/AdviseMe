@@ -21,8 +21,9 @@
 		%><h1>There are no schools to add a college to.:(</h1><%
 	}else{
  %>   
-	 	<form name="example1"><div align="center">
-		<select name="select1" size="1">
+ 		<form action="/addcollege" method="post">
+ 	 	<div>
+		<select name="schoolname" size="1">
 		<%			
 		for(School school: schools){
 			pageContext.setAttribute("school_name",school.getName());
@@ -32,8 +33,6 @@
 		} %>
 			</select>
 			</div>
-		</form>
-		<form action="/addcollege" method="post">
 		<h3>College Name:</h3>
       	<div><textarea name="collegename" rows="1" cols="30"></textarea></div>
       	<div><input type="submit" value="Add College" /></div>

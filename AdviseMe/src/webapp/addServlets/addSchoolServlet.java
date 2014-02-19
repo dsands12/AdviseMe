@@ -1,6 +1,6 @@
 package webapp.addServlets;
 
-import webapp.datastoreObjects.School;
+import webapp.datastoreObjects.*;
 
 import com.googlecode.objectify.ObjectifyService;
 
