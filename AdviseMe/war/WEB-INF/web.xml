@@ -12,6 +12,38 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>AdviseMe</servlet-name>
 		<url-pattern>/adviseme</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>addSchool</servlet-name>
+		<servlet-class>webapp.addServlets.addSchoolServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addSchool</servlet-name>
+		<url-pattern>/addschool</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addCollege</servlet-name>
+		<servlet-class>webapp.addServlets.addCollegeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addCollege</servlet-name>
+		<url-pattern>/addcollege</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addDepartment</servlet-name>
+		<servlet-class>webapp.addServlets.addDepartmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addDepartment</servlet-name>
+		<url-pattern>/adddepartment</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addCourse</servlet-name>
+		<servlet-class>webapp.addServlets.addCourseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addCourse</servlet-name>
+		<url-pattern>/addcourse</url-pattern>
+	</servlet-mapping>	
 	<welcome-file-list>
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>
