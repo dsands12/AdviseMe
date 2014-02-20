@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+
 @SuppressWarnings("serial")
 public class addCollegeServlet extends HttpServlet{
 	static{ObjectifyService.register(School.class);}
