@@ -26,7 +26,7 @@
 	<%
 		} else if (schools.get(0).getCollegeList().get(0)
 				.getDepartmentList().isEmpty()) {//TODO: need to figure out how to first select school, then populate college list.
-	%><h1>There are no departments to a course to.:(</h1>
+	%><h1>There are no departments to add course to.:(</h1>
 	<%
 		} else {
 	%>
