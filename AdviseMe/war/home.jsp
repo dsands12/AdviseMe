@@ -9,8 +9,47 @@
     	<script src="stylesheets/bootstrap.js"></script>
       <title>AdviseMe-Home</title>
    </head>
-   
 	<body>	
+		<script>
+			// Load FB SDK
+			(function(d){
+				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			   	if(d.getElementById(id)){
+			   		return;
+			   	}
+			   	js = d.createElement('script'); js.id = id; js.async = true;
+			   	js.src = "//connect.facebook.net/en_US/all.js";
+			   	ref.parentNode.insertBefore(js, ref);
+			}(document));
+	  		window.fbAsyncInit = function(){
+				FB.init({
+					appId      : '125801300852907',
+					status     : true, // check login status
+					cookie     : true, // enable cookies to allow the server to access the session
+					xfbml      : true  // parse XFBML
+				});
+	  			FB.Event.subscribe('auth.authResponseChange', function(response){
+		    		if(response.status === 'connected'){
+		      			checkLogin();
+		    		}else if(response.status === 'not_authorized'){
+		      			FB.login();
+		    		}else{
+		      			FB.login();
+		    		}
+		  		});
+	  		};
+	  		function checkLogin(){
+				console.log('Retrieving User ID and Name');
+				FB.api('/me', function(response){
+					var first=response.first_name;
+					var last=response.last_name;
+					var id=response.id;
+		    		document.getElementById("first").innerHTML=first;
+		    		document.getElementById("last").innerHTML=last;
+		    		document.getElementById("id").innerHTML=id;
+				});
+			}
+		</script>
 	<div class="”container”"> 
 	<div class="navbar">
               <div class="navbar-inner">
@@ -20,7 +59,9 @@
                     <li><a href="about.jsp">About</a></li>
                     <li><a href="courses.jsp">Courses</a></li>
                     <li><a href="usefulLinks.jsp">Useful Links</a></li>
-                    <li><div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false"></div></li>
+                    <li><a>Welcome, </a></li>
+                    <li><a id=first></a></li>
+                    <li><a id=last></a></li>
                   </ul>
                 </div>
               </div>
