@@ -24,12 +24,10 @@ public class checkFBUserServlet extends HttpServlet{
 		for(User user: users){
 			if(user.getfbUserId().equalsIgnoreCase(prospectFbId)){
 				//User has already registered.
-				//need to figure out some way to make that known.
 				resp.sendRedirect("/home.jsp");
 			}
 		}
 		//if code reaches here, then user has not registered before.
-		//should redirect to addnewuser.jsp.
 		resp.sendRedirect("/addnewfacebookuser.jsp");
 	}
 
