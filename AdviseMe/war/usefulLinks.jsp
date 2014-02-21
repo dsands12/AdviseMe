@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-		~put useful links here.~
+		put useful links here.
 		please work
 	</body>
 

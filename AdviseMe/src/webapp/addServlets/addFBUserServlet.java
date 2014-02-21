@@ -18,13 +18,11 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 public class addFBUserServlet extends HttpServlet{
 	static{ObjectifyService.register(User.class);}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		String prospectFbId = req.getParameter("id");
-		
-		
-		//create user object.
-		//add to objectify
-		//redirect to homepage
-		resp.sendRedirect("/addnewfacebookuser.jsp");
+		String FBId = req.getParameter("id");
+		String FBFirst = req.getParameter("firstname");
+		String FBLast = req.getParameter("lastname");
+		User user = new User(FBId,FBFirst,FBLast);
+		ofy().save().entity(user).now();
+		resp.sendRedirect("/home.jsp");
 	}
-
 }
