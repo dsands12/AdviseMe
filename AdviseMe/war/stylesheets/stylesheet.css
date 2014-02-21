@@ -1,13 +1,15 @@
 body {
-	background-color: #FFFFCC;
+	background-color: #C7C2D1;
 }
 
 h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+	font-family: Verdana;
+	font-size: 2em;
+	font-weight: bold;
+	color: #30396A;
+	margin: 40px 0px 70px;
+	text-align: center;
+	font-size: 2em;
 }
 
 .buttonheader {
@@ -31,5 +33,3 @@ h1 {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
-#HELLLLLLLLLOOOOOOOOOOOOOOOO
