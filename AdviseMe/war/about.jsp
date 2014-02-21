@@ -24,7 +24,7 @@
 			<div class="row-fluid">
 					<div class="span4">
 						<div class="col-md-4">
-							PiCtUrE
+							<img src="http://img.photobucket.com/albums/v89/mhking/blog/cat-gun.jpg" alt="about_pic"> 
 						</div>
 					</div>
 					<div class="span8">
@@ -34,6 +34,19 @@
 							will take multiple time-consuming classes together, buy books they never end up using, or get catch unawares on the type of 
 							material being taught in a certain course. <b>AdviseMe</b> is here to resolve all those problems and make it easier to plan out 
 							their schedules.
+						</div>
+					</div>
+			</div>
+			<br>
+			<div class="row-fluid">
+					<div class="span4">
+						<div class="col-md-4">
+							~name of team member here~
+						</div>
+					</div>
+					<div class="span8">
+						<div class="col-md-8">
+							~some bio here~
 						</div>
 					</div>
 			</div>
