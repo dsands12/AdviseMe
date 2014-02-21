@@ -44,8 +44,11 @@
 					var first=response.first_name;
 					var last=response.last_name;
 					var id=response.id;
-		    		document.getElementById("first").innerHTML=first;
-		    		document.getElementById("last").innerHTML=last;
+					if(id==null||id==""){
+						first="Guest";
+						last="";
+					}
+		    		document.getElementById("name").innerHTML=first+" "+last;
 		    		document.getElementById("id").innerHTML=id;
 				});
 			}
@@ -60,8 +63,8 @@
                     <li><a href="courses.jsp">Courses</a></li>
                     <li><a href="usefulLinks.jsp">Useful Links</a></li>
                     <li><a>Welcome, </a></li>
-                    <li><a id=first></a></li>
-                    <li><a id=last></a></li>
+                    <li><a id=name></a></li>
+                    <li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
                   </ul>
                 </div>
               </div>
