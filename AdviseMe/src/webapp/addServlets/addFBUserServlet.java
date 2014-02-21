@@ -5,8 +5,6 @@ import webapp.datastoreObjects.User;
 import com.googlecode.objectify.ObjectifyService;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
