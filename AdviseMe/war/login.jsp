@@ -1,4 +1,9 @@
 <html>
+	<head>
+	    <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <script src="http://code.jquery.com/jquery.js"></script>
+    	<script src="stylesheets/bootstrap.js"></script>
+	</head>
 	<body>
 		<div id="fb-root"></div>
 		<script>
@@ -44,5 +49,19 @@
 			});
 		}
 		</script>
+		<h1>Login</h1>
+		<div class="hero-unit">
+    		<h3>Login to AdviseMe!</h3>
+    		<!-- >
+     		<form action="/addfacebookuser" method="post">
+			<h3>Create Account - Facebook Linked:</h3>
+	   		<div>First Name:<textarea name="firstname" id="first" rows="1" cols="30"></textarea></div>
+	   		<div>Last Name:<textarea name="lastname" id="last" rows="1" cols="30"></textarea></div>
+	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;"></textarea></div>
+	      	<div><input type="submit" value="Create Account" /></div>
+	      	<input type="button" value="Cancel" onclick="window.location.href='/home.jsp'"> 	
+	    </form>
+	    -->	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false"></div>
+ 		</div>		
 	</body>
 </html>
