@@ -43,7 +43,23 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>addCourse</servlet-name>
 		<url-pattern>/addcourse</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>checkFBUser</servlet-name>
+		<servlet-class>webapp.addServlets.checkFBUserServlet</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkFBUser</servlet-name>
+		<url-pattern>/checkfacebookuser</url-pattern>	
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addFBUser</servlet-name>
+		<servlet-class>webapp.addServlets.addFBUserServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>addFBUser</servlet-name>
+		<url-pattern>/addfacebookuser</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>

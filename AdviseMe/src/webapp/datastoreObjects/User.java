@@ -6,8 +6,10 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
-public class User {
-	@Id String name = "No username entered.";
+public class User implements Comparable<User>{
+	@Id String fbUserId = null;
+	String firstName = "No first name entered.";
+	String lastName = "No last name entered.";
 	ArrayList<Course> courseList;
 	ArrayList<Course> currentCourses;
 	
@@ -17,11 +19,26 @@ public class User {
 		currentCourses = new ArrayList<Course>();
 	}
 	
-	public User(String name){
-		this.name=name;
+	public User(String fbUserId, String firstName, String lastName){
+		this.fbUserId=fbUserId;
+		this.firstName=firstName;
+		this.lastName=lastName;
 	}
 	
-	public String getUsername(){
-		return this.name;
+	public String getfbUserId(){
+		return this.fbUserId;
+	}
+	
+	public String getFullName(){
+		return firstName + lastName;
+	}
+	
+	public String getLastName(){
+		return this.lastName;
+	}
+
+	@Override
+	public int compareTo(User o) {
+		return o.getLastName().compareTo(this.getLastName());
 	}
 }
