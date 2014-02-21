@@ -18,9 +18,13 @@
 				if(response.status === 'connected'){
 			    	checkLogin();
 			    }else if(response.status === 'not_authorized'){
-			    	FB.login();
+			    	FB.login({
+			    		scope: 'basic_info'
+			    	});
 			    }else{
-			    	FB.login();
+			    	FB.login({
+			    		scope: 'basic_info'
+			    	});
 			    }
 			});
 		};

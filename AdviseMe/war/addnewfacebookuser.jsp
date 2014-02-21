@@ -3,10 +3,11 @@
 
 <html>
 	<head>
-	 	<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
-     	<title>AdviseMe- Create Account(Facebook))</title>
-      	<h1>Create Account - Facebook Linked</h1>
-      	<h1>${fn:escapeXml(firstname)}</h1>
+	    <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <script src="http://code.jquery.com/jquery.js"></script>
+    	<script src="stylesheets/bootstrap.js"></script>
+     	<title>AdviseMe- Create Account</title>
+      	<h1>Create Account</h1>
 	</head>
 	<body>
 		<script>
