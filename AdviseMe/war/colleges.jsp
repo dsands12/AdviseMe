@@ -1,8 +1,10 @@
 <html>
 
    <head>
-      <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
-      <title>AdviseMe-Colleges</title>
+      	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <script src="http://code.jquery.com/jquery.js"></script>
+    	<script src="stylesheets/bootstrap.js"></script>
+    	      <title>AdviseMe-Colleges</title>
       <h1>Colleges</h1>
    </head>
    	<div class="buttonheader">
