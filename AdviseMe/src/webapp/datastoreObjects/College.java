@@ -3,7 +3,9 @@ package webapp.datastoreObjects;
 import java.util.ArrayList;
 
 import com.googlecode.objectify.annotation.Embed;
+import com.googlecode.objectify.annotation.Index;
 
+@Index
 @Embed
 public class College implements Comparable<College> {
 	String name="No college name entered.";

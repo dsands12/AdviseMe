@@ -20,6 +20,7 @@
                     <li><a href="about.jsp">About</a></li>
                     <li><a href="courses.jsp">Courses</a></li>
                     <li><a href="usefulLinks.jsp">Useful Links</a></li>
+                    <li><div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false"></div></li>
                   </ul>
                 </div>
               </div>

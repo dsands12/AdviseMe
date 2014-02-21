@@ -1,7 +1,9 @@
 package webapp.datastoreObjects;
 
 import com.googlecode.objectify.annotation.Embed;
+import com.googlecode.objectify.annotation.Index;
 
+@Index
 @Embed
 public class Course implements Comparable<Course> {
 	String courseName ="No course name entered.";
