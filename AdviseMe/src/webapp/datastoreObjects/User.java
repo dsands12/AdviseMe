@@ -14,19 +14,47 @@ public class User implements Comparable<User>{
 	ArrayList<Course> currentCourses;
 	
 	@SuppressWarnings("unused")
+	/**Empty Constructor for User Object
+	 * 
+	 */
 	private User(){
 		courseList = new ArrayList<Course>();
 		currentCourses = new ArrayList<Course>();
 	}
 	
+	/**Constructor for User Object
+	 * 
+	 * @param firstName - First Name of User
+	 * @param lastName - Last Name of User
+	 */
+	public User(String firstName, String lastName){
+		this.fbUserId=null;
+		this.firstName=firstName;
+		this.lastName=lastName;
+		courseList = new ArrayList<Course>();
+		currentCourses = new ArrayList<Course>();
+	}
+	
+	/**Constructor for User Object
+	 * 
+	 * @param fbUserId - FaceBook User Id
+	 * @param firstName - First Name of User
+	 * @param lastName - Last Name of User
+	 */
 	public User(String fbUserId, String firstName, String lastName){
 		this.fbUserId=fbUserId;
 		this.firstName=firstName;
 		this.lastName=lastName;
+		courseList = new ArrayList<Course>();
+		currentCourses = new ArrayList<Course>();
 	}
 	
 	public String getfbUserId(){
 		return this.fbUserId;
+	}
+	
+	public void addfbUserId(String fbID){
+		this.fbUserId=fbID;
 	}
 	
 	public String getFullName(){
