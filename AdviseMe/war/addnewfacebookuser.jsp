@@ -52,7 +52,6 @@
 		</script> 
 		<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
 	    <form action="/addfacebookuser" method="post">
-			<h3>Create Account - Facebook Linked:</h3>
 	   		<div>First Name:<textarea name="firstname" id="first" rows="1" cols="30"></textarea></div>
 	   		<div>Last Name:<textarea name="lastname" id="last" rows="1" cols="30"></textarea></div>
 	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;"></textarea></div>
