@@ -12,6 +12,7 @@ public class User implements Comparable<User>{
 	@Id String fbUserId = null;
 	String firstName = "No first name entered.";
 	String lastName = "No last name entered.";
+	String userEmail = null;
 	ArrayList<Course> courseList;
 	ArrayList<Course> currentCourses;
 	
@@ -33,6 +34,7 @@ public class User implements Comparable<User>{
 		this.fbUserId=null;
 		this.firstName=firstName;
 		this.lastName=lastName;
+		this.userEmail=null;
 		courseList = new ArrayList<Course>();
 		currentCourses = new ArrayList<Course>();
 	}
@@ -47,8 +49,16 @@ public class User implements Comparable<User>{
 		this.fbUserId=fbUserId;
 		this.firstName=firstName;
 		this.lastName=lastName;
+		this.userEmail=null;
 		courseList = new ArrayList<Course>();
 		currentCourses = new ArrayList<Course>();
+	}
+	
+	public User(String fbUserId, String firstName, String lastName, String userEmail){
+		this.fbUserId=fbUserId;
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.userEmail=userEmail;
 	}
 	
 	public String getfbUserId(){
@@ -67,6 +77,10 @@ public class User implements Comparable<User>{
 		return this.lastName;
 	}
 
+	public String getUserEmail(){
+		return this.userEmail;
+	}
+	
 	@Override
 	public int compareTo(User o) {
 		return o.getLastName().compareTo(this.getLastName());

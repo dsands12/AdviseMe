@@ -68,28 +68,22 @@
                   </ul>
                 </div>
               </div>
-            </div>
+        	</div>
 		</div>
-		
-		
-	<div class="hero-unit">
-    	<h1>Advise Me</h1> 
-   		<p>Helping students help students in order to help students by helping!</p> 
-    	<a href="login.jsp" class="btn btn-large btn-info">Login</a>
-    	<br/>
-    	<br/><br/><br/><br/>
- 		<div class="input-group">
- 			 <input type="text" class="form-control" placeholder="Search..." id="query" name="query" value="">
- 			 <button type="submit" class="btn btn-success">Submit</button>
+		<div class="hero-unit">
+	    	<h1>Advise Me</h1> 
+	   		<p>Helping students help students in order to help students by helping!</p> 
+	    	<a href="login.jsp" class="btn btn-large btn-info">Login</a>
+	    	<br/><br/><br/><br/><br/>
+	 		<div class="input-group">
+	 			 <input type="text" class="form-control" placeholder="Search..." id="query" name="query" value="">
+	 			 <button type="submit" class="btn btn-success">Submit</button>
+	 		</div>
  		</div>
- 	</div>
-		
 		<hr>
-<div class="footer">
-<p>&copy; 2013</p>
-</div>
-		
-	
+		<div class="footer">
+		<p>&copy; 2013</p>
+		</div>
 	</body>
 </html>
 
