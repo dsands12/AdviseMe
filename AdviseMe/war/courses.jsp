@@ -64,7 +64,8 @@
                pageContext.setAttribute("course_name",course.getCourseName());
                pageContext.setAttribute("course_title",course.getTitle());
    %>
-   <h3>${fn:escapeXml(course_name)}</h3> - <h4>${fn:escapeXml(course_title)}</h4>
+   <h3>${fn:escapeXml(course_name)}</h3>
+   <h4>${fn:escapeXml(course_title)}</h4>
   
    <%
       }
