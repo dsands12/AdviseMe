@@ -61,10 +61,10 @@
     	  
     	  for (Course course : schools.get(0).getCollegeList()
                   .get(0).getDepartmentList().get(0).getCourseList()) {
-               pageContext.setAttribute("course_name",
-                     course.getCourseName());
+               pageContext.setAttribute("course_name",course.getCourseName());
+               pageContext.setAttribute("course_title",course.getTitle());
    %>
-   <h1>${fn:escapeXml(course_name)}</h1>
+   <h3>${fn:escapeXml(course_name)}</h3> - <h4>${fn:escapeXml(course_title)}</h4>
   
    <%
       }

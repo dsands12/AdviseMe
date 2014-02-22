@@ -18,6 +18,11 @@ public class Course implements Comparable<Course> {
 		this.courseName=courseName;
 	}
 	
+	public Course(String courseName, String title){
+		this.courseName=courseName;
+		this.title=title;
+	}
+	
 	public Course(String courseName, String title, String description){
 		this.courseName=courseName;
 		this.title=title;

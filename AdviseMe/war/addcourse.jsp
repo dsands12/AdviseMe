@@ -77,6 +77,7 @@
 		<h3>Course Name:</h3>
 		<div>
 			<textarea name="coursename" rows="1" cols="30"></textarea>
+			<textarea name="coursetitle" rows="1" cols="30"></textarea>
 		</div>
 		<div>
 			<input type="submit" value="Add Course" />
