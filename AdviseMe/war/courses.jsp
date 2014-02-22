@@ -71,6 +71,6 @@
       }
    %>
       
-<div class="fb-comments" data-href="http://advisemeut.appspot.com/courses.jsp" data-numposts="5" data-colorscheme="dark"></div>
+<div class="fb-comments" data-href="http://advisemeut.appspot.com/courses.jsp" data-numposts="5" data-colorscheme="light"></div>
    </body>
 </html>
