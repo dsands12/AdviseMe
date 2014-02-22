@@ -16,7 +16,15 @@
    <title>AdviseMe-Courses</title>
 </head>
 
-<body>   
+<body>  
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=125801300852907";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> 
    <div class="”container”"> 
    <h1><a href="/home.jsp">Advise Me</a></h1>
    <div class="navbar">
@@ -63,6 +71,6 @@
       }
    %>
       
-
+<div class="fb-comments" data-href="http://advisemeut.appspot.com/courses.jsp" data-numposts="5" data-colorscheme="dark"></div>
    </body>
 </html>
