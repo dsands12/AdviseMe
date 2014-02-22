@@ -63,7 +63,7 @@
                     <li><a href="about.jsp">About</a></li>
                     <li><a href="courses.jsp">Courses</a></li>
                     <li><a href="usefulLinks.jsp">Useful Links</a></li>
-                    <li><a id=name></a></li>
+                    <li><a href="manageaccount.jsp" id=name></a></li>
                     <li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
                   </ul>
                 </div>
