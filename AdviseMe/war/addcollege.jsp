@@ -8,7 +8,9 @@
 
 <html>
    <head>
-      <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
+      	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <script src="http://code.jquery.com/jquery.js"></script>
+    	<script src="stylesheets/bootstrap.js"></script>
       <title>AdviseMe- Add Colleges</title>
       <h1>Add a College</h1>
    </head>

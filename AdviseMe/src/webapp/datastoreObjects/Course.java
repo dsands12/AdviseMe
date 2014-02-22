@@ -1,10 +1,13 @@
 package webapp.datastoreObjects;
 
 import com.googlecode.objectify.annotation.Embed;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
+@Index
 @Embed
 public class Course implements Comparable<Course> {
-	String courseName ="No course name entered.";
+	@Id String courseName ="No course name entered.";
 	String title = "No course title entered.";
 	String description= "No course description available.";
 	
@@ -13,6 +16,11 @@ public class Course implements Comparable<Course> {
 	
 	public Course(String courseName){
 		this.courseName=courseName;
+	}
+	
+	public Course(String courseName, String title){
+		this.courseName=courseName;
+		this.title=title;
 	}
 	
 	public Course(String courseName, String title, String description){

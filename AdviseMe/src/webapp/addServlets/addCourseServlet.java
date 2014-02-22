@@ -22,6 +22,7 @@ public class addCourseServlet extends HttpServlet{
 		String collegeName = req.getParameter("collegename");
 		String departmentName = req.getParameter("departmentname");
 		String courseName = req.getParameter("coursename");
+		String courseTitle = req.getParameter("coursetitle");
 		if(schoolName==null){
 			//Should be impossible?
 		}else if(schoolName.isEmpty()){
@@ -41,7 +42,7 @@ public class addCourseServlet extends HttpServlet{
 		}else{//TODO: Need to create check to make sure not adding duplicate courses within departments
 			List<School> schoolList=ObjectifyService.ofy().load().type(School.class).list();
 			Collections.sort(schoolList);
-			Course course = new Course(courseName);
+			Course course = new Course(courseName,courseTitle);
 			for(School school: schoolList){
 				if(school.getName().equals(schoolName)){
 					for(College colleges: school.getCollegeList()){

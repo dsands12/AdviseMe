@@ -19,7 +19,13 @@ public class addFBUserServlet extends HttpServlet{
 		String FBId = req.getParameter("id");
 		String FBFirst = req.getParameter("firstname");
 		String FBLast = req.getParameter("lastname");
-		User user = new User(FBId,FBFirst,FBLast);
+		String FBEmail = req.getParameter("email");
+		User user;
+		if(FBEmail==null){
+			user = new User(FBId,FBFirst,FBLast);
+		}else{
+			user = new User(FBId,FBFirst,FBLast,FBEmail);
+		}
 		ofy().save().entity(user).now();
 		resp.sendRedirect("/home.jsp");
 	}

@@ -8,7 +8,9 @@
 
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
+      	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <script src="http://code.jquery.com/jquery.js"></script>
+    	<script src="stylesheets/bootstrap.js"></script>
 <title>AdviseMe- Add Courses</title>
 <h1>Add a Course</h1>
 </head>
@@ -26,7 +28,7 @@
 	<%
 		} else if (schools.get(0).getCollegeList().get(0)
 				.getDepartmentList().isEmpty()) {//TODO: need to figure out how to first select school, then populate college list.
-	%><h1>There are no departments to a course to.:(</h1>
+	%><h1>There are no departments to add course to.:(</h1>
 	<%
 		} else {
 	%>
@@ -74,7 +76,8 @@
 		</div>
 		<h3>Course Name:</h3>
 		<div>
-			<textarea name="coursename" rows="1" cols="30"></textarea>
+			<textarea name="coursename" rows="1" cols="30">Course Abbrev.</textarea>
+			<textarea name="coursetitle" rows="1" cols="30">Course Title</textarea>
 		</div>
 		<div>
 			<input type="submit" value="Add Course" />
