@@ -25,7 +25,12 @@
 		</div>
 		<div class="hero-unit">
 	    	<h3>Manage Account</h3>  
-	    	<a href="login.jsp" class="btn btn-large btn-info">Delete Account</a>
+	    	<a href="home.jsp" class="btn btn-large btn-info">Delete Account</a>
+	    	<br/><br/><br/><br/><br/>
+	 		<div class="input-group">
+	 			 <input type="text" class="form-control" placeholder="Search..." id="query" name="query" value="">
+	 			 <button type="submit" class="btn btn-success">Submit</button>
+	 		</div>
  		</div>
 	</body>
 </html>
