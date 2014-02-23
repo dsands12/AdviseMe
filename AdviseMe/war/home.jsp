@@ -41,33 +41,49 @@
 	  		function checkLogin(){
 				console.log('Retrieving User ID and Name');
 				FB.api('/me', function(response){
-					var first="Guest";
-					first = response.first_name;
-					var last=response.last_name;
-					var id=response.id;
-					if(id==null||id==""){
-						first="Guest";
-						last="";
+					if(response && !response.error){
+						var first="Guest";
+						first = response.first_name;
+						var last=response.last_name;
+						var id=response.id;
+						if(id==null||id==""){
+							first="Guest";
+							last="";
+						}
+			    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
+			    		document.getElementById("id").innerHTML=id;
 					}
-		    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
-		    		document.getElementById("id").innerHTML=id;
 				});
+				FB.api("/me/picture",{
+				        "redirect": false,
+				        "height": "40",
+				        "type": "normal",
+				        "width": "40"
+				    },function (response) {
+				      if (response && !response.error){
+				    	  console.log(response.data.url);
+				    	  document.getElementById("profilepic").src=response.data.url;
+				        
+				      }
+				    }
+				);
 			}
 		</script>
-	<div class="”container”"> 
-	<div class="navbar">
-              <div class="navbar-inner">
-                <div class="container">
-                  <ul class="nav">
-                    <li class="active"><a href="home.jsp">Home</a></li>
-                    <li><a href="about.jsp">About</a></li>
-                    <li><a href="courses.jsp">Courses</a></li>
-                    <li><a href="usefulLinks.jsp">Useful Links</a></li>
-                    <li><a href="manageaccount.jsp" id=name></a></li>
-                    <li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
-                  </ul>
-                </div>
-              </div>
+		<div class="”container”"> 
+			<div class="navbar">
+            	<div class="navbar-inner">
+                	<div class="container">
+                  		<ul class="nav">
+                    		<li class="active"><a href="home.jsp">Home</a></li>
+                    		<li><a href="about.jsp">About</a></li>
+                    		<li><a href="courses.jsp">Courses</a></li>
+                    		<li><a href="usefulLinks.jsp">Useful Links</a></li>
+                    		<li><a href="manageaccount.jsp" id=name></a></li>
+                    		<li><a class="brand" href="manageaccount.jsp"><img id=profilepic></a></li>
+                    		<li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
+                  		</ul>
+                	</div>
+              	</div>
         	</div>
 		</div>
 		<div class="hero-unit">
