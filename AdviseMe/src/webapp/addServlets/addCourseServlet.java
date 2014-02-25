@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
-@SuppressWarnings("serial")
+
 public class addCourseServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
 	static{ObjectifyService.register(School.class);}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String schoolName = req.getParameter("schoolname");
