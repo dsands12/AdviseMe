@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+@SuppressWarnings("unused")
 public class addDepartmentServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	static{ObjectifyService.register(School.class);}
+	//static{ObjectifyService.register(School.class);}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		String schoolName = req.getParameter("schoolname");
+	/*	String schoolName = req.getParameter("schoolname");
 		String collegeName = req.getParameter("collegename");
 		String departmentName = req.getParameter("departmentname");
 		if(schoolName==null){
@@ -50,7 +51,7 @@ public class addDepartmentServlet extends HttpServlet{
 				}
 			}
 			resp.sendRedirect("/home.jsp");
-		}
+		}*/
 	}
 
 }
