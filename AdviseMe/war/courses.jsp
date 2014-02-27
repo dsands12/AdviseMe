@@ -41,26 +41,15 @@
             </div>
       </div>
   <h1>Courses</h1> 
-  
-   <%
-      ObjectifyService.register(School.class);
-      List<School> schools = ObjectifyService.ofy().load()
-            .type(School.class).list();
+  <%
+      ObjectifyService.register(Course.class);
+      List<Course> schools = ObjectifyService.ofy().load().type(Course.class).list();
       Collections.sort(schools);
       if (schools.isEmpty()) {
-   %><h1>There are no schools entered.:(</h1>
-   <%
-      } else if (schools.get(0).getCollegeList().isEmpty()) {
-   %><h1>There are no colleges to add a department to.:(</h1>
-   <%
-      } else if (schools.get(0).getCollegeList().get(0)
-            .getDepartmentList().isEmpty()) {//TODO: need to figure out how to first select school, then populate college list.
-   %><h1>There are no departments to add a course to.:(</h1>
+   %><h1>There are no courses entered.:(</h1>
    <%
       } else {
-    	  
-    	  for (Course course : schools.get(0).getCollegeList()
-                  .get(0).getDepartmentList().get(0).getCourseList()) {
+    		for(Course course : schools){
                pageContext.setAttribute("course_name",course.getCourseName());
                pageContext.setAttribute("course_title",course.getTitle());
    %>
