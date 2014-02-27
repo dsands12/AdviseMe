@@ -1,4 +1,5 @@
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="webapp.addServlets.*" %>
 <%@ page import="webapp.datastoreObjects.*" %>
 <%@ page import="java.util.List" %>
@@ -28,7 +29,6 @@
  		<form action="/adddepartment" method="post">
  	 	<h3>School:</h3><div>
 		<select name="schoolname" size="1">
-		--%>
 		<%			
 		for(School school: schools){
 			pageContext.setAttribute("school_name",school.getName());
@@ -58,3 +58,4 @@
     } %>
    </body>
 </html>
+--%>
