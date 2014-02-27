@@ -17,14 +17,14 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
 public class addCourseServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	static{ObjectifyService.register(School.class);}
+	static{ObjectifyService.register(Course.class);}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		String schoolName = req.getParameter("schoolname");
-		String collegeName = req.getParameter("collegename");
-		String departmentName = req.getParameter("departmentname");
+		//String schoolName = req.getParameter("schoolname");
+		//String collegeName = req.getParameter("collegename");
+		//String departmentName = req.getParameter("departmentname");
 		String courseName = req.getParameter("coursename");
 		String courseTitle = req.getParameter("coursetitle");
-		if(schoolName==null){
+		/*if(schoolName==null){
 			//Should be impossible?
 		}else if(schoolName.isEmpty()){
 			//Should be impossible?
@@ -41,25 +41,28 @@ public class addCourseServlet extends HttpServlet{
 		}else if(courseName.isEmpty()){
 			//Should be impossible?
 		}else{//TODO: Need to create check to make sure not adding duplicate courses within departments
-			List<School> schoolList=ObjectifyService.ofy().load().type(School.class).list();
+			*/
+			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
 			Collections.sort(schoolList);
 			Course course = new Course(courseName,courseTitle);
-			for(School school: schoolList){
-				if(school.getName().equals(schoolName)){
-					for(College colleges: school.getCollegeList()){
-						if(colleges.getName().equals(collegeName)){
-							for(Department departments: colleges.getDepartmentList()){
-								if(departments.getName().equals(departmentName)){
-									departments.addCourse(course);
-									ofy().save().entity(school).now();
-									resp.sendRedirect("/home.jsp");
-								}
-							}
-						}
-					}
-				}
-			}
+			//for(School school: schoolList){
+			//	if(school.getName().equals(schoolName)){
+			//		for(College colleges: school.getCollegeList()){
+			//			if(colleges.getName().equals(collegeName)){
+			//				for(Department departments: colleges.getDepartmentList()){
+			//					if(departments.getName().equals(departmentName)){
+			//						departments.addCourse(course);
+			//						ofy().save().entity(school).now();
+			//						resp.sendRedirect("/home.jsp");
+			//					}
+			//				}
+			//			}
+			//		}
+			//	}
+			//}
+			ofy().save().entity(course).now();
+			
 			resp.sendRedirect("/home.jsp");
-		}
+		//}
 	}
 }

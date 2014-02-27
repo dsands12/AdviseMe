@@ -19,7 +19,7 @@ public class checkFBUserServlet extends HttpServlet{
 	static{ObjectifyService.register(User.class);}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String prospectFbId = req.getParameter("id");
-		List<User> users = ObjectifyService.ofy().load().type(User.class).list();
+		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
 		for(User user: users){
 			if(user.getfbUserId().equalsIgnoreCase(prospectFbId)){

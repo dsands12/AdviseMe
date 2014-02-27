@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+@SuppressWarnings("unused")
 public class addCollegeServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	static{ObjectifyService.register(School.class);}
+	//static{ObjectifyService.register(School.class);}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		String schoolName = req.getParameter("schoolname");
+	/*	String schoolName = req.getParameter("schoolname");
 		String collegeName = req.getParameter("collegename");
 		if(schoolName==null){
 			//Should be impossible?
@@ -41,6 +42,6 @@ public class addCollegeServlet extends HttpServlet{
 				}
 			}
 			resp.sendRedirect("/home.jsp"); //TODO: Really should redirect to error page showing that entity was not added.
-		}
+		}*/
 	}
 }
