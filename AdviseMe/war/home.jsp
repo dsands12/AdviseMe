@@ -1,14 +1,14 @@
+<%@ page import="webapp.datastoreObjects.*" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="com.googlecode.objectify.*" %>
 <html>
-   <head> 
-      <!-- > 
-      old stylesheet
-      <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css"> 
-      -->
+	<head> 
       	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
         <script src="http://code.jquery.com/jquery.js"></script>
     	<script src="stylesheets/bootstrap.js"></script>
-      <title>AdviseMe-Home</title>
-   </head>
+   		<title>AdviseMe-Home</title>
+   	</head>
 	<body>	
 		<script>
 			// Load FB SDK
@@ -51,9 +51,10 @@
 							last="";
 						}
 			    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
-			    		document.getElementById("id").innerHTML=id;
+			    		document.getElementById("id")=response.id;
 					}
 				});
+	  		};
 				FB.api("/me/picture",{
 				        "redirect": false,
 				        "height": "40",
@@ -62,8 +63,7 @@
 				    },function (response) {
 				      if (response && !response.error){
 				    	  console.log(response.data.url);
-				    	  document.getElementById("profilepic").src=response.data.url;
-				        
+				    	  document.getElementById("profilepic").src=response.data.url;				        
 				      }
 				    }
 				);
@@ -78,9 +78,27 @@
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
+                    		<%
+                    		String id = request.getParameter("id");
+                    		ObjectifyService.register(User.class);
+                    		List<User> users = ObjectifyService.ofy().load().type(User.class).list();
+                    		Collections.sort(users);
+                    		boolean userFlag = true;
+                    		for(User user: users){
+                    			if(user.getfbUserId().equals(id)){
+                    				userFlag=false;
+                    		%>
                     		<li><a href="manageaccount.jsp" id=name></a></li>
                     		<li><a class="brand" href="manageaccount.jsp"><img id=profilepic></a></li>
+                    		<%	
+                    			}else{
+                    			}
+                    		}if(userFlag){
+                    		%>
                     		<li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
+                    		<%
+                    		}
+                    		%>
                   		</ul>
                 	</div>
               	</div>
