@@ -90,27 +90,9 @@
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
-                    		<%
-                    		String id = request.getParameter("id");
-                    		ObjectifyService.register(User.class);
-                    		List<User> users = ObjectifyService.ofy().load().type(User.class).list();
-                    		Collections.sort(users);
-                    		boolean userFlag = true;
-                    		for(User user: users){
-                    			if(user.getfbUserId().equals(id)){
-                    				userFlag=false;
-                    		%>
                     		<li><a href="manageaccount.jsp" id=name></a></li>
                     		<li><a class="brand" href="manageaccount.jsp"><img id=profilepic></a></li>
-                    		<%	
-                    			}else{
-                    			}
-                    		}if(userFlag){
-                    		%>
                     		<li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
-                    		<%
-                    		}
-                    		%>
                   		</ul>
                 	</div>
               	</div>
