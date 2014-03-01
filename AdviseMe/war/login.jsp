@@ -50,18 +50,18 @@
 					success: function(response){
 						console.log(response);
 						if(response=="true"){
-							$.ajax({
-								type:'GET',
-								url : "changeloginstatus?id="+id,
-								cache : false,
-								success: function(response){
-									window.location.replace('home.jsp');
-								}
-							});
-							window.location.replace('error.jsp');
+							console.log("user is registered");
 						}else if(response=="false"){
 							window.location.replace('createaccount.jsp');
 						}
+					}
+				});
+				$.ajax({
+					type:'GET',
+					url : "changeloginstatus?id="+id,
+					cache : false,
+					success: function(response){
+						window.location.replace('home.jsp');
 					}
 				});
 			});

@@ -24,8 +24,16 @@ public class changeLoginStatus extends HttpServlet {
 		for(User user: users){
 			if(user.getfbUserId().equals(id)){
 				Boolean status = user.getLoginStatus();
-				user.setLoginStatus(!status);
+				System.out.println("Old status is:"+status.toString());
+				if(status){
+					user.setLoginStatus(false);
+					ofy().save().entity(user).now();
+				}else{
+					user.setLoginStatus(true);
+					ofy().save().entity(user).now();
+				}
 				status=user.getLoginStatus();
+				System.out.println("New status is:"+status.toString());
 				resp.setContentType("text/plain");
 				resp.setCharacterEncoding("UTF-8");
 				resp.getWriter().write(status.toString());
