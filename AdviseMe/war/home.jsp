@@ -52,22 +52,34 @@
 						}
 			    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
 			    		document.getElementById("id")=response.id;
+			    		$.ajax({
+			    			type: 'GET',
+			    			url : "checkloginstatus?id="+id,
+			    			cache : false,
+			    			success: function(response){
+			    				if(response=="true"){
+			    					console.log("stuff is working");
+			    					//want to display user with logout button
+			    				}else{
+			    					console.log("done messed up");
+			    					//do not want to display user but guest with login
+			    				}
+			    			}
+			    		});
 					}
 				});
-	  		};
 				FB.api("/me/picture",{
 				        "redirect": false,
 				        "height": "40",
 				        "type": "normal",
 				        "width": "40"
-				    },function (response) {
-				      if (response && !response.error){
-				    	  console.log(response.data.url);
-				    	  document.getElementById("profilepic").src=response.data.url;				        
-				      }
+				},function (response) {
+					if(response && !response.error){
+				    	console.log(response.data.url);
+				    	document.getElementById("profilepic").src=response.data.url;				        
 				    }
-				);
-			}
+				});
+	  		}
 		</script>
 		<div class="”container”"> 
 			<div class="navbar">

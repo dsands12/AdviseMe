@@ -42,16 +42,28 @@
 			document.getElementById("test").innerHTML="Logging In....Redirecting";
 			FB.api('/me', function(response){
 				var id=response.id;
-				var form = document.createElement("form");
-				input = document.createElement("input");
-				form.action = "/checkfacebookuser";
-				form.method = "post";
-				input.name = "id";
-				input.type= "hidden";
-				input.value = response.id;
-				form.appendChild(input);
-				document.body.appendChild(form);
-				form.submit();
+				console.log(id);
+				$.ajax({
+					type:'GET',
+					url : "checkfacebookuser?id="+id,
+					cache : false,
+					success: function(response){
+						console.log(response);
+						if(response=="true"){
+							$.ajax({
+								type:'GET',
+								url : "changeloginstatus?id="+id,
+								cache : false,
+								success: function(response){
+									window.location.replace('home.jsp');
+								}
+							});
+							window.location.replace('error.jsp');
+						}else if(response=="false"){
+							window.location.replace('createaccount.jsp');
+						}
+					}
+				});
 			});
 		}
 		</script>
