@@ -40,6 +40,7 @@
 	  		};
 	  		function checkLogin(){
 				console.log('Retrieving User ID and Name');
+				var picurl = "none";
 				FB.api('/me', function(response){
 					if(response && !response.error){
 						var first="Guest";
@@ -50,19 +51,21 @@
 							first="Guest";
 							last="";
 						}
-			    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
-			    		document.getElementById("id")=response.id;
 			    		$.ajax({
 			    			type: 'GET',
 			    			url : "checkloginstatus?id="+id,
 			    			cache : false,
 			    			success: function(response){
 			    				if(response=="true"){
-			    					console.log("stuff is working");
-			    					//want to display user with logout button
+						    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
+						    		document.getElementById("profilepic").src=picurl;
+						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='logout.jsp'");
+						    		document.getElementById("loginbuttonref").innerHTML="Logout";
 			    				}else{
-			    					console.log("done messed up");
-			    					//do not want to display user but guest with login
+			    					document.getElementById("name").innerHTML="Welcome, Guest";
+			    					document.getElementById("profilepic").src="";
+						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='login.jsp'");
+						    		document.getElementById("loginbuttonref").innerHTML="Login";
 			    				}
 			    			}
 			    		});
@@ -75,8 +78,7 @@
 				        "width": "40"
 				},function (response) {
 					if(response && !response.error){
-				    	console.log(response.data.url);
-				    	document.getElementById("profilepic").src=response.data.url;				        
+						picurl=response.data.url;
 				    }
 				});
 	  		}
@@ -91,8 +93,8 @@
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
                     		<li><a href="manageaccount.jsp" id=name></a></li>
-                    		<li><a class="brand" href="manageaccount.jsp"><img id=profilepic></a></li>
-                    		<li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
+                    		<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
+                    		<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
                   		</ul>
                 	</div>
               	</div>
