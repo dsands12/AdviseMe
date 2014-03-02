@@ -65,8 +65,8 @@
               	</div>
         	</div>
 		</div>
-		<form action="/removefacebookuser" method="get">
-	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;" onSubmit="return confirm('Are you sure you want to delete your account')"></textarea></div>
+		<form action="/removefacebookuser" method="get" onSubmit="return confirm('Are you sure you want to delete your account')">
+	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;" ></textarea></div>
 	      	<div><input type="submit" value="Delete Account" /></div>	
 	    </form>
 	</body>
