@@ -1,14 +1,14 @@
+<%@ page import="webapp.datastoreObjects.*" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="com.googlecode.objectify.*" %>
 <html>
-   <head> 
-      <!-- > 
-      old stylesheet
-      <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css"> 
-      -->
+	<head> 
       	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
         <script src="http://code.jquery.com/jquery.js"></script>
     	<script src="stylesheets/bootstrap.js"></script>
-      <title>AdviseMe-Home</title>
-   </head>
+   		<title>AdviseMe-Home</title>
+   	</head>
 	<body>	
 		<script>
 			// Load FB SDK
@@ -40,6 +40,7 @@
 	  		};
 	  		function checkLogin(){
 				console.log('Retrieving User ID and Name');
+				var picurl = "none";
 				FB.api('/me', function(response){
 					if(response && !response.error){
 						var first="Guest";
@@ -50,8 +51,24 @@
 							first="Guest";
 							last="";
 						}
-			    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
-			    		document.getElementById("id").innerHTML=id;
+			    		$.ajax({
+			    			type: 'GET',
+			    			url : "checkloginstatus?id="+id,
+			    			cache : false,
+			    			success: function(response){
+			    				if(response=="true"){
+						    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
+						    		document.getElementById("profilepic").src=picurl;
+						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='logout.jsp'");
+						    		document.getElementById("loginbuttonref").innerHTML="Logout";
+			    				}else{
+			    					document.getElementById("name").innerHTML="Welcome, Guest";
+			    					document.getElementById("profilepic").src="";
+						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='login.jsp'");
+						    		document.getElementById("loginbuttonref").innerHTML="Login";
+			    				}
+			    			}
+			    		});
 					}
 				});
 				FB.api("/me/picture",{
@@ -59,15 +76,12 @@
 				        "height": "40",
 				        "type": "normal",
 				        "width": "40"
-				    },function (response) {
-				      if (response && !response.error){
-				    	  console.log(response.data.url);
-				    	  document.getElementById("profilepic").src=response.data.url;
-				        
-				      }
+				},function (response) {
+					if(response && !response.error){
+						picurl=response.data.url;
 				    }
-				);
-			}
+				});
+	  		}
 		</script>
 		<div class="”container”"> 
 			<div class="navbar">
@@ -79,8 +93,8 @@
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
                     		<li><a href="manageaccount.jsp" id=name></a></li>
-                    		<li><a class="brand" href="manageaccount.jsp"><img id=profilepic></a></li>
-                    		<li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
+                    		<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
+                    		<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
                   		</ul>
                 	</div>
               	</div>

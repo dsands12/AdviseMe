@@ -39,22 +39,37 @@
 		}(document));
 		function checkLogin(){
 			console.log('Retrieving User ID and Name');
+			document.getElementById("test").innerHTML="Logging In....Redirecting";
 			FB.api('/me', function(response){
 				var id=response.id;
-				var form = document.createElement("form");
-				input = document.createElement("input");
-				form.action = "/checkfacebookuser";
-				form.method = "post"
-				input.name = "id";
-				input.value = response.id;
-				form.appendChild(input);
-				document.body.appendChild(form);
-				form.submit();
+				console.log(id);
+				$.ajax({
+					type:'GET',
+					url : "checkfacebookuser?id="+id,
+					cache : false,
+					success: function(response){
+						console.log(response);
+						if(response=="true"){
+							console.log("user is registered");
+						}else if(response=="false"){
+							window.location.replace('createaccount.jsp');
+						}
+					}
+				});
+				$.ajax({
+					type:'GET',
+					url : "changeloginstatus?id="+id,
+					cache : false,
+					success: function(response){
+						window.location.replace('home.jsp');
+					}
+				});
 			});
 		}
 		</script>
 		<h1>Login</h1>
 		<div class="hero-unit">
+			<h2 id="test"></h2>
     		<div class="fb-login-button" data-scope="email" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false"></div>
  		</div>		
 	</body>

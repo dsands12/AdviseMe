@@ -46,11 +46,27 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>checkFBUser</servlet-name>
-		<servlet-class>webapp.addServlets.checkFBUserServlet</servlet-class>	
+		<servlet-class>webapp.checkServlets.checkFBUserServlet</servlet-class>	
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>checkFBUser</servlet-name>
 		<url-pattern>/checkfacebookuser</url-pattern>	
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>changeloginstatus</servlet-name>
+	    <servlet-class>webapp.checkServlets.changeLoginStatus</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>changeloginstatus</servlet-name>
+	    <url-pattern>/changeloginstatus</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>checkloginstatus</servlet-name>
+	    <servlet-class>webapp.checkServlets.checkLoginStatus</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>checkloginstatus</servlet-name>
+	    <url-pattern>/checkloginstatus</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>addFBUser</servlet-name>
@@ -60,6 +76,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>addFBUser</servlet-name>
 		<url-pattern>/addfacebookuser</url-pattern>
 	</servlet-mapping>
+	<filter>
+        <filter-name>ObjectifyFilter</filter-name>
+        <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+        <filter-name>ObjectifyFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>

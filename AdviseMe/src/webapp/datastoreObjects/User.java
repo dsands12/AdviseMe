@@ -13,6 +13,7 @@ public class User implements Comparable<User>{
 	String firstName = "No first name entered.";
 	String lastName = "No last name entered.";
 	String userEmail = null;
+	Boolean loginStatus = false;
 	ArrayList<Course> courseList;
 	ArrayList<Course> currentCourses;
 	
@@ -35,6 +36,7 @@ public class User implements Comparable<User>{
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.userEmail=null;
+		this.loginStatus = false;
 		courseList = new ArrayList<Course>();
 		currentCourses = new ArrayList<Course>();
 	}
@@ -50,6 +52,7 @@ public class User implements Comparable<User>{
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.userEmail=null;
+		this.loginStatus=false;
 		courseList = new ArrayList<Course>();
 		currentCourses = new ArrayList<Course>();
 	}
@@ -59,6 +62,7 @@ public class User implements Comparable<User>{
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.userEmail=userEmail;
+		this.loginStatus=false;
 	}
 	
 	public String getfbUserId(){
@@ -79,6 +83,14 @@ public class User implements Comparable<User>{
 
 	public String getUserEmail(){
 		return this.userEmail;
+	}
+	
+	public Boolean getLoginStatus(){
+		return loginStatus;
+	}
+	
+	public void setLoginStatus(boolean status){
+		this.loginStatus=status;
 	}
 	
 	@Override
