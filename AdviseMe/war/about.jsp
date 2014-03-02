@@ -41,6 +41,17 @@
 			<div class="row-fluid">
 					<div class="span4">
 						<div class="col-md-4">
+							<h2>Meet the Team</h2>
+						</div>
+					</div>
+					<div class="span8">
+						<div class="col-md-8">
+						</div>
+					</div>
+			</div>			
+			<div class="row-fluid">
+					<div class="span4">
+						<div class="col-md-4">
 							~name of team member here~
 						</div>
 					</div>
