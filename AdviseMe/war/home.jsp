@@ -92,10 +92,15 @@
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
+                    		
+                    		</ul>
+                    		<ul class="nav pull-right">
+                    		<ul class="nav">
                     		<li><a href="manageaccount.jsp" id=name></a></li>
-                    		<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
-                    		<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
-                  		</ul>
+                    			<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
+                    			<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
+                  			</ul>
+                  			</ul>
                 	</div>
               	</div>
         	</div>
@@ -103,16 +108,18 @@
 		<div class="hero-unit">
 	    	<h1>Advise Me</h1> 
 	   		<p>Helping students help students in order to help students by helping!</p> 
-	    	<a onclick="window.location.href='login.jsp'" id="loginbuttonref" class="btn btn-large btn-info">Login</a>
+	    	<!--<a onclick="window.location.href='login.jsp'" id="loginbuttonref" class="btn btn-large btn-info">Login</a> -->
 	    	<br/><br/><br/><br/><br/>
-	 		<div class="input-group">
+	 		<!--  <div class="input-group">
 	 			 <input type="text" class="form-control" placeholder="Search..." id="query" name="query" value="">
 	 			 <button type="submit" class="btn btn-success">Submit</button>
+	 			 
 	 		</div>
+	 		-->
  		</div>
 		<hr>
 		<div class="footer">
-		<p>&copy; 2013</p>
+		<p>&copy; 2014</p>
 		</div>
 	</body>
 </html>
