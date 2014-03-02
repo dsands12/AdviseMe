@@ -76,6 +76,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>addFBUser</servlet-name>
 		<url-pattern>/addfacebookuser</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	    <servlet-name>removeFBUser</servlet-name>
+	    <servlet-class>webapp.removeServlets.deleteFBUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>removeFBUser</servlet-name>
+	    <url-pattern>/removefacebookuser</url-pattern>
+	</servlet-mapping>
 	<filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
