@@ -6,6 +6,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world by @mdo and @fat.
+ 
+* http://careerinsider.blogs.bucknell.edu/files/2013/10/austintexas-panorama.jpg
  */
 
 .clearfix {
@@ -6118,13 +6120,14 @@ a.badge:focus {
 }
 
 .hero-unit {
-  padding: 60px;
+  padding: 80px;
   margin-bottom: 30px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-image: url(http://www.gulawweekly.org/storage/Austin.jpg?__SQUARESPACE_CACHEVERSION=1347992586495); 
+  background-size: cover;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -6137,6 +6140,7 @@ a.badge:focus {
   letter-spacing: -1px;
   color: inherit;
 }
+
 
 .hero-unit li {
   line-height: 30px;

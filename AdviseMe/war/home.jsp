@@ -103,7 +103,7 @@
 		<div class="hero-unit">
 	    	<h1>Advise Me</h1> 
 	   		<p>Helping students help students in order to help students by helping!</p> 
-	    	<a href="login.jsp" class="btn btn-large btn-info">Login</a>
+	    	<a onclick="window.location.href='login.jsp'" id="loginbuttonref" class="btn btn-large btn-info">Login</a>
 	    	<br/><br/><br/><br/><br/>
 	 		<div class="input-group">
 	 			 <input type="text" class="form-control" placeholder="Search..." id="query" name="query" value="">
