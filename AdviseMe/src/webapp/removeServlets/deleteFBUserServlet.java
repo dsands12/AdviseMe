@@ -18,6 +18,10 @@ public class deleteFBUserServlet extends HttpServlet{
 	static{ObjectifyService.register(User.class);}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String fbId = req.getParameter("id");
+		if(fbId==null||fbId.isEmpty()){
+			//TODO: need to send to error page.
+			resp.sendRedirect("/error.jsp");
+		}
 		System.out.println("Passed id was" + fbId);
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
@@ -27,7 +31,8 @@ public class deleteFBUserServlet extends HttpServlet{
 				resp.sendRedirect("/home.jsp");
 			}
 		}
-		//if code reached here, then user was never registered
+		//TODO: if code reached here, then user was never registered
+		
 		resp.sendRedirect("/error.jsp");
 		
 	}

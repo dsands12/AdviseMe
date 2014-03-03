@@ -18,6 +18,10 @@ public class changeLoginStatus extends HttpServlet {
 	static{ObjectifyService.register(User.class);}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String id = req.getParameter("id");
+		if(id==null||id.isEmpty()){
+			//TODO: need to send to error page.
+			resp.sendRedirect("/error.jsp");
+		}
 		System.out.println("Passed ID was:" + id);
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);

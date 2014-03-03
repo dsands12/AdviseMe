@@ -1,6 +1,6 @@
 <%@ page import="webapp.addServlets.*" %>
 <%@ page import="net.tanesha.recaptcha.ReCaptcha" %>
-   <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
@@ -74,6 +74,10 @@
 	   		<div>Last Name:<textarea name="lastname" id="last" rows="1" cols="30"></textarea></div>
 	   		<div>Email:<textarea name="email" id="email" rows="1" cols="30"></textarea></div>
 	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;"></textarea></div>
+	   		<%
+         	ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LfFIe8SAAAAAFvovPN2pD-lUKHixmEufNFITZ91", "6LfFIe8SAAAAADGueFM28Toq3H3OJWqB2xTpoj-A", false);
+         	out.print(c.createRecaptchaHtml(null, null));
+      		%>
 	      	<div><input type="submit" value="Create Account" /></div>
 	      	<input type="button" value="Cancel" onclick="window.location.href='/home.jsp'"> 	
 	    </form>

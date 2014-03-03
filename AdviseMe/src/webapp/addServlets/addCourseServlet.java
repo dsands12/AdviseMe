@@ -42,6 +42,14 @@ public class addCourseServlet extends HttpServlet{
 			//Should be impossible?
 		}else{//TODO: Need to create check to make sure not adding duplicate courses within departments
 			*/
+		if(courseName==null||courseName.isEmpty()){
+			//TODO: Need to go to error page.
+			resp.sendRedirect("/error.jsp");
+		}
+		if(courseTitle==null||courseTitle.isEmpty()){
+			//TODO: Need to go to error page.
+			resp.sendRedirect("/error.jsp");
+		}
 			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
 			Collections.sort(schoolList);
 			Course course = new Course(courseName,courseTitle);

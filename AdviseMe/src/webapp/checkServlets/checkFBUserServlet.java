@@ -18,6 +18,10 @@ public class checkFBUserServlet extends HttpServlet{
 	static{ObjectifyService.register(User.class);}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String prospectFbId = req.getParameter("id");
+		if(prospectFbId==null||prospectFbId.isEmpty()){
+			//TODO: need to send to error page.
+			resp.sendRedirect("/error.jsp");
+		}
 		System.out.println("Passed id was:" +prospectFbId);
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
