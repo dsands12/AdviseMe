@@ -25,7 +25,7 @@ public class deleteFBUserServlet extends HttpServlet{
 		for(User user: users){
 			if(user.getfbUserId().equals(fbId)){
 				ofy().delete().entity(user).now();
-				break;
+				resp.sendRedirect("/home.jsp");
 			}
 		}
 		//if code reached here, then user was never registered
