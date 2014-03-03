@@ -86,7 +86,7 @@
 				});
 	  		}
 		</script>
-			<div class="”container”"> 
+			<div class="â€�containerâ€�"> 
 			<div class="navbar">
             	<div class="navbar-inner">
                 	<div class="container">
@@ -109,11 +109,54 @@
         	</div>
 		</div>
 	<body>
-		<%
-		ObjectifyService.register(Course.class);
-		List<Course> schools = ObjectifyService.ofy().load().type(Course.class).list();
-		Collections.sort(schools);
-		%>
+	<form class="well" action="/addcourse" method="post">  
+	  <label>Course Abbreviation</label>  
+	  	<textarea name="abv" rows="1" cols="30" placeholder="Enter Abbrev..."></textarea>
+	  	<span class="help-inline">Ex. EE 360C</span>   
+	  </label> 
+	  <br/> 
+	  
+	  <label>Course Title</label>  
+	  	<textarea name="title" rows="1" cols="30" placeholder="Enter Title..."></textarea>  
+	  	<span class="help-inline">Ex. Algorithms</span>   
+	  </label> 
+	  <br>
+	  
+	  <label>Course Description</label>  
+	  	<textarea name="description" rows="3" cols="30" placeholder="Enter Description..."></textarea>  
+	  	<span class="help-inline">Ex. This course involves...</span>   
+	  </label> 
+	  <br>
+	  
+	  <label>Upper/Lower Division</label> 
+	  	<td><input type="radio" name="division" value="upper">Upper&nbsp&nbsp
+	  	<td><input type="radio" name="division" value="lower">Lower
+	  </label> 
+	  <br><br>
+	  
+	  <label>Professors</label>  
+	  	<textarea name="professorList" rows="3" cols="30" placeholder="Enter Professors..."></textarea>  
+	  	<span class="help-inline">Comma separated list (Ex. Julien,Ghosh,etc...)</span>   
+	  </label> 
+	  <br>
+	  
+	  <label>Semesters Taught</label>  
+	  	<textarea name="semestersTaught" rows="3" cols="30" placeholder="Enter Semesters..."></textarea>  
+	  	<span class="help-inline">Comma separated list (Ex. Fall 2012,Spring 2013,Summer 2013,etc...)</span>   
+	  </label> 
+	  <br>
+	  
+	  <label>Textbooks</label>  
+	  	<textarea name="textbooks" rows="3" cols="30" placeholder="Enter Textbooks..."></textarea>  
+	  	<span class="help-inline">Comma separated list (Ex. Title Author ISBN,etc...)</span>   
+	  </label> 
+	  <br>
+	  
+	  <button type="submit" class="btn" >Add Course</button>  
+	  <button type="Cancel" class="btn" onclick="window.location.href='/home.jsp'">Cancel</button>
+	</form>
+	
+<%--	
 		<form action="/addcourse" method="post">
 			<h3>Course Name:</h3>
 			<div>
@@ -124,6 +167,6 @@
 				<input type="submit" value="Add Course" />
 			</div>
 			<input type="button" value="Cancel" onclick="window.location.href='/home.jsp'">
-		</form>
+		</form> --%>
 	</body>
 </html>
