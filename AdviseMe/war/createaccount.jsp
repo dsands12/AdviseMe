@@ -52,6 +52,19 @@
 				});
 			}
 		</script> 
+				<div class="”container”"> 
+			<div class="navbar">
+            	<div class="navbar-inner">
+                	<div class="container">
+                  		<ul class="nav">
+                    		<li class="active"><a href="home.jsp">Home</a></li>
+                    		<li><a href="about.jsp">About</a></li>
+                    		<li><a href="courses.jsp">Courses</a></li>
+                    		<li><a href="usefulLinks.jsp">Useful Links</a></li>
+                	</div>
+              	</div>
+        	</div>
+		</div>
 		<div class="fb-login-button" data-scope="email" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
 	    <form action="/addfacebookuser" method="post">
 	   		<div>First Name:<textarea name="firstname" id="first" rows="1" cols="30"></textarea></div>

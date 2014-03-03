@@ -67,7 +67,19 @@
 			});
 		}
 		</script>
-		<h1>Login</h1>
+		<div class="”container”"> 
+			<div class="navbar">
+            	<div class="navbar-inner">
+                	<div class="container">
+                  		<ul class="nav">
+                    		<li class="active"><a href="home.jsp">Home</a></li>
+                    		<li><a href="about.jsp">About</a></li>
+                    		<li><a href="courses.jsp">Courses</a></li>
+                    		<li><a href="usefulLinks.jsp">Useful Links</a></li>
+                	</div>
+              	</div>
+        	</div>
+		</div>
 		<div class="hero-unit">
 			<h2 id="test"></h2>
     		<div class="fb-login-button" data-scope="email" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false"></div>
