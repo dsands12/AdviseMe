@@ -84,6 +84,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>removeFBUser</servlet-name>
 	    <url-pattern>/removefacebookuser</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	    <servlet-name>addUserCourses</servlet-name>
+	    <servlet-class>webapp.addServlets.addUserCourses</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>addUserCourses</servlet-name>
+	    <url-pattern>/addusercourses</url-pattern>
+	</servlet-mapping>
 	<filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>

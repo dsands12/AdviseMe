@@ -15,22 +15,12 @@ public class User implements Comparable<User>{
 	String userEmail = null;
 	Boolean loginStatus = false;
 	ArrayList<Course> courseList;
-	ArrayList<Course> currentCourses;
 	
 	@SuppressWarnings("unused")
-	/**Empty Constructor for User Object
-	 * 
-	 */
 	private User(){
 		courseList = new ArrayList<Course>();
-		currentCourses = new ArrayList<Course>();
 	}
 	
-	/**Constructor for User Object
-	 * 
-	 * @param firstName - First Name of User
-	 * @param lastName - Last Name of User
-	 */
 	public User(String firstName, String lastName){
 		this.fbUserId=null;
 		this.firstName=firstName;
@@ -38,15 +28,8 @@ public class User implements Comparable<User>{
 		this.userEmail=null;
 		this.loginStatus = false;
 		courseList = new ArrayList<Course>();
-		currentCourses = new ArrayList<Course>();
 	}
 	
-	/**Constructor for User Object
-	 * 
-	 * @param fbUserId - FaceBook User Id
-	 * @param firstName - First Name of User
-	 * @param lastName - Last Name of User
-	 */
 	public User(String fbUserId, String firstName, String lastName){
 		this.fbUserId=fbUserId;
 		this.firstName=firstName;
@@ -54,7 +37,6 @@ public class User implements Comparable<User>{
 		this.userEmail=null;
 		this.loginStatus=false;
 		courseList = new ArrayList<Course>();
-		currentCourses = new ArrayList<Course>();
 	}
 	
 	public User(String fbUserId, String firstName, String lastName, String userEmail){
@@ -63,6 +45,14 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=userEmail;
 		this.loginStatus=false;
+	}
+	
+	public ArrayList<Course> getUserClassList(){
+		return courseList;
+	}
+	
+	public void addUserClass(Course course){
+		courseList.add(course);
 	}
 	
 	public String getfbUserId(){

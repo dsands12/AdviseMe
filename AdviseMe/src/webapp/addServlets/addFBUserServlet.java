@@ -48,11 +48,13 @@ public class addFBUserServlet extends HttpServlet{
 			}
 			if(FBEmail==null||FBId.isEmpty()){
 				user = new User(FBId,FBFirst,FBLast);
+				user.setLoginStatus(true);
 			}else{
 				user = new User(FBId,FBFirst,FBLast,FBEmail);
+				user.setLoginStatus(true);
 			}
 			ofy().save().entity(user).now();
-			resp.sendRedirect("/home.jsp");
+			resp.sendRedirect("/addusercourses.jsp");
 		}
 	}
 }
