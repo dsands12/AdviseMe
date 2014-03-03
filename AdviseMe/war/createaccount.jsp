@@ -1,5 +1,8 @@
 <%@ page import="webapp.addServlets.*" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptcha" %>
+   <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <html>
 	<head>

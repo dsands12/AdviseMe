@@ -21,7 +21,6 @@ public class deleteFBUserServlet extends HttpServlet{
 		System.out.println("Passed id was" + fbId);
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
-		boolean flag = false;
 		for(User user: users){
 			if(user.getfbUserId().equals(fbId)){
 				ofy().delete().entity(user).now();
