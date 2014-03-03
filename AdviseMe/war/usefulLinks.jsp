@@ -102,8 +102,20 @@
         	</div>
 		</div>
 	<body>
-		put useful links here.
-		please work
+		<br>
+		<br>
+		<div class="row-fluid">
+			<div class="span1"></div>
+			<div class="span4">
+				<a href="http://registrar.utexas.edu/schedules">Course Schedules</a>
+			</div>
+			<div class="span4">
+				<a href="http://www.ece.utexas.edu/undergraduate/curriculum">UT ECE Curriculum</a>
+			</div>
+			<div>
+				<a href="https://www.myedu.com/home/">myEdu</a>
+			</div>
+		</div>
 	</body>
 
 </html>
