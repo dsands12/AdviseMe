@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//war/about.jsp=UTF-8
+encoding//war/addcourse.jsp=UTF-8
 encoding//war/courseinfo.jsp=UTF-8
 encoding//war/courses.jsp=UTF-8
 encoding//war/createaccount.jsp=UTF-8
