@@ -14,11 +14,11 @@ public class User implements Comparable<User>{
 	String lastName = "No last name entered.";
 	String userEmail = null;
 	Boolean loginStatus = false;
-	ArrayList<Course> courseList;
+	ArrayList<String> courseList;
 	
 	@SuppressWarnings("unused")
 	private User(){
-		courseList = new ArrayList<Course>();
+		courseList = new ArrayList<String>();
 	}
 	
 	public User(String firstName, String lastName){
@@ -27,7 +27,7 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=null;
 		this.loginStatus = false;
-		courseList = new ArrayList<Course>();
+		courseList = new ArrayList<String>();
 	}
 	
 	public User(String fbUserId, String firstName, String lastName){
@@ -36,7 +36,7 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=null;
 		this.loginStatus=false;
-		courseList = new ArrayList<Course>();
+		courseList = new ArrayList<String>();
 	}
 	
 	public User(String fbUserId, String firstName, String lastName, String userEmail){
@@ -45,13 +45,14 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=userEmail;
 		this.loginStatus=false;
+		courseList = new ArrayList<String>();
 	}
 	
-	public ArrayList<Course> getUserClassList(){
+	public ArrayList<String> getUserClassList(){
 		return courseList;
 	}
 	
-	public void addUserClass(Course course){
+	public void addUserClass(String course){
 		courseList.add(course);
 	}
 	

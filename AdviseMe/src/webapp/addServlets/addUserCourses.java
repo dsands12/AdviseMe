@@ -35,12 +35,16 @@ public class addUserCourses extends HttpServlet{
 		}
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
+		//Current issue with this is that it is not linked with the actual courses.
+		//Also, current implementation allows for duplicates in user course list
+		//TODO: remove possibility of duplicates in user course list
+		
 		for(User user: users){
 			if(user.getfbUserId().equals(id)){
 				for(int i=0;i<usercourses.length;i+=1){
-					Course course = new Course(usercourses[i]);
-					user.addUserClass(course);
+					user.addUserClass(usercourses[i]);
 				}
+				ofy().save().entity(user).now();
 				resp.sendRedirect("/home.jsp");
 			}			
 		}
