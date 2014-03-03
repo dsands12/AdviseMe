@@ -81,9 +81,9 @@
             	<div class="navbar-inner">
                 	<div class="container">
                   		<ul class="nav">
-                    		<li class="active"><a href="home.jsp">Home</a></li>
+                    		<li><a href="home.jsp">Home</a></li>
                     		<li><a href="about.jsp">About</a></li>
-                    		<li><a href="courses.jsp">Courses</a></li>
+                    		<li class="active"><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
                     		</ul>
                     		<ul class="nav pull-right">
@@ -97,7 +97,42 @@
               	</div>
         	</div>
 		</div>
-
+	<body>
+		<div class="row">
+			<div class="span10">
+				<div class="col-md-10">
+					<h3>${course.title}, ${course.abbreviation}</h3>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="span10">
+				<div class="col-md-10">
+					<h4>Description:</h4>
+					<br>
+					<p>${course.description}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span4">
+				<div class="col-md-4">
+					<h4>Past Professors:</h4>
+					<br>
+					<p>${course.professorList}</p>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="col-md-4">		
+					<h4>Semesters Taught:</h4>
+					<br>
+					<p>${course.semestersTaught}</p>
+				</div>
+			</div>
+		</div>
+	</body>
 
 
 
