@@ -1,5 +1,7 @@
 package webapp.datastoreObjects;
 
+import java.util.ArrayList;
+
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -9,7 +11,16 @@ import com.googlecode.objectify.annotation.Index;
 public class Course implements Comparable<Course> {
 	@Id String courseName ="No course name entered.";
 	String title = "No course title entered.";
-	String description= "No course description available.";
+	String description= "Default UT description";
+	boolean upperDivision; 	//true if upper division; false if lower division
+	ArrayList<String> professorList;
+	ArrayList<String> semestersTaught;
+	ArrayList<String> subscribers;
+	ArrayList<String> textbooks;
+	String evalLink;
+	String syllabiLink;
+	
+	//should we make these private????
 	
 	@SuppressWarnings("unused")
 	private Course(){}
