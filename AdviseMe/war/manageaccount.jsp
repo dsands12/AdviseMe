@@ -36,17 +36,50 @@
 	  		};
 	  		function checkLogin(){
 				console.log('Retrieving User ID and Name');
+				var picurl = "none";
 				FB.api('/me', function(response){
-					var first=response.first_name;
-					var last=response.last_name;
-					var id=response.id;
-					var email=response.email;
-		    		document.getElementById("first").innerHTML=first;
-		    		document.getElementById("last").innerHTML=last;
-		    		document.getElementById("id").innerHTML=id;
-		    		document.getElementById("email").innerHTML=email;
+					if(response && !response.error){
+						var first="Guest";
+						first = response.first_name;
+						var last=response.last_name;
+						var id=response.id;
+						var id=response.id;
+			    		document.getElementById("id").innerHTML=id;
+						if(id==null||id==""){
+							first="Guest";
+							last="";
+						}
+						$.ajax({
+			    			type: 'GET',
+			    			url : "checkloginstatus?id="+id,
+			    			cache : false,
+			    			success: function(response){
+			    				if(response=="true"){
+						    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
+						    		document.getElementById("profilepic").src=picurl;
+						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='logout.jsp'");
+						    		document.getElementById("loginbuttonref").innerHTML="Logout";
+			    				}else{
+			    					document.getElementById("name").innerHTML="Welcome, Guest";
+			    					document.getElementById("profilepic").src="";
+						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='login.jsp'");
+						    		document.getElementById("loginbuttonref").innerHTML="Login";
+			    				}
+			    			}
+			    		});
+					}
 				});
-			}
+				FB.api("/me/picture",{
+				        "redirect": false,
+				        "height": "40",
+				        "type": "normal",
+				        "width": "40"
+				},function (response) {
+					if(response && !response.error){
+						picurl=response.data.url;
+				    }
+				});
+	  		}
 		</script> 	
 		<div class="”container”"> 
 			<div class="navbar">
@@ -57,10 +90,15 @@
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
+                    		
+                    		</ul>
+                    		<ul class="nav pull-right">
+                    		<ul class="nav">
                     		<li><a href="manageaccount.jsp" id=name></a></li>
-                    		<li><a class="brand" href="manageaccount.jsp"><img id=profilepic></a></li>
-                    		<li><button type="button" class="btn btn-default" onclick="window.location.href='login.jsp'">Login</button></li>
-                  		</ul>
+                    			<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
+                    			<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
+                  			</ul>
+                  			</ul>
                 	</div>
               	</div>
         	</div>

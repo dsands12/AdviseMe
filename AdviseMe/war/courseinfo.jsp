@@ -1,13 +1,9 @@
 <html>
-
 	<head>
-      	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
-        <script src="http://code.jquery.com/jquery.js"></script>
-    	<script src="stylesheets/bootstrap.js"></script>
-		 <title>AdviseMe-UsefulLinks</title>
-		 <h1>Useful Links</h1>
+		 <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+		 <title>AdviseMe-CourseInfo</title>
 	</head>
-			<div class="”container”"> 
+		<div class="”container”"> 
 			<div class="navbar">
             	<div class="navbar-inner">
                 	<div class="container">
@@ -28,9 +24,8 @@
               	</div>
         	</div>
 		</div>
-	<body>
-		put useful links here.
-		please work
-	</body>
+
+
+
 
 </html>
