@@ -5,7 +5,6 @@
         <script src="http://code.jquery.com/jquery.js"></script>
     	<script src="stylesheets/bootstrap.js"></script>
 		 <title>AdviseMe-UsefulLinks</title>
-		 <h1>Useful Links</h1>
 	</head>
 			<script>
 			// Load FB SDK
@@ -92,6 +91,7 @@
                     		<li><a href="home.jsp">Home</a></li>
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
+                    		<li><a href="schedule.jsp">Schedule Thing</a></li> <!--  Tentative Title  -->
                     		<li class="active"><a href="usefulLinks.jsp">Useful Links</a></li>
                     		</ul>
                     		<ul class="nav pull-right">

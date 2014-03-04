@@ -88,6 +88,7 @@
                     		<li><a href="home.jsp">Home</a></li>
                     		<li class="active"><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
+                    		<li><a href="schedule.jsp">Schedule Thing</a></li> <!--  Tentative Title  -->
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
                     		</ul>
                     		<ul class="nav pull-right">
