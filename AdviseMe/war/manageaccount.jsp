@@ -43,8 +43,9 @@
 						first = response.first_name;
 						var last=response.last_name;
 						var id=response.id;
-						var id=response.id;
+						var location = "window.location.href="+"'addusercourses.jsp?id="+id+"'";
 			    		document.getElementById("id").innerHTML=id;
+			    		document.getElementById("usercoursesbuttonref").setAttribute("onClick", location);
 						if(id==null||id==""){
 							first="Guest";
 							last="";
@@ -56,11 +57,15 @@
 			    			success: function(response){
 			    				if(response=="true"){
 						    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
+						    		document.getElementById("name").href="manageaccount.jsp";
+			    					document.getElementById("pict").href="manageaccount.jsp";
 						    		document.getElementById("profilepic").src=picurl;
 						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='logout.jsp'");
 						    		document.getElementById("loginbuttonref").innerHTML="Logout";
 			    				}else{
 			    					document.getElementById("name").innerHTML="Welcome, Guest";
+			    					document.getElementById("name").href="home.jsp";
+			    					document.getElementById("pict").href="home.jsp";
 			    					document.getElementById("profilepic").src="";
 						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='login.jsp'");
 						    		document.getElementById("loginbuttonref").innerHTML="Login";
@@ -90,12 +95,11 @@
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
-                    		
                     		</ul>
                     		<ul class="nav pull-right">
                     		<ul class="nav">
-                    		<li><a href="manageaccount.jsp" id=name></a></li>
-                    			<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
+                    		<li><a href="home.jsp" id=name></a></li>
+                    			<li><a class="brand" id=pict href="home.jsp"><img id="profilepic"></a></li>
                     			<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
                   			</ul>
                   			</ul>
@@ -103,10 +107,14 @@
               	</div>
         	</div>
 		</div>
-		
-		<form action="/removefacebookuser" method="get" onSubmit="return confirm('Are you sure you want to delete your account')">
+		<div class="hero-unit">
+				<form action="/removefacebookuser" method="get" onSubmit="return confirm('Are you sure you want to delete your account')">
 	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;" ></textarea></div>
-	      	<div><input type="submit" value="Delete Account" /></div>	
+	      	<div><input type="submit" value="Delete Account" /></div>
 	    </form>
+	    	    	<a onclick="window.location.href='addusercourses.jsp'" id="usercoursesbuttonref" class="btn btn-large btn-info">Manage Courses</a>
+	    
+ 		</div>
+		
 	</body>
 </html>

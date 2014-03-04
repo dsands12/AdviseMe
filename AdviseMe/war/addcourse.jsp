@@ -61,11 +61,15 @@
 			    			success: function(response){
 			    				if(response=="true"){
 						    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
+						    		document.getElementById("name").href="manageaccount.jsp";
+			    					document.getElementById("pict").href="manageaccount.jsp";
 						    		document.getElementById("profilepic").src=picurl;
 						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='logout.jsp'");
 						    		document.getElementById("loginbuttonref").innerHTML="Logout";
 			    				}else{
 			    					document.getElementById("name").innerHTML="Welcome, Guest";
+			    					document.getElementById("name").href="home.jsp";
+			    					document.getElementById("pict").href="home.jsp";
 			    					document.getElementById("profilepic").src="";
 						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='login.jsp'");
 						    		document.getElementById("loginbuttonref").innerHTML="Login";
@@ -95,12 +99,11 @@
                     		<li><a href="about.jsp">About</a></li>
                     		<li><a href="courses.jsp">Courses</a></li>
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
-                    		
                     		</ul>
                     		<ul class="nav pull-right">
                     		<ul class="nav">
-                    		<li><a href="manageaccount.jsp" id=name></a></li>
-                    			<li><a class="brand" href="manageaccount.jsp"><img id="profilepic"></a></li>
+                    		<li><a href="home.jsp" id=name></a></li>
+                    			<li><a class="brand" id=pict href="home.jsp"><img id="profilepic"></a></li>
                     			<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
                   			</ul>
                   			</ul>
