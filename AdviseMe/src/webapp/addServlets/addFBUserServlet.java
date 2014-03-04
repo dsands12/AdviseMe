@@ -26,35 +26,36 @@ public class addFBUserServlet extends HttpServlet{
 		String remoteAddr = req.getRemoteAddr();
 		String challenge = req.getParameter("recaptcha_challenge_field");
 		String response = req.getParameter("recaptcha_response_field");
-		ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-		reCaptcha.setPrivateKey("6LfFIe8SAAAAADGueFM28Toq3H3OJWqB2xTpoj-A");
-		ReCaptchaResponse reCaptchaReponse = reCaptcha.checkAnswer(remoteAddr, challenge, response);
-		if(!reCaptchaReponse.isValid()){
-			//TODO: call error page correctly
-			resp.sendRedirect("/error.jsp");
-		}else{
-			User user;
-			if(FBId==null||FBId.isEmpty()){
-				//TODO: call error page
-				resp.sendRedirect("/error.jsp");
-			}
-			if(FBFirst==null||FBId.isEmpty()){
-				//TODO: call error page
-				resp.sendRedirect("/error.jsp");
-			}
-			if(FBLast==null||FBLast.isEmpty()){
-				//TODO: call error page
-				resp.sendRedirect("/error.jsp");
-			}
-			if(FBEmail==null||FBId.isEmpty()){
-				user = new User(FBId,FBFirst,FBLast);
-				user.setLoginStatus(true);
+		try{
+			ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
+			reCaptcha.setPrivateKey("6LfFIe8SAAAAADGueFM28Toq3H3OJWqB2xTpoj-A");
+			ReCaptchaResponse reCaptchaReponse = reCaptcha.checkAnswer(remoteAddr, challenge, response);
+			if(!reCaptchaReponse.isValid()){
+				throw new Exception("Captcha Entered Incorrectly! Please Try Again.");
 			}else{
-				user = new User(FBId,FBFirst,FBLast,FBEmail);
-				user.setLoginStatus(true);
+				User user;
+				if(FBId==null||FBId.isEmpty()){
+					throw new Exception("Facebook not returning valid Identification. Please relogin.");
+				}
+				if(FBFirst==null||FBFirst.isEmpty()){
+					throw new Exception("Must enter a first name");
+				}
+				if(FBLast==null||FBLast.isEmpty()){
+					throw new Exception("Must enter a last name.");
+				}
+				if(FBEmail==null||FBId.isEmpty()){
+					user = new User(FBId,FBFirst,FBLast);
+					user.setLoginStatus(true);
+				}else{
+					user = new User(FBId,FBFirst,FBLast,FBEmail);
+					user.setLoginStatus(true);
+				}
+				ofy().save().entity(user).now();
+				resp.sendRedirect("/addusercourses.jsp?id="+FBId);
 			}
-			ofy().save().entity(user).now();
-			resp.sendRedirect("/addusercourses.jsp?id="+FBId);
+		} catch(Exception e){
+			String logMsg = "Exception in processing request: " + e.getMessage();
+			throw new IOException(logMsg);
 		}
 	}
 }

@@ -22,51 +22,53 @@ public class addUserCourses extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String id = req.getParameter("id");
 		String usercourses[] = req.getParameterValues("course");
-		if(id==null||id.isEmpty()){
-			//TODO: need to send to error page.
-			resp.sendRedirect("/error.jsp");
-		}
-		System.out.println("Id passed is:" + id);
-		if(usercourses.length==0){
-			//TODO: need to send to error page.
-			resp.sendRedirect("/error.jsp");
-		}
-		for(int i=0;i<usercourses.length;i+=1){
-			System.out.println("What was passed: " + usercourses[i]);
-		}
-		List<User> users = ofy().load().type(User.class).list();
-		Collections.sort(users);
-		//Current issue with this is that it is not linked with the actual courses.
-		ArrayList<String> newCourses = new ArrayList<String>();
-		for(int i=0;i<usercourses.length;i+=1){
-			newCourses.add(usercourses[i]);
-		}
-		for(User user: users){
-			if(user.getfbUserId().equals(id)){
-				ArrayList<String> courseList = user.getUserClassList();
-				for(int i=0;i<usercourses.length;i+=1){
-					if(courseList.contains(usercourses[i])){
-						//do nothing
-					}else{
-					user.addUserClass(usercourses[i]);
-					}
-				}
-				for(int k=0;k<usercourses.length;k+=1){
-					Iterator<String> iterator = courseList.iterator();
-					while(iterator.hasNext()){
-						String next = iterator.next();
-						if(newCourses.contains(next)){
+		try{
+			if(id==null||id.isEmpty()){
+				throw new Exception("Facebook not returning valid identification. Please relogin.");
+			}
+			System.out.println("Id passed is:" + id);
+			if(usercourses.length==0){
+				throw new Exception("No courses selected. Please select a course(s).");
+			}
+			for(int i=0;i<usercourses.length;i+=1){
+				System.out.println("What was passed: " + usercourses[i]);
+			}
+			List<User> users = ofy().load().type(User.class).list();
+			Collections.sort(users);
+			//Current issue with this is that it is not linked with the actual courses.
+			ArrayList<String> newCourses = new ArrayList<String>();
+			for(int i=0;i<usercourses.length;i+=1){
+				newCourses.add(usercourses[i]);
+			}
+			for(User user: users){
+				if(user.getfbUserId().equals(id)){
+					ArrayList<String> courseList = user.getUserClassList();
+					for(int i=0;i<usercourses.length;i+=1){
+						if(courseList.contains(usercourses[i])){
 							//do nothing
 						}else{
-							iterator.remove();
+						user.addUserClass(usercourses[i]);
 						}
 					}
-				}
-				ofy().save().entity(user).now();
-				resp.sendRedirect("/home.jsp");
-			}			
+					for(int k=0;k<usercourses.length;k+=1){
+						Iterator<String> iterator = courseList.iterator();
+						while(iterator.hasNext()){
+							String next = iterator.next();
+							if(newCourses.contains(next)){
+								//do nothing
+							}else{
+								iterator.remove();
+							}
+						}
+					}
+					ofy().save().entity(user).now();
+					resp.sendRedirect("/home.jsp");
+				}			
+			}
+			throw new Exception("User account not found in database.");
+		} catch(Exception e){
+			String logMsg = "Exception in processing request: " + e.getMessage();
+			throw new IOException(logMsg);
 		}
-		//TODO: need to send to error page.
-		resp.sendRedirect("/error.jsp");
 	}
 }

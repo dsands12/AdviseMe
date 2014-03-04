@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,8 @@ public class addCourseServlet extends HttpServlet{
 		//String departmentName = req.getParameter("departmentname");
 		String courseName = req.getParameter("coursename");
 		String courseTitle = req.getParameter("coursetitle");
+		
+		try{
 		/*if(schoolName==null){
 			//Should be impossible?
 		}else if(schoolName.isEmpty()){
@@ -42,12 +45,10 @@ public class addCourseServlet extends HttpServlet{
 		}else{//TODO: Need to create check to make sure not adding duplicate courses within departments
 			*/
 		if(courseName==null||courseName.isEmpty()){
-			//TODO: Need to go to error page.
-			resp.sendRedirect("/error.jsp");
+			throw new Exception("Must provide a valid Course Name!");
 		}
 		if(courseTitle==null||courseTitle.isEmpty()){
-			//TODO: Need to go to error page.
-			resp.sendRedirect("/error.jsp");
+			throw new Exception("Must provide a valid Course Title!");
 		}
 			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
 			Collections.sort(schoolList);
@@ -71,5 +72,9 @@ public class addCourseServlet extends HttpServlet{
 			
 			resp.sendRedirect("/home.jsp");
 		//}
+		} catch (Exception e){
+			String logMsg = "Exception in processing request: " + e.getMessage();
+			throw new IOException(logMsg);
+		}
 	}
 }
