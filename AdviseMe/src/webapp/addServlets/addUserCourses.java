@@ -6,6 +6,7 @@ import com.googlecode.objectify.ObjectifyService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Collections;
 
@@ -35,7 +36,11 @@ public class addUserCourses extends HttpServlet{
 		}
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
-		//Current issue with this is that it is not linked with the actual courses.		
+		//Current issue with this is that it is not linked with the actual courses.
+		ArrayList<String> newCourses = new ArrayList<String>();
+		for(int i=0;i<usercourses.length;i+=1){
+			newCourses.add(usercourses[i]);
+		}
 		for(User user: users){
 			if(user.getfbUserId().equals(id)){
 				ArrayList<String> courseList = user.getUserClassList();
@@ -44,6 +49,17 @@ public class addUserCourses extends HttpServlet{
 						//do nothing
 					}else{
 					user.addUserClass(usercourses[i]);
+					}
+				}
+				for(int k=0;k<usercourses.length;k+=1){
+					Iterator<String> iterator = courseList.iterator();
+					while(iterator.hasNext()){
+						String next = iterator.next();
+						if(newCourses.contains(next)){
+							//do nothing
+						}else{
+							iterator.remove();
+						}
 					}
 				}
 				ofy().save().entity(user).now();

@@ -128,7 +128,7 @@
 				<input type="checkbox" name="course" id="EE 333T" value="EE 333T">EE 333T - Engineering Communication<br>
 				<input type="checkbox" name="course" id="EE 125N" value="EE 125N">EE 125N - Cooperative Engineering<br>
 				<input type="checkbox" name="course" id="EE 125S" value="EE 125S">EE 125S - Internship in Electrical and Computer Engineering<br>
-				<input type="checkbox" name="course" id="EE 155S" value="EE 155">EE 155 - Electrical and Computer Engineering Seminar<br>
+				<input type="checkbox" name="course" id="EE 155" value="EE 155">EE 155 - Electrical and Computer Engineering Seminar<br>
 				<input type="checkbox" name="course" id="EE 155L" value="EE 155L">EE 155L - Engineering Leadership Seminar<br>
 				<input type="checkbox" name="course" id="EE 160" value="EE 160">EE 160 - Special Problems in Electrical and Computer Engineering<br>
 				<input type="checkbox" name="course" id="EE 225MA" value="EE 225MA">EE 225MA - Cooperative Engineering<br>
@@ -206,7 +206,7 @@
 			for(User user: users){
 				if(user.getfbUserId().equals(id)){
 					ArrayList<String> courseList = user.getUserClassList();
-					Iterator iterator = courseList.iterator();
+					Iterator<String> iterator = courseList.iterator();
 					while(iterator.hasNext()){
 						String identifier = (String)iterator.next();
 						%><script>
