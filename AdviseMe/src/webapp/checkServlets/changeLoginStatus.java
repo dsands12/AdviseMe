@@ -27,6 +27,7 @@ public class changeLoginStatus extends HttpServlet {
 			System.out.println("Passed ID was:" + id);
 			List<User> users = ofy().load().type(User.class).list();
 			Collections.sort(users);
+			boolean flag = false;
 			for(User user: users){
 				if(user.getfbUserId().equals(id)){
 					Boolean status = user.getLoginStatus();
@@ -43,10 +44,15 @@ public class changeLoginStatus extends HttpServlet {
 					resp.setContentType("text/plain");
 					resp.setCharacterEncoding("UTF-8");
 					resp.getWriter().write(status.toString());
+					flag = true;
 					break;
 				}
 			}
-			throw new Exception("User account not found in database.");
+			if(flag){
+				//login status was changed
+			}else{
+				throw new Exception("User account not found in database.");
+			}
 		} catch(Exception e){
 			String logMsg = "Exception in processing request: " + e.getMessage();
 			throw new IOException(logMsg);
