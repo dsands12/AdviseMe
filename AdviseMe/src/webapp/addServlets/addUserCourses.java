@@ -1,11 +1,11 @@
 package webapp.addServlets;
 
-import webapp.datastoreObjects.Course;
 import webapp.datastoreObjects.User;
 
 import com.googlecode.objectify.ObjectifyService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
@@ -35,14 +35,16 @@ public class addUserCourses extends HttpServlet{
 		}
 		List<User> users = ofy().load().type(User.class).list();
 		Collections.sort(users);
-		//Current issue with this is that it is not linked with the actual courses.
-		//Also, current implementation allows for duplicates in user course list
-		//TODO: remove possibility of duplicates in user course list
-		
+		//Current issue with this is that it is not linked with the actual courses.		
 		for(User user: users){
 			if(user.getfbUserId().equals(id)){
+				ArrayList<String> courseList = user.getUserClassList();
 				for(int i=0;i<usercourses.length;i+=1){
+					if(courseList.contains(usercourses[i])){
+						//do nothing
+					}else{
 					user.addUserClass(usercourses[i]);
+					}
 				}
 				ofy().save().entity(user).now();
 				resp.sendRedirect("/home.jsp");

@@ -54,7 +54,7 @@ public class addFBUserServlet extends HttpServlet{
 				user.setLoginStatus(true);
 			}
 			ofy().save().entity(user).now();
-			resp.sendRedirect("/addusercourses.jsp");
+			resp.sendRedirect("/addusercourses.jsp?id="+FBId);
 		}
 	}
 }
