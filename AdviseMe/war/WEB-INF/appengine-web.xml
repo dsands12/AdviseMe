@@ -11,6 +11,14 @@
   <system-properties>
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
   </system-properties>
+  
+        <sessions-enabled>true</sessions-enabled>
+  
+        
+   <inbound-services>
+  	<service>xmpp_message</service>
+  	<service>mail</service>
+  </inbound-services>
 
   <!--
     HTTP Sessions are disabled by default. To enable HTTP sessions specify:
