@@ -126,8 +126,12 @@
    %><h1>There are no courses entered.:(</h1>
    <%
       } else {
+    	%>
+    		<h3>Upper Division</h3>
+    	<%
     		for(Course course : schools){
-    			
+    			Boolean upperDiv=course.getUpperDivision();
+    			if( upperDiv == true){
                pageContext.setAttribute("course_name",course.getCourseName());
                pageContext.setAttribute("course_title",course.getTitle());
                String courseName=course.getCourseName();
@@ -136,10 +140,31 @@
 	    		</script><%
 	    		String url = "courseinfo.jsp?name=" + courseName;
    %>
-   <h3><a href="courseinfo.jsp?name=${fn:escapeXml(course_name)}">${fn:escapeXml(course_name)}</a></h3>
-   <h4>${fn:escapeXml(course_title)}</h4>
-  
+
+  <a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
    <%
+    			}
+    			
+    			
+      }
+    	%>
+		<h3>Lower Division</h3>
+	<%
+		for(Course course : schools){
+			Boolean upperDiv=course.getUpperDivision();
+			if( upperDiv == false){
+           pageContext.setAttribute("course_name",course.getCourseName());
+           pageContext.setAttribute("course_title",course.getTitle());
+           String courseName=course.getCourseName();
+           %><script>
+    		document.getElementById("<%=courseName%>");
+    		</script><%
+    		String url = "courseinfo.jsp?name=" + courseName;
+%>
+
+<a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
+<%
+			}
       }
       }
    %>

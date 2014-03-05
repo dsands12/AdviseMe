@@ -6169,3 +6169,7 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.custom {
+    width: 300px !important;
+    
+}

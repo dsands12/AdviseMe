@@ -72,16 +72,20 @@ public class addCourseServlet extends HttpServlet{
 		}
 			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
 			Collections.sort(schoolList);
-			Course course = new Course(courseName,courseTitle,courseDescription);
+			
+		boolean upper;
+			if(upperDivision.equals("upper")){
+				upper = true;
+				
+			}else{
+				upper=false;
+			}
+			Course course = new Course(courseName,courseTitle,courseDescription,upper);
 			//TODO: Need to parse the list correctly and add the professors correctly
 			course.getProfessorList().add(professorList);
 			course.getSemesterTaught().add(semesterTaught);
 			course.getTextbooks().add(textbooks);
-			if(upperDivision=="upper"){
-				course.setUpperDivision(true);
-			}else{
-				course.setUpperDivision(false);
-			}
+			
 		
 			//for(School school: schoolList){
 			//	if(school.getName().equals(schoolName)){

@@ -46,7 +46,7 @@ public class Course implements Comparable<Course> {
 
 	}
 	
-	public Course(String courseName, String title, String description){
+	public Course(String courseName, String title, String description,boolean upperDiv){
 		this.courseName=courseName;
 		this.title=title;
 		this.description=description;
@@ -55,6 +55,7 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
+		this.upperDivision = upperDiv;
 
 	}
 	
