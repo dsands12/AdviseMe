@@ -88,9 +88,13 @@ public class Course implements Comparable<Course> {
 		return this.textbooks;
 	}
 	
+	public void setSubscribers(ArrayList<String> subscribers){
+		this.subscribers=subscribers;
+	}
+	
 	@Override
 	public int compareTo(Course o) {
-		return o.getCourseName().compareTo(this.getCourseName());
+		return this.getCourseName().compareTo(o.getCourseName());
 	}
 	
 }

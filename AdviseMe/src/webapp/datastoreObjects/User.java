@@ -65,7 +65,7 @@ public class User implements Comparable<User>{
 	}
 	
 	public String getFullName(){
-		return firstName + lastName;
+		return firstName + " " + lastName;
 	}
 	
 	public String getLastName(){
