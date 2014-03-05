@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <%@ page import="webapp.datastoreObjects.Course" %>
 <%@ page import="com.googlecode.objectify.Objectify" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
@@ -89,17 +90,6 @@
 				});
 	  		}
 		</script>
-		<script>
-		//retrieve courses
-		ObjectifyService.register(Course.class);
-		Course course = ObjectifyService.ofy().load().type(Course.class);
-		
-		pageContext.setAttribute("course_title", course.getTitle());
-		pageContext.setAttribute("course_abbreviation", course.getCourseName()); //is this right? I'm confused as to the difference between title/name
-		pageContext.setAttribute("course_description", course.getDescription());
-		
-		</script>
-		
 		
 		<div class="”container”"> 
 			<div class="navbar">
@@ -123,6 +113,17 @@
         	</div>
 		</div>
 	<body>
+	
+	<%
+		//retrieve courses
+		ObjectifyService.register(Course.class);
+		List<Course> courses = ObjectifyService.ofy().load().type(Course.class).list(); 
+		for(Course course : courses){
+			pageContext.setAttribute("course_title", course.getTitle());
+			pageContext.setAttribute("course_abbreviation", course.getCourseName()); //is this right? I'm confused as to the difference between title/name
+			pageContext.setAttribute("course_description", course.getDescription());
+		}
+	%>
 		<div class="row">
 			<div class="span10">
 				<div class="col-md-10">
@@ -156,7 +157,7 @@
 					<p>${fn:escapeXml(course_semestersTaught)}</p>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</body>
 
 
