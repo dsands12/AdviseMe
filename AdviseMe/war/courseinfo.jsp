@@ -1,3 +1,10 @@
+<%@ page import="webapp.datastoreObjects.Course" %>
+<%@ page import="com.googlecode.objectify.Objectify" %>
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+
 <html>
 	<head>
 		 <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
@@ -80,6 +87,18 @@
 				});
 	  		}
 		</script>
+		<script>
+		//retrieve courses
+		ObjectifyService.register(Course.class);
+		Course course = ObjectifyService.ofy().load().type(Course.class);
+		
+		pageContext.setAttribute("course_title", course.getTitle());
+		pageContext.setAttribute("course_abbreviation", course.getCourseName()); //is this right? I'm confused as to the difference between title/name
+		pageContext.setAttribute("course_description", course.getDescription());
+		
+		</script>
+		
+		
 		<div class="”container”"> 
 			<div class="navbar">
             	<div class="navbar-inner">
@@ -105,7 +124,7 @@
 		<div class="row">
 			<div class="span10">
 				<div class="col-md-10">
-					<h3>Title: ${course.title}, Abbreviation: ${course.abbreviation}</h3>
+					<h3>Title: ${fn:escapeXml(course_title)}, Abbreviation: ${fn:escapeXml(course_abbreviation)}</h3>
 				</div>
 			</div>
 		</div>
@@ -116,7 +135,7 @@
 				<div class="col-md-10">
 					<h4>Description:</h4>
 					<br>
-					<p>${course.description}</p>
+					<p>${fn:escapeXml(course_description)}</p>
 				</div>
 			</div>
 		</div>
@@ -125,14 +144,14 @@
 				<div class="col-md-4">
 					<h4>Past Professors:</h4>
 					<br>
-					<p>${course.professorList}</p>
+					<p>${fn:escapeXml(course_professorList)}</p>
 				</div>
 			</div>
 			<div class="span4">
 				<div class="col-md-4">		
 					<h4>Semesters Taught:</h4>
 					<br>
-					<p>${course.semestersTaught}</p>
+					<p>${fn:escapeXml(course_semestersTaught)}</p>
 				</div>
 			</div>
 		</div>
