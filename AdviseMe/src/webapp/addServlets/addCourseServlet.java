@@ -5,9 +5,9 @@ import webapp.datastoreObjects.*;
 import com.googlecode.objectify.ObjectifyService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +24,11 @@ public class addCourseServlet extends HttpServlet{
 		//String departmentName = req.getParameter("departmentname");
 		String courseName = req.getParameter("coursename");
 		String courseTitle = req.getParameter("coursetitle");
+		String courseDescription = req.getParameter("coursedescription");
+		String upperDivision = req.getParameter("division");
+		String professorList = req.getParameter("professorList");
+		String semesterTaught = req.getParameter("semestersTaught");
+		String textbooks = req.getParameter("textbooks");
 		
 		try{
 		/*if(schoolName==null){
@@ -50,9 +55,34 @@ public class addCourseServlet extends HttpServlet{
 		if(courseTitle==null||courseTitle.isEmpty()){
 			throw new Exception("Must provide a valid Course Title!");
 		}
+		if(courseDescription==null||courseDescription.isEmpty()){
+			throw new Exception("Must provide a valid Course Description!");
+		}
+		if(upperDivision==null||upperDivision.isEmpty()){
+			throw new Exception("Must select Upper/Lower Division!");
+		}
+		if(professorList==null||professorList.isEmpty()){
+			throw new Exception("Must provide professors!");
+		}
+		if(semesterTaught==null||semesterTaught.isEmpty()){
+			throw new Exception("Must provide semesters taught!");
+		}
+		if(textbooks==null||textbooks.isEmpty()){
+			throw new Exception("Must provide textbooks!");
+		}
 			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
 			Collections.sort(schoolList);
-			Course course = new Course(courseName,courseTitle);
+			Course course = new Course(courseName,courseTitle,courseDescription);
+			//TODO: Need to parse the list correctly and add the professors correctly
+			course.getProfessorList().add(professorList);
+			course.getSemesterTaught().add(semesterTaught);
+			course.getTextbooks().add(textbooks);
+			if(upperDivision=="upper"){
+				course.setUpperDivision(true);
+			}else{
+				course.setUpperDivision(false);
+			}
+		
 			//for(School school: schoolList){
 			//	if(school.getName().equals(schoolName)){
 			//		for(College colleges: school.getCollegeList()){

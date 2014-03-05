@@ -27,17 +27,29 @@ public class Course implements Comparable<Course> {
 	
 	public Course(String courseName){
 		this.courseName=courseName;
+		this.professorList = new ArrayList<String>();
+		this.semestersTaught = new ArrayList<String>();
+		this.subscribers = new ArrayList<String>();
+		this.textbooks = new ArrayList<String>();
 	}
 	
 	public Course(String courseName, String title){
 		this.courseName=courseName;
 		this.title=title;
+		this.professorList = new ArrayList<String>();
+		this.semestersTaught = new ArrayList<String>();
+		this.subscribers = new ArrayList<String>();
+		this.textbooks = new ArrayList<String>();
 	}
 	
 	public Course(String courseName, String title, String description){
 		this.courseName=courseName;
 		this.title=title;
 		this.description=description;
+		this.professorList = new ArrayList<String>();
+		this.semestersTaught = new ArrayList<String>();
+		this.subscribers = new ArrayList<String>();
+		this.textbooks = new ArrayList<String>();
 	}
 	
 	public String getCourseName(){
@@ -45,13 +57,37 @@ public class Course implements Comparable<Course> {
 	}
 	
 	public String getTitle(){
-		return title;
+		return this.title;
 	}
 	
 	public String getDescription(){
-		return description;
+		return this.description;
 	}
 
+	public boolean getUpperDivision() {
+		return this.upperDivision;
+	}
+
+	public void setUpperDivision(boolean upperDivision) {
+		this.upperDivision = upperDivision;
+	}
+
+	public ArrayList<String> getProfessorList(){
+		return this.professorList;
+	}
+	
+	public ArrayList<String> getSemesterTaught(){
+		return this.semestersTaught;
+	}
+	
+	public ArrayList<String> getSubscribers(){
+		return this.subscribers;
+	}
+	
+	public ArrayList<String> getTextbooks(){
+		return this.textbooks;
+	}
+	
 	@Override
 	public int compareTo(Course o) {
 		return o.getCourseName().compareTo(this.getCourseName());

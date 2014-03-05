@@ -114,19 +114,19 @@
 	<body>
 	<form class="well" action="/addcourse" method="post">  
 	  <label>Course Abbreviation</label>  
-	  	<textarea name="abv" rows="1" cols="30" placeholder="Enter Abbrev..."></textarea>
+	  	<textarea name="coursename" rows="1" cols="30" placeholder="Enter Abbrev..."></textarea>
 	  	<span class="help-inline">Ex. EE 360C</span>   
 	  </label> 
 	  <br/> 
 	  
 	  <label>Course Title</label>  
-	  	<textarea name="title" rows="1" cols="30" placeholder="Enter Title..."></textarea>  
+	  	<textarea name="coursetitle" rows="1" cols="30" placeholder="Enter Title..."></textarea>  
 	  	<span class="help-inline">Ex. Algorithms</span>   
 	  </label> 
 	  <br>
 	  
 	  <label>Course Description</label>  
-	  	<textarea name="description" rows="3" cols="30" placeholder="Enter Description..."></textarea>  
+	  	<textarea name="coursedescription" rows="3" cols="30" placeholder="Enter Description..."></textarea>  
 	  	<span class="help-inline">Ex. This course involves...</span>   
 	  </label> 
 	  <br>
