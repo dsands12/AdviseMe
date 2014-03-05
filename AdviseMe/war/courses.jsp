@@ -127,10 +127,16 @@
    <%
       } else {
     		for(Course course : schools){
+    			
                pageContext.setAttribute("course_name",course.getCourseName());
                pageContext.setAttribute("course_title",course.getTitle());
+               String courseName=course.getCourseName();
+               %><script>
+	    		document.getElementById("<%=courseName%>");
+	    		</script><%
+	    		String url = "courseinfo.jsp?name=" + courseName;
    %>
-   <h3>${fn:escapeXml(course_name)}</h3>
+   <h3><a href="courseinfo.jsp?name=${fn:escapeXml(course_name)}">${fn:escapeXml(course_name)}</a></h3>
    <h4>${fn:escapeXml(course_title)}</h4>
   
    <%
