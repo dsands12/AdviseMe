@@ -17,6 +17,7 @@ public class Course implements Comparable<Course> {
 	ArrayList<String> semestersTaught;
 	ArrayList<String> subscribers;
 	ArrayList<String> textbooks;
+	ArrayList<String> userTaken;
 	String evalLink;
 	String syllabiLink;
 	
@@ -31,6 +32,7 @@ public class Course implements Comparable<Course> {
 		this.semestersTaught = new ArrayList<String>();
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
+		this.userTaken = new ArrayList<String>();
 	}
 	
 	public Course(String courseName, String title){
@@ -40,6 +42,8 @@ public class Course implements Comparable<Course> {
 		this.semestersTaught = new ArrayList<String>();
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
+		this.userTaken = new ArrayList<String>();
+
 	}
 	
 	public Course(String courseName, String title, String description){
@@ -50,6 +54,8 @@ public class Course implements Comparable<Course> {
 		this.semestersTaught = new ArrayList<String>();
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
+		this.userTaken = new ArrayList<String>();
+
 	}
 	
 	public String getCourseName(){
@@ -86,6 +92,14 @@ public class Course implements Comparable<Course> {
 	
 	public ArrayList<String> getTextbooks(){
 		return this.textbooks;
+	}
+	
+	public ArrayList<String> getUserTaken(){
+		return this.userTaken;
+	}
+	
+	public void setUserTaken(ArrayList<String> userTaken){
+		this.userTaken=userTaken;
 	}
 	
 	public void setSubscribers(ArrayList<String> subscribers){

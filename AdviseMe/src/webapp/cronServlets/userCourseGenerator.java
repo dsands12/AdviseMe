@@ -35,7 +35,7 @@ public class userCourseGenerator extends HttpServlet{
 		Collections.sort(courses);		Iterator<Course> temporary = courses.iterator();
 		while(temporary.hasNext()){
 			ArrayList<String> newlist = new ArrayList<String>();
-			temporary.next().setSubscribers(newlist);
+			temporary.next().setUserTaken(newlist);
 		}
 		Iterator<User> userIterator = users.iterator();
 		while(userIterator.hasNext()){
@@ -50,11 +50,11 @@ public class userCourseGenerator extends HttpServlet{
 					Course tempCourse = courseList.next();
 					if(tempCourse.getCourseName().equals(userCourse)){
 						System.out.println("Adding: " + user.getfbUserId() + " to course: " + tempCourse.getCourseName());
-						if(tempCourse.getSubscribers()==null){
+						if(tempCourse.getUserTaken()==null){
 							ArrayList<String> temp = new ArrayList<String>();
-							tempCourse.setSubscribers(temp);
+							tempCourse.setUserTaken(temp);
 						}
-						tempCourse.getSubscribers().add(user.getfbUserId());
+						tempCourse.getUserTaken().add(user.getfbUserId());
 					}
 					ofy().save().entity(tempCourse).now();
 				}
