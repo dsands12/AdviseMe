@@ -118,10 +118,19 @@
 		//retrieve courses
 		ObjectifyService.register(Course.class);
 		List<Course> courses = ObjectifyService.ofy().load().type(Course.class).list(); 
+		Collections.sort(courses);
+		String name = request.getParameter("name");
+		//System.out.println(name);
 		for(Course course : courses){
-			pageContext.setAttribute("course_title", course.getTitle());
-			pageContext.setAttribute("course_abbreviation", course.getCourseName()); //is this right? I'm confused as to the difference between title/name
-			pageContext.setAttribute("course_description", course.getDescription());
+			if(course.getCourseName().equals(name)){
+				pageContext.setAttribute("course_title", course.getTitle());
+				pageContext.setAttribute("course_abbreviation", course.getCourseName()); //is this right? I'm confused as to the difference between title/name
+				pageContext.setAttribute("course_description", course.getDescription());
+				pageContext.setAttribute("course_professorList", course.getProfessorList());
+				pageContext.setAttribute("course_semestersTaught", course.getSemesterTaught());
+				pageContext.setAttribute("course_textbooks", course.getTextbooks());
+				break;
+			}
 		}
 	%>
 		<div class="row">
@@ -143,18 +152,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="span4">
-				<div class="col-md-4">
+			<div class="span3">
+				<div class="col-md-3">
 					<h4>Past Professors:</h4>
 					<br>
 					<p>${fn:escapeXml(course_professorList)}</p>
 				</div>
 			</div>
-			<div class="span4">
-				<div class="col-md-4">		
+			<div class="span3">
+				<div class="col-md-3">		
 					<h4>Semesters Taught:</h4>
 					<br>
 					<p>${fn:escapeXml(course_semestersTaught)}</p>
+				</div>
+			</div>
+			<div class="span3">
+				<div class="col-md-3">
+					<h4>Textbooks Used:</h4>
+					<br>
+					<p>${fn:escapeXml(course_textbooks)}</p>
 				</div>
 			</div>
 		</div>	
