@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.annotation.Embed;
 
 @Index
 @Entity
@@ -18,6 +19,7 @@ public class Course implements Comparable<Course> {
 	ArrayList<String> subscribers;
 	ArrayList<String> textbooks;
 	ArrayList<String> userTaken;
+	@Embed ArrayList<Comment> comments;
 	String evalLink;
 	String syllabiLink;
 	
@@ -33,6 +35,7 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
+		this.comments = new ArrayList<Comment>();
 	}
 	
 	public Course(String courseName, String title){
@@ -43,7 +46,7 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
-
+		this.comments = new ArrayList<Comment>();
 	}
 	
 	public Course(String courseName, String title, String description,boolean upperDiv){
@@ -55,6 +58,7 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
+		this.comments = new ArrayList<Comment>();
 		this.upperDivision = upperDiv;
 
 	}
@@ -107,6 +111,13 @@ public class Course implements Comparable<Course> {
 		this.subscribers=subscribers;
 	}
 	
+	public void addComment(Comment comment){
+		this.comments.add(comment);
+	}
+	
+	public ArrayList<Comment> getComments(){
+		return this.comments;
+	}
 	@Override
 	public int compareTo(Course o) {
 		return this.getCourseName().compareTo(o.getCourseName());
