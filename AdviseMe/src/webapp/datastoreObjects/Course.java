@@ -22,6 +22,7 @@ public class Course implements Comparable<Course> {
 	@Embed ArrayList<Comment> comments;
 	String evalLink;
 	String syllabiLink;
+	double rating;
 	
 	//should we make these private????
 	
