@@ -13,7 +13,8 @@
 		 <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
 		 <title>AdviseMe-CourseInfo</title>
 	</head>
-			<script>
+	<body>
+		<script>
 			// Load FB SDK
 			(function(d){
 				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -112,7 +113,6 @@
               	</div>
         	</div>
 		</div>
-	<body>
 	
 	<%
 		//retrieve courses

@@ -15,6 +15,7 @@ public class User implements Comparable<User>{
 	String userEmail = null;
 	Boolean loginStatus = false;
 	ArrayList<String> courseList;
+	ArrayList<String> fbFriends;
 	
 	@SuppressWarnings("unused")
 	private User(){
