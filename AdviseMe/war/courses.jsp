@@ -3,6 +3,7 @@
 <%@ page import="webapp.datastoreObjects.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Collections"%>
+<%@ page import="java.util.*"%>
 <%@ page import="com.googlecode.objectify.*"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -129,33 +130,14 @@
     	%>
     		<h3>Upper Division</h3>
     	<%
-    		for(Course course : schools){
-    			Boolean upperDiv=course.getUpperDivision();
-    			if( upperDiv == true){
-               pageContext.setAttribute("course_name",course.getCourseName());
-               pageContext.setAttribute("course_title",course.getTitle());
-               String courseName=course.getCourseName();
-               %><script>
-	    		document.getElementById("<%=courseName%>");
-	    		</script><%
-	    		String url = "courseinfo.jsp?name=" + courseName;
-   %>
-
-  <a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
-   <%
-    			}
-    			
-    			
-      }
-    	%>
-		<h3>Lower Division</h3>
-	<%
-		for(Course course : schools){
-			Boolean upperDiv=course.getUpperDivision();
-			if( upperDiv == false){
-           pageContext.setAttribute("course_name",course.getCourseName());
-           pageContext.setAttribute("course_title",course.getTitle());
-           String courseName=course.getCourseName();
+    	Iterator<Course> upperIterator = schools.iterator();
+    	while (upperIterator.hasNext()){
+    		Course currentCourse = upperIterator.next(); 
+			Boolean upperDiv=currentCourse.getUpperDivision();
+			if( upperDiv == true){
+           pageContext.setAttribute("course_name",currentCourse.getCourseName());
+           pageContext.setAttribute("course_title",currentCourse.getTitle());
+           String courseName=currentCourse.getCourseName();
            %><script>
     		document.getElementById("<%=courseName%>");
     		</script><%
@@ -165,7 +147,32 @@
 <a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
 <%
 			}
-      }
+			
+		
+    	}
+    	%>
+		<h3>Lower Division</h3>
+	<%
+	Iterator<Course> lowerIterator = schools.iterator();
+	while (lowerIterator.hasNext()){
+		Course currentCourse = lowerIterator.next(); 
+		Boolean upperDiv=currentCourse.getUpperDivision();
+		if( upperDiv == false){
+       pageContext.setAttribute("course_name",currentCourse.getCourseName());
+       pageContext.setAttribute("course_title",currentCourse.getTitle());
+       String courseName=currentCourse.getCourseName();
+       %><script>
+		document.getElementById("<%=courseName%>");
+		</script><%
+		String url = "courseinfo.jsp?name=" + courseName;
+%>
+
+<a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
+<%
+		}
+		
+	
+	}
       }
    %>
    </body>
