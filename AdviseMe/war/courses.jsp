@@ -3,6 +3,7 @@
 <%@ page import="webapp.datastoreObjects.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Collections"%>
+<%@ page import="java.util.*"%>
 <%@ page import="com.googlecode.objectify.*"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -17,83 +18,9 @@
 </head>
 
 <body>  
-<div id="fb-root"></div>
-			<script>
-			// Load FB SDK
-			(function(d){
-				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-			   	if(d.getElementById(id)){
-			   		return;
-			   	}
-			   	js = d.createElement('script'); js.id = id; js.async = true;
-			   	js.src = "//connect.facebook.net/en_US/all.js";
-			   	ref.parentNode.insertBefore(js, ref);
-			}(document));
-	  		window.fbAsyncInit = function(){
-				FB.init({
-					appId      : '125801300852907',
-					status     : true, // check login status
-					cookie     : true, // enable cookies to allow the server to access the session
-					xfbml      : true  // parse XFBML
-				});
-	  			FB.Event.subscribe('auth.authResponseChange', function(response){
-		    		if(response.status === 'connected'){
-		      			checkLogin();
-		    		}else if(response.status === 'not_authorized'){
-		      			FB.login();
-		    		}else{
-		      			FB.login();
-		    		}
-		  		});
-	  		};
-	  		function checkLogin(){
-				console.log('Retrieving User ID and Name');
-				var picurl = "none";
-				FB.api('/me', function(response){
-					if(response && !response.error){
-						var first="Guest";
-						first = response.first_name;
-						var last=response.last_name;
-						var id=response.id;
-						if(id==null||id==""){
-							first="Guest";
-							last="";
-						}
-			    		$.ajax({
-			    			type: 'GET',
-			    			url : "checkloginstatus?id="+id,
-			    			cache : false,
-			    			success: function(response){
-			    				if(response=="true"){
-						    		document.getElementById("name").innerHTML="Welcome, "+first+" "+last;
-						    		document.getElementById("name").href="manageaccount.jsp";
-			    					document.getElementById("pict").href="manageaccount.jsp";
-						    		document.getElementById("profilepic").src=picurl;
-						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='logout.jsp'");
-						    		document.getElementById("loginbuttonref").innerHTML="Logout";
-			    				}else{
-			    					document.getElementById("name").innerHTML="Welcome, Guest";
-			    					document.getElementById("name").href="home.jsp";
-			    					document.getElementById("pict").href="home.jsp";
-			    					document.getElementById("profilepic").src="";
-						    		document.getElementById("loginbuttonref").setAttribute("onClick", "window.location.href='login.jsp'");
-						    		document.getElementById("loginbuttonref").innerHTML="Login";
-			    				}
-			    			}
-			    		});
-					}
-				});
-				FB.api("/me/picture",{
-				        "redirect": false,
-				        "height": "40",
-				        "type": "normal",
-				        "width": "40"
-				},function (response) {
-					if(response && !response.error){
-						picurl=response.data.url;
-				    }
-				});
-	  		}
+	<script type="text/javascript" src="FacebookController.js"> </script>
+		<script type="text/javascript">
+				login();
 		</script>
 		<div class="”container”"> 
 			<div class="navbar">
@@ -129,33 +56,14 @@
     	%>
     		<h3>Upper Division</h3>
     	<%
-    		for(Course course : schools){
-    			Boolean upperDiv=course.getUpperDivision();
-    			if( upperDiv == true){
-               pageContext.setAttribute("course_name",course.getCourseName());
-               pageContext.setAttribute("course_title",course.getTitle());
-               String courseName=course.getCourseName();
-               %><script>
-	    		document.getElementById("<%=courseName%>");
-	    		</script><%
-	    		String url = "courseinfo.jsp?name=" + courseName;
-   %>
-
-  <a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
-   <%
-    			}
-    			
-    			
-      }
-    	%>
-		<h3>Lower Division</h3>
-	<%
-		for(Course course : schools){
-			Boolean upperDiv=course.getUpperDivision();
-			if( upperDiv == false){
-           pageContext.setAttribute("course_name",course.getCourseName());
-           pageContext.setAttribute("course_title",course.getTitle());
-           String courseName=course.getCourseName();
+    	Iterator<Course> upperIterator = schools.iterator();
+    	while (upperIterator.hasNext()){
+    		Course currentCourse = upperIterator.next(); 
+			Boolean upperDiv=currentCourse.getUpperDivision();
+			if( upperDiv == true){
+           pageContext.setAttribute("course_name",currentCourse.getCourseName());
+           pageContext.setAttribute("course_title",currentCourse.getTitle());
+           String courseName=currentCourse.getCourseName();
            %><script>
     		document.getElementById("<%=courseName%>");
     		</script><%
@@ -165,7 +73,32 @@
 <a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
 <%
 			}
-      }
+			
+		
+    	}
+    	%>
+		<h3>Lower Division</h3>
+	<%
+	Iterator<Course> lowerIterator = schools.iterator();
+	while (lowerIterator.hasNext()){
+		Course currentCourse = lowerIterator.next(); 
+		Boolean upperDiv=currentCourse.getUpperDivision();
+		if( upperDiv == false){
+       pageContext.setAttribute("course_name",currentCourse.getCourseName());
+       pageContext.setAttribute("course_title",currentCourse.getTitle());
+       String courseName=currentCourse.getCourseName();
+       %><script>
+		document.getElementById("<%=courseName%>");
+		</script><%
+		String url = "courseinfo.jsp?name=" + courseName;
+%>
+
+<a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
+<%
+		}
+		
+	
+	}
       }
    %>
    </body>

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webapp.datastoreObjects.*;
 
 public class emailServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -24,7 +23,6 @@ public class emailServlet extends HttpServlet{
 		try{
 			MimeMessage message = new MimeMessage(session, req.getInputStream());
 			Address[] fromAddresses = message.getFrom();
-			String subject = message.getSubject();
 			String strCallResult ="";
 			try{
 				strCallResult = "Sorry, This email address is automated.";
