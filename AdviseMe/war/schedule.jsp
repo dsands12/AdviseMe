@@ -9,7 +9,10 @@
    </head>
 
    <body>      
-
+	<script type="text/javascript" src="FacebookController.js"> </script>
+		<script type="text/javascript">
+				login();
+	</script>
 
       <div class="”container”"> 
 			<div class="navbar">
