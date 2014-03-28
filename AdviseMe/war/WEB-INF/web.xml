@@ -92,6 +92,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>addUserCourses</servlet-name>
 	    <url-pattern>/addusercourses</url-pattern>
 	</servlet-mapping>
+		<servlet>
+	    <servlet-name>addSubscriber</servlet-name>
+	    <servlet-class>webapp.addServlets.addSubscriberServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>addSubscriber</servlet-name>
+	    <url-pattern>/addcoursesubscriber</url-pattern>
+	</servlet-mapping>
 	<servlet>
 	    <servlet-name>usercoursegenerator</servlet-name>
 	    <servlet-class>webapp.cronServlets.userCourseGenerator</servlet-class>
