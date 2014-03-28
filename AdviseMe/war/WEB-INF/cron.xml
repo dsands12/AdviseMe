@@ -3,6 +3,6 @@
 	<cron>
 		<url>/usercoursegenerator</url>
 		<description>Generates a list for each course of users that have taken or are taking the course</description>
-		<schedule>every 60 minutes</schedule>
+		<schedule>every 24 hours</schedule>
 	</cron>
 </cronentries>
