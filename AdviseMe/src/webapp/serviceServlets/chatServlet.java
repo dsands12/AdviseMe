@@ -43,22 +43,26 @@ public class chatServlet extends HttpServlet{
 			}
 			String[] words = strCommand.split("@");
 			if(words.length>=1){
+				//Command == Help
 				if(words[0].equalsIgnoreCase("help")){
 					StringBuffer SB = new StringBuffer();
 					SB.append("******Help*******");
 					SB.append("you asked for help.");
 					SB.append("you will get no help");
 					strCallResult = SB.toString();
+				//Command == addcourse
 				}else if(words[0].equalsIgnoreCase("addcourse")){
 					String[]courseInfo = words[1].split("#");
 					boolean flag = addCourse(courseInfo[0],courseInfo[1],courseInfo[2],courseInfo[3],courseInfo[4],courseInfo[5],courseInfo[6]);
 					if(flag){
-						strCallResult = "Congrats. You actually got something done.";
+						strCallResult = "Course Successfully Added/Changed!";
+					}else if(words[0].equalsIgnoreCase("getuser")){
+						
 					}else{
 						strCallResult = "You done goofed. Something happened. Blame Jason.";
 					}
 				}else{
-					strCallResult = "Much English. Very understand. Doge Unhappy.";
+					strCallResult = "I don't understand what you are telling me!";
 				}
 			}
 			boolean messageSent = false;
@@ -66,7 +70,7 @@ public class chatServlet extends HttpServlet{
 			SendResponse status = xmpp.sendMessage(replyMessage);
 			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);
 		}catch (Exception ex){
-			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody("Could not understand dis english.").build();
+			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody("Could not understand what you sent!").build();
 			boolean messageSent = false;
 			SendResponse status = xmpp.sendMessage(replyMessage);
 			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);

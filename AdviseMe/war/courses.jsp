@@ -67,10 +67,10 @@
            %><script>
     		document.getElementById("<%=courseName%>");
     		</script><%
-    		String url = "courseinfo.jsp?name=" + courseName;
+    		String url = "courseinfo.jsp?courseName=" + courseName;
 %>
 
-<a onclick="window.location.href='courseinfo.jsp?name=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
+<a onclick="window.location.href='courseinfo.jsp?courseName=${fn:escapeXml(course_name)}'" id="usercoursesbuttonref" class="btn custom"><b>${fn:escapeXml(course_name)}</b><br>${fn:escapeXml(course_title)}</a>
 <%
 			}
 			

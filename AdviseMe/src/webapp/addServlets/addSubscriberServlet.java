@@ -30,6 +30,7 @@ public class addSubscriberServlet extends HttpServlet{
 				throw new Exception("Course was invalid");
 			}
 			System.out.println("Email passed is:" + email);
+			System.out.println("Course passed is:" + course);
 			
 			
 			List<Course> courses = ofy().load().type(Course.class).list();

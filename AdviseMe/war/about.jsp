@@ -1,6 +1,7 @@
 <html>
 <head>
 <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+<script src="http://code.jquery.com/jquery.js"></script>
 <title>AdviseMe-About</title>
 </head>
 <body>

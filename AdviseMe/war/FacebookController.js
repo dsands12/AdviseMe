@@ -34,8 +34,7 @@ function login() {
 	function checkLogin() {
 		console.log('Retrieving User ID and Name');
 		var picurl = "none";
-		FB
-				.api(
+		FB.api(
 						'/me',
 						function(response) {
 							if (response && !response.error) {
@@ -47,8 +46,7 @@ function login() {
 									first = "Guest";
 									last = "";
 								}
-								$
-										.ajax({
+								$.ajax({
 											type : 'GET',
 											url : "checkloginstatus?id=" + id,
 											cache : false,

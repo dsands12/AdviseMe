@@ -11,6 +11,7 @@
 <html>
 <head>
 <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+<script src="http://code.jquery.com/jquery.js"></script>
 <title>AdviseMe-CourseInfo</title>
 </head>
 <body>
@@ -53,7 +54,7 @@
 		ObjectifyService.register(Course.class);
 		List<Course> courses = ObjectifyService.ofy().load().type(Course.class).list(); 
 		Collections.sort(courses);
-		String name = request.getParameter("name");
+		String name = request.getParameter("courseName");
 		//Course current;
 		//System.out.println(name);
 		for(Course course : courses){
@@ -81,25 +82,19 @@
 	
 	<script>
 		function subscribe() {
-			 console.log('testing'); 
+			 console.log('testingssssss'); 
 		
 			var email = prompt("Please enter your email","HarryPotter@verizon.net");
-			
-			if (email != null) {
+			var courseName = document.getElementById("courseName").innerHTML;
 				$.ajax({
 					type : 'GET',
-					url : "addcoursesubscriber?email=" + email + "&course=" + request.getParameter("name"),
+					url : "addcoursesubscriber?email=" + email + "&course=" + courseName,
 					cache : false,
 					success : function(response) {
-						if (response == "false") {
-							
-						}
 					}
-				});  
-		
-			}
-	
+				}); 	
 		}
+		
 		
 	</script>
 	
@@ -108,13 +103,6 @@
 	
 	<button type="button" class="btn btn-default" onclick="subscribe()">Subscribe
 		To This Course</button>
-
-
-	
-
-
-
-
 	<br>
 	<br>
 	<div class="row">
