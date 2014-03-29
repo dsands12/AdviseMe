@@ -55,6 +55,7 @@
 		List<Course> courses = ObjectifyService.ofy().load().type(Course.class).list(); 
 		Collections.sort(courses);
 		String name = request.getParameter("courseName");
+		pageContext.setAttribute("courseName",name);
 		//Course current;
 		//System.out.println(name);
 		for(Course course : courses){
@@ -81,11 +82,22 @@
 	</div>
 	
 	<script>
+		function GetURLParameter(sParam){
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for(var i=0;i<sURLVariables.length;i++){
+				var sParameterName = sURLVariables[i].split('=');
+				if(sParameterName[0]==sParam){
+					return sParameterName[1];
+				}
+			}
+		}
+	
 		function subscribe() {
-			 console.log('testingssssss'); 
+			 
 		
 			var email = prompt("Please enter your email","HarryPotter@verizon.net");
-			var courseName = document.getElementById("courseName").innerHTML;
+			var courseName = GetURLParameter('courseName');
 				$.ajax({
 					type : 'GET',
 					url : "addcoursesubscriber?email=" + email + "&course=" + courseName,
