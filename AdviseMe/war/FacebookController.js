@@ -52,42 +52,20 @@ function login() {
 											cache : false,
 											success : function(response) {
 												if (response == "true") {
-													document
-															.getElementById("name").innerHTML = "Welcome, "
-															+ first
-															+ " "
-															+ last;
-													document
-															.getElementById("name").href = "manageaccount.jsp";
-													document
-															.getElementById("pict").href = "manageaccount.jsp";
-													document
-															.getElementById("profilepic").src = picurl;
-													document
-															.getElementById(
-																	"loginbuttonref")
-															.setAttribute(
-																	"onClick",
-																	"window.location.href='logout.jsp'");
-													document
-															.getElementById("loginbuttonref").innerHTML = "Logout";
+													document.getElementById("name").innerHTML = "Welcome, " + first + " " + last;
+													document.getElementById("name").href = "manageaccount.jsp";
+													document.getElementById("pict").href = "manageaccount.jsp";
+													document.getElementById("profilepic").src = picurl;
+													document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='logout.jsp'");
+													document.getElementById("loginbuttonref").innerHTML = "Logout";
+													document.getElementById("usercoursesbuttonref").setAttribute("onClick","window.location.href='addusercourses.jsp?id="+id+"'");
 												} else {
-													document
-															.getElementById("name").innerHTML = "Welcome, Guest";
-													document
-															.getElementById("name").href = "home.jsp";
-													document
-															.getElementById("pict").href = "home.jsp";
-													document
-															.getElementById("profilepic").src = "";
-													document
-															.getElementById(
-																	"loginbuttonref")
-															.setAttribute(
-																	"onClick",
-																	"window.location.href='login.jsp'");
-													document
-															.getElementById("loginbuttonref").innerHTML = "Login";
+													document.getElementById("name").innerHTML = "Welcome, Guest";
+													document.getElementById("name").href = "home.jsp";
+													document.getElementById("pict").href = "home.jsp";
+													document.getElementById("profilepic").src = "";
+													document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='login.jsp'");
+													document.getElementById("loginbuttonref").innerHTML = "Login";
 												}
 											}
 										});

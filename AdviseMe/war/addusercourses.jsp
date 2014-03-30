@@ -40,7 +40,10 @@
               	</div>
         	</div>
 		</div>
-		<form action="/addusercourses" method="post">
+		<%
+		String fbID = request.getParameter("id");
+		%>
+		<form action="/addusercourses?id=<%=fbID%>" method="post">
 			<h3>Courses:</h3>
 			<h4>What courses have you taken/are taking:</h4>
 			<div>
