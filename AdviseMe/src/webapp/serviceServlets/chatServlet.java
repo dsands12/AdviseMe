@@ -43,21 +43,53 @@ public class chatServlet extends HttpServlet{
 			}
 			String[] words = strCommand.split("@");
 			if(words.length>=1){
-				//Command == Help
+//Command == help
 				if(words[0].equalsIgnoreCase("help")){
 					StringBuffer SB = new StringBuffer();
-					SB.append("******Help*******");
-					SB.append("you asked for help.");
-					SB.append("you will get no help");
+					SB.append("*****Help*****");
+					SB.append("Valid Commands include:");
+					SB.append("help,about,addcourse,getuser,resetcourserating.");
 					strCallResult = SB.toString();
-				//Command == addcourse
+					
+				}else if(words[0].equalsIgnoreCase("about")){
+					StringBuffer SB = new StringBuffer();
+					SB.append("This is AdviseMe Bot");
+					SB.append("My master, Jason Anthraper made me smart!");
+					SB.append("Type help to see a list of commands!");
+					strCallResult = SB.toString();
+//Command == addcourse
 				}else if(words[0].equalsIgnoreCase("addcourse")){
 					String[]courseInfo = words[1].split("#");
 					boolean flag = addCourse(courseInfo[0],courseInfo[1],courseInfo[2],courseInfo[3],courseInfo[4],courseInfo[5],courseInfo[6]);
 					if(flag){
 						strCallResult = "Course Successfully Added/Changed!";
-					}else if(words[0].equalsIgnoreCase("getuser")){
-						
+					}else{
+						strCallResult = "You done goofed. Something happened. Blame Jason.";
+					}
+//Command == getuser
+				}else if(words[0].equalsIgnoreCase("getuser")){
+					//send back user info
+					String[] userInfo = strCommand.split("@");
+					if(words.length>1){
+						String result = getUserInfo(userInfo[0],userInfo[1]);
+						if(result==null){
+							strCallResult = "User not found.";
+						}else{
+							strCallResult = result;
+						}
+					}else{
+						String result = getUserInfo(userInfo[0]);
+						if(result==null){
+							strCallResult = "User not found.";
+						}else{
+							strCallResult = result;
+						}
+					}
+//Command == resetcourserating
+				}else if(words[0].equalsIgnoreCase("resetcourserating")){
+					boolean flag = resetCourseRating(words[1]);
+					if(flag){
+						strCallResult = "Course Rating was Reset Successfully!";
 					}else{
 						strCallResult = "You done goofed. Something happened. Blame Jason.";
 					}
@@ -81,9 +113,8 @@ public class chatServlet extends HttpServlet{
 		doGet(req, resp);
 	}
 	
-	static{ObjectifyService.register(Course.class);}
 	public boolean addCourse(String courseName,String courseTitle,String courseDescription,String upperDivision,String professorList, String semesterTaught, String textbooks){
-				
+		ObjectifyService.register(Course.class);
 		if(courseName==null||courseName.isEmpty()){
 			return false;
 		}
@@ -105,8 +136,8 @@ public class chatServlet extends HttpServlet{
 		if(textbooks==null||textbooks.isEmpty()){
 			return false;	
 		}
-		List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
-		Collections.sort(schoolList);
+		List<Course> courseList=ObjectifyService.ofy().load().type(Course.class).list();
+		Collections.sort(courseList);
 		boolean upper;
 		if(upperDivision.equals("upper")){
 			upper = true;
@@ -120,5 +151,60 @@ public class chatServlet extends HttpServlet{
 		course.getTextbooks().add(textbooks);
 		ofy().save().entity(course).now();
 		return true;
+	}
+	
+	public boolean resetCourseRating(String courseName){
+		ObjectifyService.register(Course.class);
+		if(courseName==null||courseName.isEmpty()){
+			return false;
+		}
+		List<Course> courses = ObjectifyService.ofy().load().type(Course.class).list();
+		for(Course course: courses){
+			if(course.getCourseName().equals(courseName)){
+				course.setRating(new Double(0), new Integer(0));
+				ofy().save().entity(course).now();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public String getUserInfo(String firstName, String lastName){
+		ObjectifyService.register(User.class);
+		if(firstName==null||lastName==null||firstName.isEmpty()||lastName.isEmpty()){
+			return null;
+		}
+		String result=null;
+		List<User> users = ObjectifyService.ofy().load().type(User.class).list();
+		for(User user: users){
+			if(user.getFullName().equalsIgnoreCase(firstName + " " + lastName)){
+				StringBuffer SB = new StringBuffer();
+				SB.append("Facebook ID: " + user.getfbUserId());
+				SB.append("Full Name: " + user.getFullName());
+				SB.append("Email : " + user.getUserEmail());
+				SB.append("Logged In?: " + user.getLoginStatus());
+				SB.append("User Class List : " + user.getUserClassList().toString());
+				result = SB.toString();
+			}
+		}
+		return result;
+	}
+	
+	public String getUserInfo(String fbID){
+		ObjectifyService.register(User.class);
+		String result = null;
+		List<User> users = ObjectifyService.ofy().load().type(User.class).list();
+		for(User user: users){
+			if(user.getfbUserId().equals(fbID)){
+				StringBuffer SB = new StringBuffer();
+				SB.append("Facebook ID: " + user.getfbUserId());
+				SB.append("Full Name: " + user.getFullName());
+				SB.append("Email : " + user.getUserEmail());
+				SB.append("Logged In?: " + user.getLoginStatus());
+				SB.append("User Class List : " + user.getUserClassList().toString());
+				result = SB.toString();
+			}
+		}
+		return result;
 	}
 }

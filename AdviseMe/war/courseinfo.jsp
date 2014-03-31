@@ -122,8 +122,7 @@
 	</script>
 	
 	
-	
-	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-step=".25" data-rateit-min="0" data-rateit-max="10"></div>
+	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-resetable="false" data-rateit-step=".25" data-rateit-min="0" data-rateit-max="10"></div>
  <script type="text/javascript">
     $("#rateit5").bind('rated', 
     		function(event, value){
@@ -133,7 +132,7 @@
 					url: "updatecourserating?rating="+value+"&course="+courseName,
 					cache: false,
 					success: function(response){
-						document.getElementById("course_rating") = response;
+						document.getElementById("rateit5").setAttribute("value",response);
 					
 
 					}
