@@ -103,6 +103,11 @@
 					url : "addcoursesubscriber?email=" + email + "&course=" + courseName,
 					cache : false,
 					success : function(response) {
+						if(response=="true"){
+							
+						}else{
+							
+						}
 					}
 				}); 	
 		}

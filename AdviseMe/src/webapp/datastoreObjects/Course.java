@@ -84,6 +84,10 @@ public class Course implements Comparable<Course> {
 		this.upperDivision = upperDivision;
 	}
 
+	public void addSubscriber(String email){
+		this.subscribers.add(email);
+	}
+	
 	public ArrayList<String> getProfessorList(){
 		return this.professorList;
 	}

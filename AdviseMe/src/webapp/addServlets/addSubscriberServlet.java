@@ -21,22 +21,30 @@ public class addSubscriberServlet extends HttpServlet{
 	static{ObjectifyService.register(Course.class);}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String email = req.getParameter("email");
-		String course = req.getParameter("course");
+		String courseName = req.getParameter("course");
 		try{
 			if(email==null||email.isEmpty()){
 				throw new Exception("Email was invalid");
 			}
-			if(course==null||course.isEmpty()){
+			if(courseName==null||courseName.isEmpty()){
 				throw new Exception("Course was invalid");
 			}
 			System.out.println("Email passed is:" + email);
-			System.out.println("Course passed is:" + course);
+			System.out.println("Course passed is:" + courseName);
 			
 			
 			List<Course> courses = ofy().load().type(Course.class).list();
 			Collections.sort(courses);
-			//Current issue with this is that it is not linked with the actual courses.
+			for(Course course: courses){
+				if(course.getCourseName().equals(courseName)){
+					course.addSubscriber(email);
+					break;
+				}
+			}
 			
+			resp.setContentType("text/plain");
+			resp.setCharacterEncoding("UTF-8");
+			resp.getWriter().write("true");
 		} catch(Exception e){
 			String logMsg = "Exception in processing request: " + e.getMessage();
 			throw new IOException(logMsg);
