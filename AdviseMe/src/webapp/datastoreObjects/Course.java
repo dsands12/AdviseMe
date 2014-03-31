@@ -5,27 +5,24 @@ import java.util.ArrayList;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
-import com.googlecode.objectify.annotation.Embed;
 
 @Index
 @Entity
 public class Course implements Comparable<Course> {
 	@Id String courseName ="No course name entered.";
-	String title = "No course title entered.";
-	String description= "Default UT description";
-	boolean upperDivision; 	//true if upper division; false if lower division
-	ArrayList<String> professorList;
-	ArrayList<String> semestersTaught;
-	ArrayList<String> subscribers;
-	ArrayList<String> textbooks;
-	ArrayList<String> userTaken;
-	@Embed ArrayList<Comment> comments;
-	String evalLink;
-	String syllabiLink;
-	double rating;
-	
-	//should we make these private????
-	
+	private String title = "No course title entered.";
+	private String description= "Default UT description";
+	private Boolean upperDivision; 	//true if upper division; false if lower division
+	private ArrayList<String> professorList;
+	private ArrayList<String> semestersTaught;
+	private ArrayList<String> subscribers;
+	private ArrayList<String> textbooks;
+	private ArrayList<String> userTaken;
+	private String evalLink;
+	private String syllabiLink;
+	private Double rating;
+	private Integer numRating;
+		
 	@SuppressWarnings("unused")
 	private Course(){}
 	
@@ -36,7 +33,8 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
-		this.comments = new ArrayList<Comment>();
+		this.rating = new Double(0);
+		this.numRating=0;
 		String[] parse = courseName.split(" ");
 		if(parse.length>=2){
 			if(parse[0].equalsIgnoreCase("EE")){
@@ -60,7 +58,8 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
-		this.comments = new ArrayList<Comment>();
+		this.rating = new Double(0);
+		this.numRating=0;
 		String[] parse = courseName.split(" ");
 		if(parse.length>=2){
 			if(parse[0].equalsIgnoreCase("EE")){
@@ -85,8 +84,9 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
-		this.comments = new ArrayList<Comment>();
 		this.upperDivision = upperDiv;
+		this.rating = new Double(0);
+		this.numRating=0;
 		String[] parse = courseName.split(" ");
 		if(parse.length>=2){
 			if(parse[0].equalsIgnoreCase("EE")){
@@ -162,16 +162,28 @@ public class Course implements Comparable<Course> {
 		this.subscribers=subscribers;
 	}
 	
-	public void addComment(Comment comment){
-		this.comments.add(comment);
-	}
-	
-	public ArrayList<Comment> getComments(){
-		return this.comments;
-	}
 	@Override
 	public int compareTo(Course o) {
 		return this.getCourseName().compareTo(o.getCourseName());
 	}
 	
+	public Double getRating(){
+		return this.rating;
+	}
+	
+	public Integer getNumRating(){
+		return this.numRating;
+	}
+	
+	public void setRating(Double rating, Integer numRating){
+		this.rating=rating;
+		this.numRating=numRating;
+	}
+	
+	public void addRating(Double rating){
+		Double temp = this.rating*numRating;
+		temp+=rating;
+		this.numRating+=1;
+		this.rating=temp/this.numRating;
+	}
 }

@@ -11,7 +11,9 @@
 <html>
 <head>
 <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="rateit.css">
 <script src="http://code.jquery.com/jquery.js"></script>
+<script src="jquery.rateit.js"></script>
 <title>AdviseMe-CourseInfo</title>
 </head>
 <body>
@@ -62,13 +64,15 @@
 			if(course.getCourseName().equals(name)){
 		//current = course;
 		pageContext.setAttribute("course_title", course.getTitle());
-		pageContext.setAttribute("course_abbreviation", course.getCourseName()); //is this right? I'm confused as to the difference between title/name
+		pageContext.setAttribute("course_abbreviation", course.getCourseName()); 
 		pageContext.setAttribute("course_description", course.getDescription());
 		pageContext.setAttribute("course_professorList", course.getProfessorList());
 		pageContext.setAttribute("course_semestersTaught", course.getSemesterTaught());
 		pageContext.setAttribute("course_textbooks", course.getTextbooks());
 		pageContext.setAttribute("course_syllabus_link", course.getSyllabusLink());
 		pageContext.setAttribute("course_eval_link", course.getEvalLink());
+		pageContext.setAttribute("course_num_users_rating", course.getNumRating());
+		pageContext.setAttribute("course_rating", course.getRating());
 		break;
 			}
 		}
@@ -119,7 +123,17 @@
 	
 	
 	
-	
+	<input type="range" min="0" max="10" value="0" step="0.25" id="backing2">
+	<h3>Course Difficulty: </h3><div class="rateit" data-rateit-backingfld="#backing2" data-rateit-resetable="false"></div><h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users: ${fn:escapeXml(course_rating)}</h4>  
+	<!-- 
+	1. Need to add ajax to update rating. 
+		a) Once ajax is called, need to update average rating and number of people rating fields.
+	2. Need to have prompt to confirm rating choice.
+	3. Need to figure out possible increase in star size.
+	4. Need to figure out how to restrict each user to one rating. (possible check if user has taken course before allowing rating.)(check courses taken list?)
+	 -->
+	<br>
+	<br>
 	<button type="button" class="btn btn-default" onclick="subscribe()">Subscribe
 		To This Course</button>
 	<br>
