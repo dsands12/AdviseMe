@@ -35,7 +35,6 @@ public class addUserCourses extends HttpServlet{
 			}
 			List<User> users = ofy().load().type(User.class).list();
 			Collections.sort(users);
-			//Current issue with this is that it is not linked with the actual courses.
 			ArrayList<String> newCourses = new ArrayList<String>();
 			for(int i=0;i<usercourses.length;i+=1){
 				newCourses.add(usercourses[i]);

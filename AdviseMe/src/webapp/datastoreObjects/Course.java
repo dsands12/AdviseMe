@@ -37,6 +37,19 @@ public class Course implements Comparable<Course> {
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
 		this.comments = new ArrayList<Comment>();
+		String[] parse = courseName.split(" ");
+		if(parse.length>=2){
+			if(parse[0].equalsIgnoreCase("EE")){
+				this.evalLink = "https://utdirect.utexas.edu/ctl/ecis/results/"
+						+ "search.WBX?s_in_search_type_sw=C&s_in_max_nbr_return"
+						+ "=10&s_in_search_course_dept=E+E&s_in_search_course_num=" + parse[1];
+				this.syllabiLink = "https://utdirect.utexas.edu/apps/student/"
+						+ "coursedocs/nlogon/?semester=&department=E+E&course"
+						+ "_number=" + parse[1]
+						+ "&course_title=&unique=&instructor_first="
+						+ "&instructor_last=&course_type=In+Residence&search=Search";
+			}
+		}
 	}
 	
 	public Course(String courseName, String title){
@@ -48,6 +61,19 @@ public class Course implements Comparable<Course> {
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
 		this.comments = new ArrayList<Comment>();
+		String[] parse = courseName.split(" ");
+		if(parse.length>=2){
+			if(parse[0].equalsIgnoreCase("EE")){
+				this.evalLink = "https://utdirect.utexas.edu/ctl/ecis/results/"
+						+ "search.WBX?s_in_search_type_sw=C&s_in_max_nbr_return"
+						+ "=10&s_in_search_course_dept=E+E&s_in_search_course_num=" + parse[1];
+				this.syllabiLink = "https://utdirect.utexas.edu/apps/student/"
+						+ "coursedocs/nlogon/?semester=&department=E+E&course"
+						+ "_number=" + parse[1]
+						+ "&course_title=&unique=&instructor_first="
+						+ "&instructor_last=&course_type=In+Residence&search=Search";
+			}
+		}
 	}
 	
 	public Course(String courseName, String title, String description,boolean upperDiv){
@@ -61,7 +87,19 @@ public class Course implements Comparable<Course> {
 		this.userTaken = new ArrayList<String>();
 		this.comments = new ArrayList<Comment>();
 		this.upperDivision = upperDiv;
-
+		String[] parse = courseName.split(" ");
+		if(parse.length>=2){
+			if(parse[0].equalsIgnoreCase("EE")){
+				this.evalLink = "https://utdirect.utexas.edu/ctl/ecis/results/"
+						+ "search.WBX?s_in_search_type_sw=C&s_in_max_nbr_return"
+						+ "=10&s_in_search_course_dept=E+E&s_in_search_course_num=" + parse[1];
+				this.syllabiLink = "https://utdirect.utexas.edu/apps/student/"
+						+ "coursedocs/nlogon/?semester=&department=E+E&course"
+						+ "_number=" + parse[1]
+						+ "&course_title=&unique=&instructor_first="
+						+ "&instructor_last=&course_type=In+Residence&search=Search";
+			}	
+		}
 	}
 	
 	public String getCourseName(){
