@@ -37,7 +37,9 @@ public class addSubscriberServlet extends HttpServlet{
 			Collections.sort(courses);
 			for(Course course: courses){
 				if(course.getCourseName().equals(courseName)){
+					System.out.println("Adding " + email + " to " + courseName);
 					course.addSubscriber(email);
+					ofy().save().entity(course).now();
 					break;
 				}
 			}
