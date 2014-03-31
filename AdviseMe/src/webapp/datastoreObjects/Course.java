@@ -146,6 +146,14 @@ public class Course implements Comparable<Course> {
 		return this.userTaken;
 	}
 	
+	public String getSyllabusLink(){
+		return this.syllabiLink;
+	}
+	
+	public String getEvalLink(){
+		return this.evalLink;
+	}
+	
 	public void setUserTaken(ArrayList<String> userTaken){
 		this.userTaken=userTaken;
 	}

@@ -15,6 +15,7 @@
 				login();
 		</script>
 		<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
+
 		<div class="”container”"> 
 			<div class="navbar">
             	<div class="navbar-inner">
@@ -54,7 +55,19 @@
 		<div class="footer">
 		<p>&copy; 2014</p>
 		</div>
-		
+				<script>
+  (function() {
+    var cx = '001342128489850545401:ctagfguu7pg';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
 	</body>
 </html>
 

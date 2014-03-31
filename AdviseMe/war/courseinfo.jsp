@@ -67,6 +67,8 @@
 		pageContext.setAttribute("course_professorList", course.getProfessorList());
 		pageContext.setAttribute("course_semestersTaught", course.getSemesterTaught());
 		pageContext.setAttribute("course_textbooks", course.getTextbooks());
+		pageContext.setAttribute("course_syllabus_link", course.getSyllabusLink());
+		pageContext.setAttribute("course_eval_link", course.getEvalLink());
 		break;
 			}
 		}
@@ -120,6 +122,12 @@
 	
 	<button type="button" class="btn btn-default" onclick="subscribe()">Subscribe
 		To This Course</button>
+	<br>
+	<br>
+	<button type="button" class="btn btn-default" onclick="window.location='${fn:escapeXml(course_eval_link)}'">UT Course Evaluations</button>
+	<br>
+	<br>
+	<button type="button" class="btn btn-default" onclick="window.location='${fn:escapeXml(course_syllabus_link)}'">UT Past Syllabi</button>
 	<br>
 	<br>
 	<div class="row">
