@@ -127,7 +127,8 @@
 	<h3>Course Difficulty: </h3><div class="rateit" data-rateit-backingfld="#backing2" data-rateit-resetable="false"></div><h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users: ${fn:escapeXml(course_rating)}</h4>  
 	<!-- 
 	1. Need to add ajax to update rating. 
-		a) Once ajax is called, need to update average rating and number of people rating fields.
+		a) Create servlet to update rating.
+		b) Once ajax is called, need to update average rating and number of people rating fields.
 	2. Need to have prompt to confirm rating choice.
 	3. Need to figure out possible increase in star size.
 	4. Need to figure out how to restrict each user to one rating. (possible check if user has taken course before allowing rating.)(check courses taken list?)
