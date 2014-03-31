@@ -13,6 +13,7 @@
       	<h1>Create Account</h1>
 	</head>
 	<body>
+	<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 		<script>
 			// Load FB SDK
 			(function(d){

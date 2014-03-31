@@ -17,7 +17,8 @@
 		<script type="text/javascript">
 				login();
 		</script>
-			<div class="â€�containerâ€�"> 
+		<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
+		<div class="â€�containerâ€�"> 
 			<div class="navbar">
             	<div class="navbar-inner">
                 	<div class="container">

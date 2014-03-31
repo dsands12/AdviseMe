@@ -5,6 +5,7 @@
     	<script src="stylesheets/bootstrap.js"></script>
 	</head>
 	<body>
+	<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 		<div id="fb-root"></div>
 		<script>
 		window.fbAsyncInit = function(){

@@ -6,6 +6,7 @@
 		<title>AdviseMe - Manage Account</title>
 	</head>
 	<body>
+	<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 		<script type="text/javascript" src="FacebookController.js"> </script>
 		<script type="text/javascript">
 				login();
