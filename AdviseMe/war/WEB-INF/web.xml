@@ -116,6 +116,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ChatBot</servlet-name>
 		<url-pattern>/_ah/xmpp/message/chat/</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>updateCourseRating</servlet-name>
+		<servlet-class>webapp.checkServlets.updateCourseRating</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateCourseRating</servlet-name>
+		<url-pattern>/updatecourserating</url-pattern>
+	</servlet-mapping>
 	<filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>

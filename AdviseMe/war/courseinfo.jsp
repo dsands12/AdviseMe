@@ -123,8 +123,24 @@
 	
 	
 	
-	<input type="range" min="0" max="10" value="0" step="0.25" id="backing2">
-	<h3>Course Difficulty: </h3><div class="rateit" data-rateit-backingfld="#backing2" data-rateit-resetable="false"></div><h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users: ${fn:escapeXml(course_rating)}</h4>  
+	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-step=".25" data-rateit-min="0" data-rateit-max="10"></div>
+ <script type="text/javascript">
+    $("#rateit5").bind('rated', 
+    		function(event, value){
+    			var courseName = GetURLParameter('courseName');
+				$.ajax({
+					type: 'GET',
+					url: "updatecourserating?rating="+value+"&course="+courseName,
+					cache: false,
+					success: function(response){
+						document.getElementById("course_rating") = response;
+					
+
+					}
+				});
+			});
+</script>    
+<h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users: ${fn:escapeXml(course_rating)}</h4>  
 	<!-- 
 	1. Need to add ajax to update rating. 
 		a) Create servlet to update rating.
