@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webapp.datastoreObjects.Course;
+import webapp.datastoreObjects.User;
+
 import com.google.appengine.api.xmpp.JID;
 import com.google.appengine.api.xmpp.Message;
 import com.google.appengine.api.xmpp.MessageBuilder;
@@ -18,8 +21,6 @@ import com.google.appengine.api.xmpp.SendResponse;
 import com.google.appengine.api.xmpp.XMPPService;
 import com.google.appengine.api.xmpp.XMPPServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
-
-import webapp.datastoreObjects.*;
 
 public class chatServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -48,7 +49,11 @@ public class chatServlet extends HttpServlet{
 					StringBuffer SB = new StringBuffer();
 					SB.append("*****Help*****"+"\n");
 					SB.append("Valid Commands include:"+"\n");
-					SB.append("help,about,addcourse,getuser,resetcourserating."+"\n");
+					SB.append("help" + "\n");
+					SB.append("about" + "\n");
+					SB.append("addcourse" + "\n");
+					SB.append("getuser" + "\n");
+					SB.append("resetcourserating" + "\n");
 					strCallResult = SB.toString();
 					
 				}else if(words[0].equalsIgnoreCase("about")){
@@ -99,17 +104,15 @@ public class chatServlet extends HttpServlet{
 					strCallResult = "I don't understand what you are telling me!";
 				}
 			}
-			boolean messageSent = false;
 			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody(strCallResult).build();
 			SendResponse status = xmpp.sendMessage(replyMessage);
-			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);
+			status.getStatusMap().get(fromJid);
 			
 		}catch (Exception ex){
 			System.out.println(ex.getMessage());
 			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody(ex.getMessage()).build();
-			boolean messageSent = false;
 			SendResponse status = xmpp.sendMessage(replyMessage);
-			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);
+			status.getStatusMap().get(fromJid);
 		}
 	}
 	

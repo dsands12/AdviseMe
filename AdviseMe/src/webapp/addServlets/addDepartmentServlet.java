@@ -1,20 +1,11 @@
 package webapp.addServlets;
 
-import webapp.datastoreObjects.*;
-
-import com.googlecode.objectify.ObjectifyService;
-
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
-
-@SuppressWarnings("unused")
 public class addDepartmentServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	//static{ObjectifyService.register(School.class);}

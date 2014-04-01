@@ -1,20 +1,20 @@
 package webapp.addServlets;
 
-import webapp.datastoreObjects.User;
-
-import com.googlecode.objectify.ObjectifyService;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Collections;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import webapp.datastoreObjects.User;
+
+import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 public class addUserCourses extends HttpServlet{

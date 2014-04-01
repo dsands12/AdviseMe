@@ -1,20 +1,21 @@
 package webapp.cronServlets;
 
-import webapp.datastoreObjects.*;
-
-import com.googlecode.objectify.ObjectifyService;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import webapp.datastoreObjects.Course;
+import webapp.datastoreObjects.User;
+
+import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 public class userCourseGenerator extends HttpServlet{

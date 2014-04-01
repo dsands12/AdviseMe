@@ -1,18 +1,17 @@
 package webapp.checkServlets;
 
-import webapp.datastoreObjects.Course;
-
-import com.googlecode.objectify.ObjectifyService;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import webapp.datastoreObjects.Course;
+
+import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 public class updateCourseRating extends HttpServlet{

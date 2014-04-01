@@ -11,6 +11,7 @@ public class Comment implements Comparable<Comment>{
 	Integer number;
 	Date date;
 	
+	@SuppressWarnings("unused")
 	private Comment(){}
 	
 	public Comment(String content){

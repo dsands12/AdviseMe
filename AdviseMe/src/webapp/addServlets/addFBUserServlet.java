@@ -1,8 +1,6 @@
 package webapp.addServlets;
 
-import webapp.datastoreObjects.User;
-
-import com.googlecode.objectify.ObjectifyService;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
 
@@ -12,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.tanesha.recaptcha.ReCaptchaImpl;
 import net.tanesha.recaptcha.ReCaptchaResponse;
+import webapp.datastoreObjects.User;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 public class addFBUserServlet extends HttpServlet{

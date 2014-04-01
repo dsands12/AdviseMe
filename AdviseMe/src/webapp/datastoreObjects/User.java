@@ -1,7 +1,6 @@
 package webapp.datastoreObjects;
 
 import java.util.ArrayList;
-
 import java.util.Date;
 
 import com.googlecode.objectify.annotation.Entity;
