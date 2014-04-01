@@ -23,6 +23,7 @@ public class checkFBUserServlet extends HttpServlet{
 			if(prospectFbId==null||prospectFbId.isEmpty()){
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
 			}
+			
 			System.out.println("Passed id was:" +prospectFbId);
 			List<User> users = ofy().load().type(User.class).list();
 			Collections.sort(users);
