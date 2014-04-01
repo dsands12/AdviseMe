@@ -25,23 +25,23 @@ public class checkLoginStatus extends HttpServlet{
 			if(id==null||id.isEmpty()){
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
 			}
-			System.out.println("Passed ID was:"+id);
 			List<User> users = ofy().load().type(User.class).list();
-			Collections.sort(users);
 			for(User user: users){
 				if(user.getfbUserId().equals(id)){
 					Boolean status = user.getLoginStatus();
 					if(status==true){
 						Date current = new Date();
 						Date temp = user.getLoginDate();
-						System.out.println("Last Login : " +temp);
 						long diff = current.getTime() - temp.getTime();
 						long diffHours = diff / (60 * 60 * 1000) % 24;
 						long diffDays = diff / (24 * 60 * 60 * 1000);
 						long diffSeconds = diff / 1000 % 60;
 						long diffMinutes = diff / (60 * 1000) % 60;
-						System.out.println("Interval :" + diffDays + " Days, " + diffHours + " Hours, "+ diffMinutes + " Min, "+ diffSeconds + " Seconds.");
 						if(diffHours>=1){
+							System.out.println("User: " + id + "has been auto-logged out.");
+							System.out.println("The user was inactive for: " + 
+									diffDays + " days, " + diffHours + " hours, " + 
+									diffMinutes + " minutes, " + diffSeconds + "seconds.");
 							user.setLoginStatus(false);
 							status=false;
 							ofy().save().entity(user).now();

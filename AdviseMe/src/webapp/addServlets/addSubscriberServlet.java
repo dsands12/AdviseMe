@@ -42,7 +42,6 @@ public class addSubscriberServlet extends HttpServlet{
 					break;
 				}
 			}
-			
 			resp.setContentType("text/plain");
 			resp.setCharacterEncoding("UTF-8");
 			resp.getWriter().write("true");

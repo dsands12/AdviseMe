@@ -30,11 +30,7 @@ public class addUserCourses extends HttpServlet{
 			if(usercourses.length==0){
 				throw new Exception("No courses selected. Please select a course(s).");
 			}
-			for(int i=0;i<usercourses.length;i+=1){
-				System.out.println("What was passed: " + usercourses[i]);
-			}
 			List<User> users = ofy().load().type(User.class).list();
-			Collections.sort(users);
 			ArrayList<String> newCourses = new ArrayList<String>();
 			for(int i=0;i<usercourses.length;i+=1){
 				newCourses.add(usercourses[i]);
@@ -43,19 +39,15 @@ public class addUserCourses extends HttpServlet{
 				if(user.getfbUserId().equals(id)){
 					ArrayList<String> courseList = user.getUserClassList();
 					for(int i=0;i<usercourses.length;i+=1){
-						if(courseList.contains(usercourses[i])){
-							//do nothing
-						}else{
-						user.addUserClass(usercourses[i]);
+						if(!courseList.contains(usercourses[i])){
+							user.addUserClass(usercourses[i]);
 						}
 					}
 					for(int k=0;k<usercourses.length;k+=1){
 						Iterator<String> iterator = courseList.iterator();
 						while(iterator.hasNext()){
 							String next = iterator.next();
-							if(newCourses.contains(next)){
-								//do nothing
-							}else{
+							if(!newCourses.contains(next)){
 								iterator.remove();
 							}
 						}

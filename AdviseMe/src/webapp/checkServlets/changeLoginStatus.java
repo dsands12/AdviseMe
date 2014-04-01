@@ -24,19 +24,18 @@ public class changeLoginStatus extends HttpServlet {
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
 
 			}
-			System.out.println("Passed ID was:" + id);
 			List<User> users = ofy().load().type(User.class).list();
-			Collections.sort(users);
 			boolean flag = false;
 			for(User user: users){
 				if(user.getfbUserId().equals(id)){
 					Boolean status = user.getLoginStatus();
-					System.out.println("Old status is:"+status.toString());
 					if(status){
 						user.setLoginStatus(false);
+						System.out.println("User: "+ id +" has logged out.");
 						ofy().save().entity(user).now();
 					}else{
 						user.setLoginStatus(true);
+						System.out.println("User: "+ id +" has logged in.");
 						user.resetLoginDate();
 						ofy().save().entity(user).now();
 					}
@@ -49,9 +48,7 @@ public class changeLoginStatus extends HttpServlet {
 					break;
 				}
 			}
-			if(flag){
-				//login status was changed
-			}else{
+			if(!flag){
 				throw new Exception("User account not found in database.");
 			}
 		} catch(Exception e){
