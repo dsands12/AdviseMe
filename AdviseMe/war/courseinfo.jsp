@@ -129,7 +129,7 @@
     			var courseName = GetURLParameter('courseName');
 				$.ajax({
 					type: 'GET',
-					url: "updatecourserating?rating="+value+"&course="+courseName,
+					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+document.getElementById("fbidd").innerHTML,
 					cache: false,
 					success: function(response){
 						document.getElementById("rateit5").setAttribute("value",response);

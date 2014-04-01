@@ -162,7 +162,7 @@ public class chatServlet extends HttpServlet{
 		List<Course> courses = ObjectifyService.ofy().load().type(Course.class).list();
 		for(Course course: courses){
 			if(course.getCourseName().equals(courseName)){
-				course.setRating(new Double(0), new Integer(0));
+				course.resetRating();
 				ofy().save().entity(course).now();
 				return true;
 			}

@@ -1,6 +1,7 @@
 package webapp.datastoreObjects;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -20,13 +21,17 @@ public class Course implements Comparable<Course> {
 	private ArrayList<String> userTaken;
 	private String evalLink;
 	private String syllabiLink;
-	private Double rating;
-	private Integer numRating;
+	private Double rating;//removelater
+	private Integer numRating; //remove later
+	private HashMap<String,Double> ratings;
+	private Double avg=0.0;
+	
 		
 	@SuppressWarnings("unused")
 	private Course(){}
 	
 	public Course(String courseName){
+		this.ratings = new HashMap<String,Double>();
 		this.courseName=courseName;
 		this.professorList = new ArrayList<String>();
 		this.semestersTaught = new ArrayList<String>();
@@ -51,6 +56,7 @@ public class Course implements Comparable<Course> {
 	}
 	
 	public Course(String courseName, String title){
+		this.ratings = new HashMap<String,Double>();
 		this.courseName=courseName;
 		this.title=title;
 		this.professorList = new ArrayList<String>();
@@ -76,6 +82,7 @@ public class Course implements Comparable<Course> {
 	}
 	
 	public Course(String courseName, String title, String description,boolean upperDiv){
+		this.ratings = new HashMap<String,Double>();
 		this.courseName=courseName;
 		this.title=title;
 		this.description=description;
@@ -186,4 +193,38 @@ public class Course implements Comparable<Course> {
 		this.numRating+=1;
 		this.rating=temp/this.numRating;
 	}
+	public void processRating(Double rating, String fbID){
+		if(ratings.containsKey(fbID)){
+			if(ratings.get(fbID) != rating){
+				ratings.put(fbID, rating);
+			}	
+		}
+		else{
+			ratings.put(fbID, rating);
+		}
+		if (avg == 0.0){
+			avg=rating;
+		}
+		else{
+			int userCount = ratings.size();
+			Double temp = userCount*avg;
+			temp+=rating;
+			avg=temp/(userCount+1);			
+		}	
+	}
+	
+	public Integer getNumUsers() {
+		return ratings.size();
+	}
+
+
+	public Double getAvg() {
+		return avg;
+	}
+	public void resetRating(){
+		ratings.clear();
+		avg = 0.0;
+		System.out.println(ratings.size());
+	}
+	
 }
