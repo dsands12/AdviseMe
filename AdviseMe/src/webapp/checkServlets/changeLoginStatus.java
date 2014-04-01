@@ -37,6 +37,7 @@ public class changeLoginStatus extends HttpServlet {
 						ofy().save().entity(user).now();
 					}else{
 						user.setLoginStatus(true);
+						user.resetLoginDate();
 						ofy().save().entity(user).now();
 					}
 					status=user.getLoginStatus();

@@ -6,11 +6,15 @@ import com.googlecode.objectify.ObjectifyService;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -29,6 +33,16 @@ public class checkLoginStatus extends HttpServlet{
 			for(User user: users){
 				if(user.getfbUserId().equals(id)){
 					Boolean status = user.getLoginStatus();
+					if(status==true){
+						DateTime current = new DateTime();
+						DateTime temp = user.getLoginDate();
+						Interval difference = new Interval(temp,current);
+						if(difference.toDuration().getStandardHours()>=23){
+							//need to logout user
+						}else{
+							user.resetLoginDate();
+						}
+					}
 					resp.setContentType("text/plain");
 					resp.setCharacterEncoding("UTF-8");
 					resp.getWriter().write(status.toString());

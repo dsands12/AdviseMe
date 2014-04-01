@@ -46,16 +46,16 @@ public class chatServlet extends HttpServlet{
 //Command == help
 				if(words[0].equalsIgnoreCase("help")){
 					StringBuffer SB = new StringBuffer();
-					SB.append("*****Help*****");
-					SB.append("Valid Commands include:");
-					SB.append("help,about,addcourse,getuser,resetcourserating.");
+					SB.append("*****Help*****"+"\n");
+					SB.append("Valid Commands include:"+"\n");
+					SB.append("help,about,addcourse,getuser,resetcourserating."+"\n");
 					strCallResult = SB.toString();
 					
 				}else if(words[0].equalsIgnoreCase("about")){
 					StringBuffer SB = new StringBuffer();
-					SB.append("This is AdviseMe Bot");
-					SB.append("My master, Jason Anthraper made me smart!");
-					SB.append("Type help to see a list of commands!");
+					SB.append("This is AdviseMe Bot 2014"+"\n");
+					SB.append("My master, Jason Anthraper made me smart!"+"\n");
+					SB.append("Type help to see a list of commands!"+"\n");
 					strCallResult = SB.toString();
 //Command == addcourse
 				}else if(words[0].equalsIgnoreCase("addcourse")){
@@ -69,8 +69,8 @@ public class chatServlet extends HttpServlet{
 //Command == getuser
 				}else if(words[0].equalsIgnoreCase("getuser")){
 					//send back user info
-					String[] userInfo = strCommand.split("@");
-					if(words.length>1){
+					String[] userInfo = words[1].split("#");
+					if(userInfo.length>1){
 						String result = getUserInfo(userInfo[0],userInfo[1]);
 						if(result==null){
 							strCallResult = "User not found.";
@@ -101,6 +101,7 @@ public class chatServlet extends HttpServlet{
 			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody(strCallResult).build();
 			SendResponse status = xmpp.sendMessage(replyMessage);
 			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);
+			
 		}catch (Exception ex){
 			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody("Could not understand what you sent!").build();
 			boolean messageSent = false;
@@ -179,11 +180,11 @@ public class chatServlet extends HttpServlet{
 		for(User user: users){
 			if(user.getFullName().equalsIgnoreCase(firstName + " " + lastName)){
 				StringBuffer SB = new StringBuffer();
-				SB.append("Facebook ID: " + user.getfbUserId());
-				SB.append("Full Name: " + user.getFullName());
-				SB.append("Email : " + user.getUserEmail());
-				SB.append("Logged In?: " + user.getLoginStatus());
-				SB.append("User Class List : " + user.getUserClassList().toString());
+				SB.append("Facebook ID: " + user.getfbUserId()+"\n");
+				SB.append("Full Name: " + user.getFullName()+"\n");
+				SB.append("Email : " + user.getUserEmail()+"\n");
+				SB.append("Logged In?: " + user.getLoginStatus()+"\n");
+				SB.append("User Class List : " + user.getUserClassList().toString()+"\n");
 				result = SB.toString();
 			}
 		}
@@ -197,11 +198,11 @@ public class chatServlet extends HttpServlet{
 		for(User user: users){
 			if(user.getfbUserId().equals(fbID)){
 				StringBuffer SB = new StringBuffer();
-				SB.append("Facebook ID: " + user.getfbUserId());
-				SB.append("Full Name: " + user.getFullName());
-				SB.append("Email : " + user.getUserEmail());
-				SB.append("Logged In?: " + user.getLoginStatus());
-				SB.append("User Class List : " + user.getUserClassList().toString());
+				SB.append("Facebook ID: " + user.getfbUserId()+"\n");
+				SB.append("Full Name: " + user.getFullName()+"\n");
+				SB.append("Email : " + user.getUserEmail()+"\n");
+				SB.append("Logged In?: " + user.getLoginStatus()+"\n");
+				SB.append("User Class List : " + user.getUserClassList().toString()+"\n");
 				result = SB.toString();
 			}
 		}

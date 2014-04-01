@@ -29,7 +29,6 @@ public class updateCourseRating extends HttpServlet{
 			}
 			Double rating = Double.parseDouble(temp);
 			List<Course> courses = ofy().load().type(Course.class).list();
-			Collections.sort(courses);
 			for(Course course: courses){
 				if(course.getCourseName().equals(courseName)){
 					System.out.println("Old Rating for "+courseName+"was :"+course.getRating());

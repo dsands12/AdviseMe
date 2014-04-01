@@ -2,6 +2,8 @@ package webapp.datastoreObjects;
 
 import java.util.ArrayList;
 
+import org.joda.time.DateTime;
+
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -16,6 +18,7 @@ public class User implements Comparable<User>{
 	Boolean loginStatus = false;
 	ArrayList<String> courseList;
 	ArrayList<String> fbFriends;
+	DateTime loginDate;
 	
 	@SuppressWarnings("unused")
 	private User(){
@@ -28,6 +31,7 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=null;
 		this.loginStatus = false;
+		this.loginDate = new DateTime();
 		courseList = new ArrayList<String>();
 	}
 	
@@ -37,6 +41,7 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=null;
 		this.loginStatus=false;
+		this.loginDate = new DateTime();
 		courseList = new ArrayList<String>();
 	}
 	
@@ -46,6 +51,7 @@ public class User implements Comparable<User>{
 		this.lastName=lastName;
 		this.userEmail=userEmail;
 		this.loginStatus=false;
+		this.loginDate = new DateTime();
 		courseList = new ArrayList<String>();
 	}
 	
@@ -83,6 +89,14 @@ public class User implements Comparable<User>{
 	
 	public void setLoginStatus(boolean status){
 		this.loginStatus=status;
+	}
+	
+	public void resetLoginDate(){
+		this.loginDate = new DateTime();
+	}
+	
+	public DateTime getLoginDate(){
+		return this.loginDate;
 	}
 	
 	@Override
