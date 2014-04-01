@@ -1,22 +1,24 @@
 package webapp.checkServlets;
 
-import webapp.datastoreObjects.User;
-
-import com.googlecode.objectify.ObjectifyService;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.joda.time.DateTime;
-import org.joda.time.Interval;
+import java.util.Date;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+
+
+import webapp.datastoreObjects.User;
+
+
+import com.googlecode.objectify.ObjectifyService;
+
 
 @SuppressWarnings("serial")
 public class checkLoginStatus extends HttpServlet{
@@ -34,11 +36,18 @@ public class checkLoginStatus extends HttpServlet{
 				if(user.getfbUserId().equals(id)){
 					Boolean status = user.getLoginStatus();
 					if(status==true){
-						DateTime current = new DateTime();
-						DateTime temp = user.getLoginDate();
-						Interval difference = new Interval(temp,current);
-						if(difference.toDuration().getStandardHours()>=23){
-							//need to logout user
+						Date current = new Date();
+						Date temp = user.getLoginDate();
+						System.out.println("Last Login : " +temp);
+						long diff = current.getTime() - temp.getTime();
+						long diffHours = diff / (60 * 60 * 1000) % 24;
+						long diffDays = diff / (24 * 60 * 60 * 1000);
+						long diffSeconds = diff / 1000 % 60;
+						long diffMinutes = diff / (60 * 1000) % 60;
+						System.out.println("Interval :" + diffDays + " Days, " + diffHours + " Hours, "+ diffMinutes + " Min, "+ diffSeconds + " Seconds.");
+						if(diffHours>0){
+							user.setLoginStatus(false);
+							status=false;
 						}else{
 							user.resetLoginDate();
 						}
