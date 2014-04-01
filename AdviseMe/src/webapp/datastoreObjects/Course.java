@@ -221,6 +221,7 @@ public class Course implements Comparable<Course> {
 	public Double getAvg() {
 		return avg;
 	}
+	
 	public void resetRating(){
 		this.ratings.clear();
 		avg = 0.0;
