@@ -25,7 +25,7 @@ public class Course implements Comparable<Course> {
 		
 	@SuppressWarnings("unused")
 	private Course(){}
-	
+
 	public Course(String courseName){
 		this.courseName=courseName;
 		this.professorList = new ArrayList<String>();
