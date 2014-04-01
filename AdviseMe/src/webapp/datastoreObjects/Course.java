@@ -222,7 +222,7 @@ public class Course implements Comparable<Course> {
 		return avg;
 	}
 	public void resetRating(){
-		ratings.clear();
+		this.ratings.clear();
 		avg = 0.0;
 		System.out.println(ratings.size());
 	}
