@@ -87,7 +87,9 @@ public class chatServlet extends HttpServlet{
 					}
 //Command == resetcourserating
 				}else if(words[0].equalsIgnoreCase("resetcourserating")){
+					System.out.println("Before");
 					boolean flag = resetCourseRating(words[1]);
+					System.out.println("After");
 					if(flag){
 						strCallResult = "Course Rating was Reset Successfully!";
 					}else{
@@ -103,7 +105,8 @@ public class chatServlet extends HttpServlet{
 			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);
 			
 		}catch (Exception ex){
-			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody("Could not understand what you sent!").build();
+			System.out.println(ex.getMessage());
+			Message replyMessage = new MessageBuilder().withRecipientJids(fromJid).withBody(ex.getMessage()).build();
 			boolean messageSent = false;
 			SendResponse status = xmpp.sendMessage(replyMessage);
 			messageSent = (status.getStatusMap().get(fromJid) == SendResponse.Status.SUCCESS);

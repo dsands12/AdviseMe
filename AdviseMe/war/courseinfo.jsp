@@ -77,7 +77,7 @@
 			}
 		}
 	%>
-
+	<textarea rows="1" cols="1" id="fbidd" style="display:none"></textarea>
 	<div class="row">
 		<div class="span10">
 			<div class="col-md-10">
@@ -127,9 +127,10 @@
     $("#rateit5").bind('rated', 
     		function(event, value){
     			var courseName = GetURLParameter('courseName');
+    			var fbiddd = document.getElementById("fbidd").innerHTML;
 				$.ajax({
 					type: 'GET',
-					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+document.getElementById("fbidd").innerHTML,
+					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+"520989352",
 					cache: false,
 					success: function(response){
 						document.getElementById("rateit5").setAttribute("value",response);

@@ -32,6 +32,7 @@ public class Course implements Comparable<Course> {
 
 	public Course(String courseName){
 		this.ratings = new HashMap<String,Double>();
+		this.ratings.put("default", 0.0);
 		this.courseName=courseName;
 		this.professorList = new ArrayList<String>();
 		this.semestersTaught = new ArrayList<String>();
@@ -57,6 +58,7 @@ public class Course implements Comparable<Course> {
 	
 	public Course(String courseName, String title){
 		this.ratings = new HashMap<String,Double>();
+		this.ratings.put("default", 0.0);
 		this.courseName=courseName;
 		this.title=title;
 		this.professorList = new ArrayList<String>();
@@ -83,6 +85,7 @@ public class Course implements Comparable<Course> {
 	
 	public Course(String courseName, String title, String description,boolean upperDiv){
 		this.ratings = new HashMap<String,Double>();
+		this.ratings.put("default", 0.0);
 		this.courseName=courseName;
 		this.title=title;
 		this.description=description;
@@ -194,23 +197,31 @@ public class Course implements Comparable<Course> {
 		this.rating=temp/this.numRating;
 	}
 	public void processRating(Double rating, String fbID){
-		if(ratings.containsKey(fbID)){
-			if(ratings.get(fbID) != rating){
-				ratings.put(fbID, rating);
-			}	
+		boolean flag = false;
+		if(this.ratings.containsKey(fbID)&&(this.ratings.get(fbID)!=rating)){
+			int userCount = this.numRating;
+			Double temp = userCount*this.avg;
+			this.avg=(temp-this.ratings.get(fbID)+rating)/(this.ratings.size());
+			this.ratings.put(fbID, rating);
+			return;
+		}else{
+			this.ratings.put(fbID, rating);
+			this.numRating+=1;
 		}
-		else{
-			ratings.put(fbID, rating);
-		}
-		if (avg == 0.0){
-			avg=rating;
-		}
-		else{
-			int userCount = ratings.size();
-			Double temp = userCount*avg;
+		if(avg==0.0){
+			this.avg=rating;
+			this.numRating=1;
+		}else{
+			int userCount;
+			if(flag){
+				userCount = this.numRating;
+			}else{
+				userCount = this.numRating-1;
+			}
+			Double temp = userCount*this.avg;
 			temp+=rating;
-			avg=temp/(userCount+1);			
-		}	
+			this.avg=temp/this.numRating;		
+		}
 	}
 	
 	public Integer getNumUsers() {
@@ -223,9 +234,11 @@ public class Course implements Comparable<Course> {
 	}
 	
 	public void resetRating(){
-		this.ratings.clear();
-		avg = 0.0;
-		System.out.println(ratings.size());
+		if(this.ratings!=null){
+			this.ratings.clear();
+			this.avg = 0.0;
+			this.numRating=0;
+			System.out.println(ratings.size());
+		}
 	}
-	
 }

@@ -45,11 +45,13 @@ public class checkLoginStatus extends HttpServlet{
 						long diffSeconds = diff / 1000 % 60;
 						long diffMinutes = diff / (60 * 1000) % 60;
 						System.out.println("Interval :" + diffDays + " Days, " + diffHours + " Hours, "+ diffMinutes + " Min, "+ diffSeconds + " Seconds.");
-						if(diffHours>0){
+						if(diffHours>=1){
 							user.setLoginStatus(false);
 							status=false;
+							ofy().save().entity(user).now();
 						}else{
 							user.resetLoginDate();
+							ofy().save().entity(user).now();
 						}
 					}
 					resp.setContentType("text/plain");

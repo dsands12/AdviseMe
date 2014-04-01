@@ -55,11 +55,11 @@ function login() {
 													document.getElementById("name").innerHTML = "Welcome, " + first + " " + last;
 													document.getElementById("name").href = "manageaccount.jsp";
 													document.getElementById("pict").href = "manageaccount.jsp";
-													document.getElementById("fbidd").innerHTML = id;
 													document.getElementById("profilepic").src = picurl;
 													document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='logout.jsp'");
 													document.getElementById("loginbuttonref").innerHTML = "Logout";
 													document.getElementById("usercoursesbuttonref").setAttribute("onClick","window.location.href='addusercourses.jsp?id="+id+"'");
+													document.getElementById("fbidd").innerHTML = id;
 												} else {
 													document.getElementById("name").innerHTML = "Welcome, Guest";
 													document.getElementById("name").href = "home.jsp";
