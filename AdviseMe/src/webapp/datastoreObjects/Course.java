@@ -21,8 +21,7 @@ public class Course implements Comparable<Course> {
 	private ArrayList<String> userTaken;
 	private String evalLink;
 	private String syllabiLink;
-	private Double rating;//removelater
-	private Integer numRating; //remove later
+	private Integer numRating; 
 	private HashMap<String,Double> ratings;
 	private Double avg=0.0;
 	
@@ -39,7 +38,6 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
-		this.rating = new Double(0);
 		this.numRating=0;
 		String[] parse = courseName.split(" ");
 		if(parse.length>=2){
@@ -66,7 +64,6 @@ public class Course implements Comparable<Course> {
 		this.subscribers = new ArrayList<String>();
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
-		this.rating = new Double(0);
 		this.numRating=0;
 		String[] parse = courseName.split(" ");
 		if(parse.length>=2){
@@ -95,7 +92,6 @@ public class Course implements Comparable<Course> {
 		this.textbooks = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
 		this.upperDivision = upperDiv;
-		this.rating = new Double(0);
 		this.numRating=0;
 		String[] parse = courseName.split(" ");
 		if(parse.length>=2){
@@ -176,61 +172,37 @@ public class Course implements Comparable<Course> {
 	public int compareTo(Course o) {
 		return this.getCourseName().compareTo(o.getCourseName());
 	}
-	
-	public Double getRating(){
-		return this.rating;
-	}
-	
+		
 	public Integer getNumRating(){
 		return this.numRating;
 	}
 	
-	public void setRating(Double rating, Integer numRating){
-		this.rating=rating;
-		this.numRating=numRating;
-	}
-	
-	public void addRating(Double rating){
-		Double temp = this.rating*numRating;
-		temp+=rating;
-		this.numRating+=1;
-		this.rating=temp/this.numRating;
-	}
 	public void processRating(Double rating, String fbID){
-		boolean flag = false;
 		if(this.ratings.containsKey(fbID)&&(this.ratings.get(fbID)!=rating)){
 			int userCount = this.numRating;
 			Double temp = userCount*this.avg;
-			this.avg=(temp-this.ratings.get(fbID)+rating)/(this.ratings.size());
+			this.avg=(temp-this.ratings.get(fbID)+rating)/(userCount);
 			this.ratings.put(fbID, rating);
+			return;
+		}else if(this.ratings.containsKey(fbID)&&(this.ratings.get(fbID)==rating)){
 			return;
 		}else{
 			this.ratings.put(fbID, rating);
-			this.numRating+=1;
 		}
 		if(avg==0.0){
 			this.avg=rating;
 			this.numRating=1;
 		}else{
-			int userCount;
-			if(flag){
-				userCount = this.numRating;
-			}else{
-				userCount = this.numRating-1;
-			}
+			int userCount = this.numRating;
 			Double temp = userCount*this.avg;
 			temp+=rating;
-			this.avg=temp/this.numRating;		
+			this.numRating+=1;
+			this.avg=temp/this.numRating;	
 		}
 	}
 	
-	public Integer getNumUsers() {
-		return ratings.size();
-	}
-
-
 	public Double getAvg() {
-		return avg;
+		return this.avg;
 	}
 	
 	public void resetRating(){

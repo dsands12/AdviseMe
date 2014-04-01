@@ -28,6 +28,7 @@ public class updateCourseRating extends HttpServlet{
 				throw new Exception("Invalid Course Name passed to servlet");
 			}
 			Double rating = Double.parseDouble(temp);
+			System.out.println("Now:" +rating+" Was: "+temp);
 			List<Course> courses = ofy().load().type(Course.class).list();
 			for(Course course: courses){
 				if(course.getCourseName().equals(courseName)){
@@ -37,7 +38,7 @@ public class updateCourseRating extends HttpServlet{
 					ofy().save().entity(course).now();
 					resp.setContentType("text/plain");
 					resp.setCharacterEncoding("UTF-8");
-					resp.getWriter().write(course.getRating().toString());
+					resp.getWriter().write(course.getAvg().toString());
 					break;
 				}
 			}

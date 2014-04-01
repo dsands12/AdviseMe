@@ -72,7 +72,7 @@
 		pageContext.setAttribute("course_syllabus_link", course.getSyllabusLink());
 		pageContext.setAttribute("course_eval_link", course.getEvalLink());
 		pageContext.setAttribute("course_num_users_rating", course.getNumRating());
-		pageContext.setAttribute("course_rating", course.getRating());
+		pageContext.setAttribute("course_rating", course.getAvg());
 		break;
 			}
 		}
@@ -130,7 +130,7 @@
     			var fbiddd = document.getElementById("fbidd").innerHTML;
 				$.ajax({
 					type: 'GET',
-					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+"520989352",
+					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+"508774773",
 					cache: false,
 					success: function(response){
 						document.getElementById("rateit5").setAttribute("value",response);
