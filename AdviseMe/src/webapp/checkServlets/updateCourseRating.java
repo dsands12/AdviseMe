@@ -27,6 +27,9 @@ public class updateCourseRating extends HttpServlet{
 			if(courseName==null||courseName.isEmpty()){
 				throw new Exception("Invalid Course Name passed to servlet");
 			}
+			if(id==null||id.isEmpty()||id.equalsIgnoreCase("")||id.equalsIgnoreCase(" ")||id.equalsIgnoreCase("undefined")){
+				throw new Exception("Invalid Course Name passed to servlet");
+			}
 			Double rating = Double.parseDouble(temp);
 			System.out.println("Now:" +rating+" Was: "+temp);
 			List<Course> courses = ofy().load().type(Course.class).list();

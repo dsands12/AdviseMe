@@ -122,15 +122,14 @@
 	</script>
 	
 	
-	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-resetable="false" data-rateit-step=".5" data-rateit-min="0" data-rateit-max="10"></div>
+	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-resetable="false" data-rateit-value="${fn:escapeXml(course_rating)}" data-rateit-step=".5" data-rateit-min="0" data-rateit-max="10"></div>
  <script type="text/javascript">
     $("#rateit5").bind('rated', 
     		function(event, value){
     			var courseName = GetURLParameter('courseName');
-    			var fbiddd = document.getElementById("fbidd").innerHTML;
 				$.ajax({
 					type: 'GET',
-					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+"508774773",
+					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+myFacebookId,
 					cache: false,
 					success: function(response){
 						document.getElementById("rateit5").setAttribute("value",response);
@@ -140,11 +139,8 @@
 				});
 			});
 </script>    
-<h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users: ${fn:escapeXml(course_rating)}</h4>  
+<h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users -  ${fn:escapeXml(course_rating)}</h4>  
 	<!-- 
-	1. Need to add ajax to update rating.
-		a) Create servlet to update rating.
-		b) Once ajax is called, need to update average rating and number of people rating fields.
 	2. Need to have prompt to confirm rating choice.
 	3. Need to figure out possible increase in star size.
 	4. Need to figure out how to restrict each user to one rating. (possible check if user has taken course before allowing rating.)(check courses taken list?)
