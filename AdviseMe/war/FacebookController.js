@@ -1,4 +1,5 @@
 var myFacebookId;
+var isLoggedIn;
 function login() {
 
 	// Load FB SDK
@@ -43,7 +44,6 @@ function login() {
 								first = response.first_name;
 								var last = response.last_name;
 								var id = response.id;
-								myFacebookId = id;
 								if (id == null || id == "") {
 									first = "Guest";
 									last = "";
@@ -60,6 +60,8 @@ function login() {
 													document.getElementById("profilepic").src = picurl;
 													document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='logout.jsp'");
 													document.getElementById("loginbuttonref").innerHTML = "Logout";
+													isLoggedIn="true";
+													myFacebookId = id;
 													document.getElementById("usercoursesbuttonref").setAttribute("onClick","window.location.href='addusercourses.jsp?id="+id);
 												} else {
 													document.getElementById("name").innerHTML = "Welcome, Guest";
@@ -68,6 +70,7 @@ function login() {
 													document.getElementById("profilepic").src = "";
 													document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='login.jsp'");
 													document.getElementById("loginbuttonref").innerHTML = "Login";
+													isLoggedIn="false";
 												}
 											}
 										});

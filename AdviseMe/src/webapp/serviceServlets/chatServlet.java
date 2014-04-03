@@ -144,7 +144,6 @@ public class chatServlet extends HttpServlet{
 			return false;	
 		}
 		List<Course> courseList=ObjectifyService.ofy().load().type(Course.class).list();
-		Collections.sort(courseList);
 		boolean upper;
 		if(upperDivision.equals("upper")){
 			upper = true;

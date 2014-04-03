@@ -23,12 +23,12 @@ public class deleteFBUserServlet extends HttpServlet{
 			if(fbId==null||fbId.isEmpty()){
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
 			}
-			System.out.println("Passed id was" + fbId);
 			List<User> users = ofy().load().type(User.class).list();
 			Collections.sort(users);
 			for(User user: users){
 				if(user.getfbUserId().equals(fbId)){
 					ofy().delete().entity(user).now();
+					System.out.println("User: " + fbId + " has been removed.");
 					resp.sendRedirect("/home.jsp");
 				}
 			}

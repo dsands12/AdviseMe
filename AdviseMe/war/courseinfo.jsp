@@ -102,7 +102,7 @@
 		function subscribe() {
 			 
 		
-			var email = prompt("Please enter your email","HarryPotter@verizon.net");
+			var email = prompt("Please enter your email","Name@Domain.com");
 			var courseName = GetURLParameter('courseName');
 				$.ajax({
 					type : 'GET',
@@ -132,7 +132,8 @@
 					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+myFacebookId,
 					cache: false,
 					success: function(response){
-						document.getElementById("rateit5").setAttribute("value",response);
+					<!--	document.getElementById("rateit5").setAttribute("data-rateit-value",response);
+					-->
 					
 
 					}

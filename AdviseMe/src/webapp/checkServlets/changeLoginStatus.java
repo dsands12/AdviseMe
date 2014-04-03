@@ -3,7 +3,6 @@ package webapp.checkServlets;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -40,7 +39,6 @@ public class changeLoginStatus extends HttpServlet {
 						ofy().save().entity(user).now();
 					}
 					status=user.getLoginStatus();
-					System.out.println("New status is:"+status.toString());
 					resp.setContentType("text/plain");
 					resp.setCharacterEncoding("UTF-8");
 					resp.getWriter().write(status.toString());

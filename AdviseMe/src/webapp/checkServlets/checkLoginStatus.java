@@ -3,13 +3,13 @@ package webapp.checkServlets;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import webapp.datastoreObjects.User;
 
@@ -48,6 +48,9 @@ public class checkLoginStatus extends HttpServlet{
 						}else{
 							user.resetLoginDate();
 							ofy().save().entity(user).now();
+							HttpSession session = req.getSession();
+							session.setAttribute("userid", id);
+							session.setAttribute("loggedin", "true");
 						}
 					}
 					resp.setContentType("text/plain");

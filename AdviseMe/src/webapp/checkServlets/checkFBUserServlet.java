@@ -3,7 +3,6 @@ package webapp.checkServlets;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -23,11 +22,11 @@ public class checkFBUserServlet extends HttpServlet{
 			if(prospectFbId==null||prospectFbId.isEmpty()){
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
 			}
-			System.out.println("Passed id was:" +prospectFbId);
 			List<User> users = ofy().load().type(User.class).list();
 			boolean flag = false;
 			for(User user: users){
 				if(user.getfbUserId().equals(prospectFbId)){
+
 					System.out.println("Facebook ID: " + prospectFbId + " is an AdviseMe user.");
 					resp.setContentType("text/plain");
 					resp.setCharacterEncoding("UTF-8");

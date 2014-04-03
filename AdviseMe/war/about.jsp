@@ -9,6 +9,20 @@
 		<script type="text/javascript">
 				login();
 	</script>
+	<%
+	String username = null;
+	HttpSession mysession = request.getSession(false);
+	if(mysession.getAttribute("userid")!=null){
+		username = (String) mysession.getAttribute("userid");
+		%>
+		<h1>AHAHAHAHAHAHAH IT WORKS </h1>
+		<%
+	}else{
+		%>
+		<h1> THIS IS A TESTING</h1>
+		<%
+	}
+	%>
 	<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 	<div class="”container”"> 
 			<div class="navbar">

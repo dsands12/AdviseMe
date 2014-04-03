@@ -211,6 +211,7 @@ public class Course implements Comparable<Course> {
 			this.avg = 0.0;
 			this.numRating=0;
 			System.out.println(ratings.size());
+			this.ratings.put("default", 0.0);
 		}
 	}
 }
