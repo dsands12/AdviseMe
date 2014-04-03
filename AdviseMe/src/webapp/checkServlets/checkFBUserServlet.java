@@ -26,7 +26,6 @@ public class checkFBUserServlet extends HttpServlet{
 			boolean flag = false;
 			for(User user: users){
 				if(user.getfbUserId().equals(prospectFbId)){
-
 					System.out.println("Facebook ID: " + prospectFbId + " is an AdviseMe user.");
 					resp.setContentType("text/plain");
 					resp.setCharacterEncoding("UTF-8");

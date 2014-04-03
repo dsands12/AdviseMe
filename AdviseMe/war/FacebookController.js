@@ -40,8 +40,7 @@ function login() {
 						'/me',
 						function(response) {
 							if (response && !response.error) {
-								var first = "Guest";
-								first = response.first_name;
+								var first = response.first_name;
 								var last = response.last_name;
 								var id = response.id;
 								if (id == null || id == "") {

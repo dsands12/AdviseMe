@@ -18,10 +18,29 @@
 </head>
 
 <body>  
-	<script type="text/javascript" src="FacebookController.js"> </script>
-		<script type="text/javascript">
-				login();
-		</script>
+<%
+	String ids = null;
+	String picurl = null;
+	String first = null;
+	String last = null;
+	String isLoggedIn = null;
+	HttpSession mysession = request.getSession(false);
+	if(mysession.getAttribute("id")!=null){
+		ids = (String) mysession.getAttribute("userid");
+		picurl = (String) mysession.getAttribute("pic");
+		first = (String) mysession.getAttribute("first");
+		last = (String) mysession.getAttribute("last");
+		isLoggedIn = (String) mysession.getAttribute("isLoggedIn");
+		pageContext.setAttribute("id", ids);
+		pageContext.setAttribute("pic",picurl);
+		pageContext.setAttribute("first", first);
+		pageContext.setAttribute("last", last);
+		pageContext.setAttribute("isLoggedIn", isLoggedIn);
+		pageContext.setAttribute("guest","false");
+	}else{
+		pageContext.setAttribute("guest", "true");
+	}
+	%>
 		<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 		<div class="”container”"> 
 			<div class="navbar">
@@ -85,7 +104,7 @@
 		Course currentCourse = lowerIterator.next(); 
 		Boolean upperDiv=currentCourse.getUpperDivision();
 		if( upperDiv == false){
-       pageContext.setAttribute("course_name",currentCourse.getCourseName());
+      	 pageContext.setAttribute("course_name",currentCourse.getCourseName());
        pageContext.setAttribute("course_title",currentCourse.getTitle());
        String courseName=currentCourse.getCourseName();
        %><script>
@@ -102,5 +121,35 @@
 	}
       }
    %>
+   	<script>
+	if ("${fn:escapeXml(guest)}" == "false") {
+		console.log('1');
+		if("${fn:escapeXml(isLoggedIn)}" == "true"){
+			console.log('2');
+			document.getElementById("name").innerHTML = "Welcome, ${fn:escapeXml(first)} ${fn:escapeXml(last)}";
+			document.getElementById("name").href = "manageaccount.jsp";
+			document.getElementById("pict").href = "manageaccount.jsp";
+			document.getElementById("profilepic").src = "${fn:escapeXml(pic)}";
+			document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='logout.jsp'");
+			document.getElementById("loginbuttonref").innerHTML = "Logout";
+		}else{
+			console.log('3');
+			document.getElementById("name").innerHTML = "Welcome, Guest";
+			document.getElementById("name").href = "home.jsp";
+			document.getElementById("pict").href = "home.jsp";
+			document.getElementById("profilepic").src = "";
+			document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='login.jsp'");
+			document.getElementById("loginbuttonref").innerHTML = "Login";
+		}
+	} else {
+		console.log('4');
+		document.getElementById("name").innerHTML = "Welcome, Guest";
+		document.getElementById("name").href = "home.jsp";
+		document.getElementById("pict").href = "home.jsp";
+		document.getElementById("profilepic").src = "";
+		document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='login.jsp'");
+		document.getElementById("loginbuttonref").innerHTML = "Login";
+	}
+	</script>
    </body>
 </html>

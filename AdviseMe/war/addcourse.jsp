@@ -13,10 +13,30 @@
     	<script src="stylesheets/bootstrap.js"></script>
 		<title>AdviseMe- Add Courses</title>
 	</head>
-		<script type="text/javascript" src="FacebookController.js"> </script>
-		<script type="text/javascript">
-				login();
-		</script>
+	<body>
+	<%
+	String id = null;
+	String picurl = null;
+	String first = null;
+	String last = null;
+	String isLoggedIn = null;
+	HttpSession mysession = request.getSession(false);
+	if(mysession.getAttribute("id")!=null){
+		id = (String) mysession.getAttribute("userid");
+		picurl = (String) mysession.getAttribute("pic");
+		first = (String) mysession.getAttribute("first");
+		last = (String) mysession.getAttribute("last");
+		isLoggedIn = (String) mysession.getAttribute("isLoggedIn");
+		pageContext.setAttribute("id", id);
+		pageContext.setAttribute("pic",picurl);
+		pageContext.setAttribute("first", first);
+		pageContext.setAttribute("last", last);
+		pageContext.setAttribute("isLoggedIn", isLoggedIn);
+		pageContext.setAttribute("guest","false");
+	}else{
+		pageContext.setAttribute("guest", "true");
+	}
+	%>
 		<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 		<div class="â€�containerâ€�"> 
 			<div class="navbar">
@@ -39,7 +59,6 @@
               	</div>
         	</div>
 		</div>
-	<body>
 	<form class="well" action="/addcourse" method="post">  
 	  <label>Course Abbreviation</label>  
 	  	<textarea name="coursename" rows="1" cols="30" placeholder="Enter Abbrev..."></textarea>
@@ -86,18 +105,35 @@
 	  <button type="submit" class="btn" >Add Course</button>  
 	  <button type="Cancel" class="btn" onclick="window.location.href='/home.jsp'">Cancel</button>
 	</form>
-	
-<%--	
-		<form action="/addcourse" method="post">
-			<h3>Course Name:</h3>
-			<div>
-				<textarea name="coursename" rows="1" cols="30">Course Abbrev.</textarea>
-				<textarea name="coursetitle" rows="1" cols="30">Course Title</textarea>
-			</div>
-			<div>
-				<input type="submit" value="Add Course" />
-			</div>
-			<input type="button" value="Cancel" onclick="window.location.href='/home.jsp'">
-		</form> --%>
+	<script>
+	if ("${fn:escapeXml(guest)}" == "false") {
+		console.log('1');
+		if("${fn:escapeXml(isLoggedIn)}" == "true"){
+			console.log('2');
+			document.getElementById("name").innerHTML = "Welcome, ${fn:escapeXml(first)} ${fn:escapeXml(last)}";
+			document.getElementById("name").href = "manageaccount.jsp";
+			document.getElementById("pict").href = "manageaccount.jsp";
+			document.getElementById("profilepic").src = "${fn:escapeXml(pic)}";
+			document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='logout.jsp'");
+			document.getElementById("loginbuttonref").innerHTML = "Logout";
+		}else{
+			console.log('3');
+			document.getElementById("name").innerHTML = "Welcome, Guest";
+			document.getElementById("name").href = "home.jsp";
+			document.getElementById("pict").href = "home.jsp";
+			document.getElementById("profilepic").src = "";
+			document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='login.jsp'");
+			document.getElementById("loginbuttonref").innerHTML = "Login";
+		}
+	} else {
+		console.log('4');
+		document.getElementById("name").innerHTML = "Welcome, Guest";
+		document.getElementById("name").href = "home.jsp";
+		document.getElementById("pict").href = "home.jsp";
+		document.getElementById("profilepic").src = "";
+		document.getElementById("loginbuttonref").setAttribute("onClick","window.location.href='login.jsp'");
+		document.getElementById("loginbuttonref").innerHTML = "Login";
+	}
+	</script>
 	</body>
 </html>

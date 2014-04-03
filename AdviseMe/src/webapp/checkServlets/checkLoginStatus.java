@@ -21,6 +21,7 @@ public class checkLoginStatus extends HttpServlet{
 	static{ObjectifyService.register(User.class);}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String id = req.getParameter("id");
+		HttpSession session = req.getSession(false);
 		try{
 			if(id==null||id.isEmpty()){
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
@@ -38,19 +39,17 @@ public class checkLoginStatus extends HttpServlet{
 						long diffSeconds = diff / 1000 % 60;
 						long diffMinutes = diff / (60 * 1000) % 60;
 						if(diffHours>=1){
-							System.out.println("User: " + id + "has been auto-logged out.");
+							System.out.println("User: " + id + " has been auto-logged out.");
 							System.out.println("The user was inactive for: " + 
-									diffDays + " days, " + diffHours + " hours, " + 
-									diffMinutes + " minutes, " + diffSeconds + "seconds.");
+									diffDays + " day(s), " + diffHours + " hour(s), " + 
+									diffMinutes + " minute(s), " + diffSeconds + "second(s).");
 							user.setLoginStatus(false);
+							session.setAttribute("isLoggedIn", "false");
 							status=false;
 							ofy().save().entity(user).now();
 						}else{
 							user.resetLoginDate();
 							ofy().save().entity(user).now();
-							HttpSession session = req.getSession();
-							session.setAttribute("userid", id);
-							session.setAttribute("loggedin", "true");
 						}
 					}
 					resp.setContentType("text/plain");

@@ -109,6 +109,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <url-pattern>/usercoursegenerator</url-pattern>
 	</servlet-mapping>
 	<servlet>
+	    <servlet-name>createsessionservlet</servlet-name>
+	    <servlet-class>webapp.checkServlets.createSessionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>createsessionservlet</servlet-name>
+	    <url-pattern>/createsessionservlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>ChatBot</servlet-name>
 		<servlet-class>webapp.serviceServlets.chatServlet</servlet-class>
 	</servlet>

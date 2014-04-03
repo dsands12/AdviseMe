@@ -62,7 +62,7 @@ public class User implements Comparable<User>{
 	}
 	
 	public void addUserClass(String course){
-		courseList.add(course);
+		this.courseList.add(course);
 	}
 	
 	public String getfbUserId(){
@@ -74,13 +74,17 @@ public class User implements Comparable<User>{
 	}
 	
 	public String getFullName(){
-		return firstName + " " + lastName;
+		return this.firstName + " " + this.lastName;
 	}
 	
 	public String getLastName(){
 		return this.lastName;
 	}
 
+	public String getFirstName(){
+		return this.firstName;
+	}
+	
 	public String getUserEmail(){
 		return this.userEmail;
 	}

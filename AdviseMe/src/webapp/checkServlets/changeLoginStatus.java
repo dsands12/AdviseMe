@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import webapp.datastoreObjects.User;
 
@@ -18,6 +19,7 @@ public class changeLoginStatus extends HttpServlet {
 	static{ObjectifyService.register(User.class);}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String id = req.getParameter("id");
+		HttpSession session = req.getSession(false);
 		try{
 			if(id==null||id.isEmpty()){
 				throw new Exception("Facebook not returning valid identification. Please relogin.");
@@ -31,11 +33,13 @@ public class changeLoginStatus extends HttpServlet {
 					if(status){
 						user.setLoginStatus(false);
 						System.out.println("User: "+ id +" has logged out.");
+						session.setAttribute("isLoggedIn", "false");
 						ofy().save().entity(user).now();
 					}else{
 						user.setLoginStatus(true);
 						System.out.println("User: "+ id +" has logged in.");
 						user.resetLoginDate();
+						session.setAttribute("isLoggedIn", "true");
 						ofy().save().entity(user).now();
 					}
 					status=user.getLoginStatus();

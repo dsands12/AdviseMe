@@ -8,6 +8,7 @@
 	<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
 		<div id="fb-root"></div>
 		<script>
+		var picurl;
 		window.fbAsyncInit = function(){
 			FB.init({
 				appId      : '125801300852907',
@@ -41,6 +42,16 @@
 		function checkLogin(){
 			console.log('Retrieving User ID and Name');
 			document.getElementById("test").innerHTML="Logging In....Redirecting";
+			FB.api("/me/picture", {
+				"redirect" : false,
+				"height" : "40",
+				"type" : "normal",
+				"width" : "40"
+			}, function(response) {
+				if (response && !response.error) {
+					picurl = response.data.url;
+				}
+			});
 			FB.api('/me', function(response){
 				var id=response.id;
 				console.log(id);
@@ -51,7 +62,6 @@
 					success: function(response){
 						console.log(response);
 						if(response=="true"){
-							console.log("user is registered");
 						}else if(response=="false"){
 							window.location.replace('createaccount.jsp');
 						}
@@ -60,6 +70,14 @@
 				$.ajax({
 					type:'GET',
 					url : "changeloginstatus?id="+id,
+					cache : false,
+					success: function(response){
+						console.log(reponse);
+					}
+				});
+				$.ajax({
+					type:'GET',
+					url : "createsessionservlet?id="+id+"&picurl="+ picurl,
 					cache : false,
 					success: function(response){
 						window.location.replace('home.jsp');
