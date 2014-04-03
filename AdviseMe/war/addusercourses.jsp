@@ -58,10 +58,7 @@
               	</div>
         	</div>
 		</div>
-		<%
-		String fbID = request.getParameter("id");
-		%>
-		<form action="/addusercourses?id=<%=fbID%>" method="post">
+		<form action="/addusercourses?id=${fn:escapeXml(id)}" method="post">
 			<h3>Courses:</h3>
 			<h4>What courses have you taken/are taking:</h4>
 			<div>

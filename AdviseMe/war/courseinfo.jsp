@@ -55,13 +55,9 @@
 
 					</ul>
 					<ul class="nav pull-right">
-						<ul class="nav">
 							<li><a href="home.jsp" id=name></a></li>
-							<li><a class="brand" id=pict href="home.jsp"><img
-									id="profilepic"></a></li>
-							<li><button type="button" class="btn btn-default"
-									id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
-						</ul>
+							<li><a class="brand" id=pict href="home.jsp"><img id="profilepic"></a></li>
+							<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
 					</ul>
 				</div>
 			</div>
@@ -146,7 +142,7 @@
     			var courseName = GetURLParameter('courseName');
 				$.ajax({
 					type: 'GET',
-					url: "updatecourserating?rating="+value+"&course="+courseName+"&id="+myFacebookId,
+					url: "updatecourserating?rating="+value+"&course="+courseName+"&id=${fn:escapeXml(id)}",
 					cache: false,
 					success: function(response){
 					<!--	document.getElementById("rateit5").setAttribute("data-rateit-value",response);
@@ -161,7 +157,6 @@
 	<!-- 
 	2. Need to have prompt to confirm rating choice.
 	3. Need to figure out possible increase in star size.
-	4. Need to figure out how to restrict each user to one rating. (possible check if user has taken course before allowing rating.)(check courses taken list?)
 	 -->
 	<br>
 	<br>

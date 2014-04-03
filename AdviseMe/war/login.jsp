@@ -62,25 +62,25 @@
 					success: function(response){
 						console.log(response);
 						if(response=="true"){
+							$.ajax({
+								type:'GET',
+								url : "changeloginstatus?id="+id,
+								cache : false,
+								success: function(response1){
+									console.log(response1);
+									$.ajax({
+										type:'GET',
+										url : "createsessionservlet?id="+id+"&picurl="+ picurl,
+										cache : false,
+										success: function(response2){
+											window.location.replace('home.jsp');
+										}
+									});
+								}
+							});
 						}else if(response=="false"){
 							window.location.replace('createaccount.jsp');
 						}
-					}
-				});
-				$.ajax({
-					type:'GET',
-					url : "changeloginstatus?id="+id,
-					cache : false,
-					success: function(response){
-						console.log(reponse);
-					}
-				});
-				$.ajax({
-					type:'GET',
-					url : "createsessionservlet?id="+id+"&picurl="+ picurl,
-					cache : false,
-					success: function(response){
-						window.location.replace('home.jsp');
 					}
 				});
 			});

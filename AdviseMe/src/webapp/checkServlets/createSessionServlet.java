@@ -22,7 +22,8 @@ public class createSessionServlet extends HttpServlet{
 		try{
 			String picurl = req.getParameter("picurl");
 			String fbid = req.getParameter("id");
-			HttpSession session = req.getSession();
+			System.out.println("FACEBOOK " + fbid);
+			HttpSession session = req.getSession(true);
 			List<User> users = ofy().load().type(User.class).list();
 			for(User user: users){
 				if(user.getfbUserId().equals(fbid)){
