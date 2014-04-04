@@ -81,7 +81,7 @@
 		pageContext.setAttribute("course_description", course.getDescription());
 		pageContext.setAttribute("course_professorList", course.getProfessorList());
 		pageContext.setAttribute("course_semestersTaught", course.getSemesterTaught());
-		pageContext.setAttribute("course_textbooks", course.getTextbooks());
+		pageContext.setAttribute("course_prereq", course.getPrereq());
 		pageContext.setAttribute("course_syllabus_link", course.getSyllabusLink());
 		pageContext.setAttribute("course_eval_link", course.getEvalLink());
 		pageContext.setAttribute("course_num_users_rating", course.getNumRating());
@@ -113,25 +113,18 @@
 		}
 	
 		function subscribe() {
-			 
-		
 			var email = prompt("Please enter your email","Name@Domain.com");
 			var courseName = GetURLParameter('courseName');
-				$.ajax({
-					type : 'GET',
-					url : "addcoursesubscriber?email=" + email + "&course=" + courseName,
-					cache : false,
-					success : function(response) {
-						if(response=="true"){
-							
-						}else{
-							
-						}
+			$.ajax({
+				type : 'GET',
+				url : "addcoursesubscriber?email=" + email + "&course=" + courseName,
+				cache : false,
+				success : function(response) {
+					if(response=="true"){
 					}
-				}); 	
+				}
+			}); 	
 		}
-		
-		
 	</script>
 	
 	
@@ -196,9 +189,9 @@
 		</div>
 		<div class="span3">
 			<div class="col-md-3">
-				<h4>Textbooks Used:</h4>
+				<h4>Pre-Requisites:</h4>
 				<br>
-				<p>${fn:escapeXml(course_textbooks)}</p>
+				<p>${fn:escapeXml(course_prereq)}</p>
 			</div>
 		</div>
 	</div>

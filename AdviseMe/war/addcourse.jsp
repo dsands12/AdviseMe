@@ -49,11 +49,9 @@
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
                     		</ul>
                     		<ul class="nav pull-right">
-                    		<ul class="nav">
                     		<li><a href="home.jsp" id=name></a></li>
                     			<li><a class="brand" id=pict href="home.jsp"><img id="profilepic"></a></li>
                     			<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
-                  			</ul>
                   			</ul>
                 	</div>
               	</div>
@@ -63,47 +61,39 @@
 	  <label>Course Abbreviation</label>  
 	  	<textarea name="coursename" rows="1" cols="30" placeholder="Enter Abbrev..."></textarea>
 	  	<span class="help-inline">Ex. EE 360C</span>   
-	  </label> 
 	  <br/> 
 	  
 	  <label>Course Title</label>  
 	  	<textarea name="coursetitle" rows="1" cols="30" placeholder="Enter Title..."></textarea>  
 	  	<span class="help-inline">Ex. Algorithms</span>   
-	  </label> 
 	  <br>
 	  
 	  <label>Course Description</label>  
 	  	<textarea name="coursedescription" rows="3" cols="30" placeholder="Enter Description..."></textarea>  
 	  	<span class="help-inline">Ex. This course involves...</span>   
-	  </label> 
 	  <br>
 	  
 	  <label>Upper/Lower Division</label> 
-	  	<td><input type="radio" name="division" value="upper">Upper&nbsp&nbsp
-	  	<td><input type="radio" name="division" value="lower">Lower
-	  </label> 
+	  	<input type="radio" name="division" value="upper">Upper
+	  	<input type="radio" name="division" value="lower">Lower
 	  <br><br>
 	  
 	  <label>Professors</label>  
 	  	<textarea name="professorList" rows="3" cols="30" placeholder="Enter Professors..."></textarea>  
 	  	<span class="help-inline">Comma separated list (Ex. Julien,Ghosh,etc...)</span>   
-	  </label> 
 	  <br>
 	  
 	  <label>Semesters Taught</label>  
 	  	<textarea name="semestersTaught" rows="3" cols="30" placeholder="Enter Semesters..."></textarea>  
 	  	<span class="help-inline">Comma separated list (Ex. Fall 2012,Spring 2013,Summer 2013,etc...)</span>   
-	  </label> 
 	  <br>
 	  
 	  <label>Textbooks</label>  
 	  	<textarea name="textbooks" rows="3" cols="30" placeholder="Enter Textbooks..."></textarea>  
 	  	<span class="help-inline">Comma separated list (Ex. Title Author ISBN,etc...)</span>   
-	  </label> 
 	  <br>
 	  
 	  <button type="submit" class="btn" >Add Course</button>  
-	  <button type="Cancel" class="btn" onclick="window.location.href='/home.jsp'">Cancel</button>
 	</form>
 	<script>
 	if ("${fn:escapeXml(guest)}" == "false") {

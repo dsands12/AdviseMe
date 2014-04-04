@@ -3,7 +3,6 @@ package webapp.serviceServlets;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -120,7 +119,7 @@ public class chatServlet extends HttpServlet{
 		doGet(req, resp);
 	}
 	
-	public boolean addCourse(String courseName,String courseTitle,String courseDescription,String upperDivision,String professorList, String semesterTaught, String textbooks){
+	public boolean addCourse(String courseName,String courseTitle,String courseDescription,String upperDivision,String professorList, String semesterTaught, String prereqs){
 		ObjectifyService.register(Course.class);
 		if(courseName==null||courseName.isEmpty()){
 			return false;
@@ -140,10 +139,9 @@ public class chatServlet extends HttpServlet{
 		if(semesterTaught==null||semesterTaught.isEmpty()){
 			return false;		
 		}
-		if(textbooks==null||textbooks.isEmpty()){
+		if(prereqs==null||prereqs.isEmpty()){
 			return false;	
 		}
-		List<Course> courseList=ObjectifyService.ofy().load().type(Course.class).list();
 		boolean upper;
 		if(upperDivision.equals("upper")){
 			upper = true;
@@ -151,10 +149,35 @@ public class chatServlet extends HttpServlet{
 			upper=false;
 		}
 		Course course = new Course(courseName,courseTitle,courseDescription,upper);
-		//TODO: Need to parse the list correctly and add the professors correctly
-		course.getProfessorList().add(professorList);
-		course.getSemesterTaught().add(semesterTaught);
-		course.getTextbooks().add(textbooks);
+		if(professorList.isEmpty()||professorList==null||professorList.equalsIgnoreCase("none")){
+		course.getProfessorList().add("None");	
+		}else{
+			String[] temp = professorList.split("&");
+			for(int i=0;i<temp.length;i++){
+				course.getProfessorList().add(temp[i]);
+			}
+		}
+		if(semesterTaught.isEmpty()||semesterTaught==null||semesterTaught.equalsIgnoreCase("none")){
+		course.getSemesterTaught().add("None");	
+		}else{
+			String[] temp = semesterTaught.split("&");
+			for(int i=0;i<temp.length;i++){
+				course.getSemesterTaught().add(temp[i]);
+			}
+		}
+		if(prereqs.isEmpty()||prereqs==null||prereqs.equalsIgnoreCase("none")){
+		course.getPrereq().add("None");	
+		}else{
+			String[] temp = prereqs.split("&");
+			for(int i=0;i<temp.length;i++){
+				String[] temp2 = temp[i].split(",");
+				String toadd = temp2[0];
+				for(int k=1;k<temp2.length;k++){
+					toadd+=" or " + temp2[k];
+				}
+				course.getPrereq().add(toadd);
+			}
+		}
 		ofy().save().entity(course).now();
 		return true;
 	}

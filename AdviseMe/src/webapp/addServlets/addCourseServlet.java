@@ -27,7 +27,7 @@ public class addCourseServlet extends HttpServlet{
 		String upperDivision = req.getParameter("division");
 		String professorList = req.getParameter("professorList");
 		String semesterTaught = req.getParameter("semestersTaught");
-		String textbooks = req.getParameter("textbooks");
+		String prereqs = req.getParameter("prereqs");
 		
 		try{
 		/*if(schoolName==null){
@@ -66,7 +66,7 @@ public class addCourseServlet extends HttpServlet{
 		if(semesterTaught==null||semesterTaught.isEmpty()){
 			throw new Exception("Must provide semesters taught!");
 		}
-		if(textbooks==null||textbooks.isEmpty()){
+		if(prereqs==null||prereqs.isEmpty()){
 			throw new Exception("Must provide textbooks!");
 		}
 			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
@@ -83,7 +83,7 @@ public class addCourseServlet extends HttpServlet{
 			//TODO: Need to parse the list correctly and add the professors correctly
 			course.getProfessorList().add(professorList);
 			course.getSemesterTaught().add(semesterTaught);
-			course.getTextbooks().add(textbooks);
+			course.getPrereq().add(prereqs);
 			
 		
 			//for(School school: schoolList){

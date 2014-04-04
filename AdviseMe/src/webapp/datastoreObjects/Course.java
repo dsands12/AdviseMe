@@ -17,7 +17,7 @@ public class Course implements Comparable<Course> {
 	private ArrayList<String> professorList;
 	private ArrayList<String> semestersTaught;
 	private ArrayList<String> subscribers;
-	private ArrayList<String> textbooks;
+	private ArrayList<String> prereqs;
 	private ArrayList<String> userTaken;
 	private String evalLink;
 	private String syllabiLink;
@@ -36,7 +36,7 @@ public class Course implements Comparable<Course> {
 		this.professorList = new ArrayList<String>();
 		this.semestersTaught = new ArrayList<String>();
 		this.subscribers = new ArrayList<String>();
-		this.textbooks = new ArrayList<String>();
+		this.prereqs = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
 		this.numRating=0;
 		String[] parse = courseName.split(" ");
@@ -62,7 +62,7 @@ public class Course implements Comparable<Course> {
 		this.professorList = new ArrayList<String>();
 		this.semestersTaught = new ArrayList<String>();
 		this.subscribers = new ArrayList<String>();
-		this.textbooks = new ArrayList<String>();
+		this.prereqs = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
 		this.numRating=0;
 		String[] parse = courseName.split(" ");
@@ -89,7 +89,7 @@ public class Course implements Comparable<Course> {
 		this.professorList = new ArrayList<String>();
 		this.semestersTaught = new ArrayList<String>();
 		this.subscribers = new ArrayList<String>();
-		this.textbooks = new ArrayList<String>();
+		this.prereqs = new ArrayList<String>();
 		this.userTaken = new ArrayList<String>();
 		this.upperDivision = upperDiv;
 		this.numRating=0;
@@ -144,8 +144,8 @@ public class Course implements Comparable<Course> {
 		return this.subscribers;
 	}
 	
-	public ArrayList<String> getTextbooks(){
-		return this.textbooks;
+	public ArrayList<String> getPrereq(){
+		return this.prereqs;
 	}
 	
 	public ArrayList<String> getUserTaken(){

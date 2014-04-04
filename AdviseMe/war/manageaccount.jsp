@@ -44,22 +44,20 @@
                     		<li><a href="usefulLinks.jsp">Useful Links</a></li>
                     		</ul>
                     		<ul class="nav pull-right">
-                    		<ul class="nav">
                     		<li><a href="home.jsp" id=name></a></li>
                     			<li><a class="brand" id=pict href="home.jsp"><img id="profilepic"></a></li>
                     			<li><button type="button" class="btn btn-default" id="loginbuttonref" onclick="window.location.href='login.jsp'">Login</button></li>
-                  			</ul>
                   			</ul>
                 	</div>
               	</div>
         	</div>
 		</div>
 		<div class="hero-unit">
-				<form action="/removefacebookuser" method="get" onSubmit="return confirm('Are you sure you want to delete your account')">
+				<form action="/removefacebookuser?id=${fn:escapeXml(id)}" method="get" onSubmit="return confirm('Are you sure you want to delete your account')">
 	   		<div><textarea name="id" id="id" rows="1" cols="30" style="display:none;" ></textarea></div>
 	      	<div><input type="submit" value="Delete Account" /></div>
 	    </form>
-	    	    	<a onclick="window.location.href='addusercourses.jsp'" id="usercoursesbuttonref" class="btn btn-large btn-info">Manage Courses</a>
+	    	    	<a onclick="window.location.href='addusercourses.jsp?id=${fn:escapeXml(id)}'" id="usercoursesbuttonref" class="btn btn-large btn-info">Manage Courses</a>
 	    
  		</div>
 			<script>
