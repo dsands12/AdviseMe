@@ -41,7 +41,7 @@ public class emailServlet extends HttpServlet{
 				Transport.send(msg);
 			}
 		}catch(MessagingException e){
-			//something happened.
+			System.out.println(e.getMessage());
 		}
 	}
 

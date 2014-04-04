@@ -3,7 +3,7 @@ package webapp.addServlets;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -32,14 +32,14 @@ public class addSubscriberServlet extends HttpServlet{
 			
 			
 			List<Course> courses = ofy().load().type(Course.class).list();
-			Collections.sort(courses);
 			for(Course course: courses){
 				if(course.getCourseName().equals(courseName)){
 					System.out.println("Adding " + email + " to " + courseName);
-					course.addSubscriber(email);
+					if(course.getSubscribers()==null){
+						course.setSubscribers(new ArrayList<String>());
+					}
+					course.getSubscribers().add(email);
 					ofy().save().entity(course).now();
-					System.out.println("the add happened?");
-					System.out.println(course.getSubscribers().toString());
 					break;
 				}
 			}

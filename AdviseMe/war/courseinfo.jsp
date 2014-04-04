@@ -149,12 +149,13 @@
 					}
 				});
 			});
+    $('#rateit5').on('beforerated', function (e, value) {
+        if (!confirm('Are you sure you want to rate this item: ' +  value + ' stars?')) {
+            e.preventDefault();
+        }
+    });       
 </script>    
 <h4>${fn:escapeXml(course_num_users_rating)} users rate this course: ${fn:escapeXml(course_rating)}</h4>  
-	<!-- 
-	2. Need to have prompt to confirm rating choice.
-	3. Need to figure out possible increase in star size.
-	 -->
 	<br>
 	<br>
 	<button type="button" class="btn btn-default" onclick="subscribe()">Subscribe
