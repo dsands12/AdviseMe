@@ -38,7 +38,8 @@ public class addSubscriberServlet extends HttpServlet{
 					System.out.println("Adding " + email + " to " + courseName);
 					course.addSubscriber(email);
 					ofy().save().entity(course).now();
-					//asdfk;ladsjfladsghadsk;lhgadsk;lhgadskhgadsj;ghadsjlghdsaj;ghadsj;lghadslghadslgh
+					System.out.println("the add happened?");
+					System.out.println(course.getSubscribers().toString());
 					break;
 				}
 			}

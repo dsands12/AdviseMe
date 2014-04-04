@@ -35,9 +35,17 @@
 		pageContext.setAttribute("first", first);
 		pageContext.setAttribute("last", last);
 		pageContext.setAttribute("isLoggedIn", isLoggedIn);
+		if(isLoggedIn.equalsIgnoreCase("true")){
+			pageContext.setAttribute("readonly", "false");
+
+		}else{
+			pageContext.setAttribute("readonly", "true");
+		}
 		pageContext.setAttribute("guest","false");
 	}else{
 		pageContext.setAttribute("guest", "true");
+		pageContext.setAttribute("readonly", "true");
+
 	}
 	%>
 	<img id="banner" src="Header.png" alt="Banner Image" height="84" width="263"/>
@@ -128,7 +136,7 @@
 	</script>
 	
 	
-	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-resetable="false" data-rateit-value="${fn:escapeXml(course_rating)}" data-rateit-step=".5" data-rateit-min="0" data-rateit-max="10"></div>
+	<h3>Course Difficulty: </h3><div class="rateit" id="rateit5" data-rateit-resetable="false" data-rateit-value="${fn:escapeXml(course_rating)}" data-rateit-ispreset="true" data-rateit-readonly="${fn:escapeXml(readonly)}" data-rateit-step=".5" data-rateit-min="0" data-rateit-max="10"></div>
  <script type="text/javascript">
     $("#rateit5").bind('rated', 
     		function(event, value){
@@ -138,15 +146,11 @@
 					url: "updatecourserating?rating="+value+"&course="+courseName+"&id=${fn:escapeXml(id)}",
 					cache: false,
 					success: function(response){
-					<!--	document.getElementById("rateit5").setAttribute("data-rateit-value",response);
-					-->
-					
-
 					}
 				});
 			});
 </script>    
-<h4>Rating by: ${fn:escapeXml(course_num_users_rating)} users -  ${fn:escapeXml(course_rating)}</h4>  
+<h4>${fn:escapeXml(course_num_users_rating)} users rate this course: ${fn:escapeXml(course_rating)}</h4>  
 	<!-- 
 	2. Need to have prompt to confirm rating choice.
 	3. Need to figure out possible increase in star size.
