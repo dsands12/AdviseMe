@@ -3,8 +3,6 @@ package webapp.addServlets;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -69,9 +67,6 @@ public class addCourseServlet extends HttpServlet{
 		if(prereqs==null||prereqs.isEmpty()){
 			throw new Exception("Must provide textbooks!");
 		}
-			List<Course> schoolList=ObjectifyService.ofy().load().type(Course.class).list();
-			Collections.sort(schoolList);
-			
 		boolean upper;
 			if(upperDivision.equals("upper")){
 				upper = true;

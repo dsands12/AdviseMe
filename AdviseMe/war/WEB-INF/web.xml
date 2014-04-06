@@ -124,6 +124,23 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ChatBot</servlet-name>
 		<url-pattern>/_ah/xmpp/message/chat/</url-pattern>
 	</servlet-mapping>
+<servlet>
+  <servlet-name>mailhandler</servlet-name>
+  <servlet-class>webapp.serviceServlets.emailServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>mailhandler</servlet-name>
+  <url-pattern>/_ah/mail/*</url-pattern>
+</servlet-mapping>
+<security-constraint>
+  <web-resource-collection>
+    <web-resource-name>mail</web-resource-name>
+    <url-pattern>/_ah/mail/*</url-pattern>
+  </web-resource-collection>
+  <auth-constraint>
+    <role-name>admin</role-name>
+  </auth-constraint>
+</security-constraint>
 	<servlet>
 		<servlet-name>updateCourseRating</servlet-name>
 		<servlet-class>webapp.checkServlets.updateCourseRating</servlet-class>

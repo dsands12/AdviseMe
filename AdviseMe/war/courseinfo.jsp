@@ -160,6 +160,7 @@
 	<br>
 	<button type="button" class="btn btn-default" onclick="subscribe()">Subscribe
 		To This Course</button>
+	<button type="button" class="btn btn-default" onclick="window.location='editcourse.jsp?courseName=${fn:escapeXml(course_abbreviation)}'">Edit this Course?</button>
 	<br>
 	<br>
 	<button type="button" class="btn btn-default" onclick="window.location='${fn:escapeXml(course_eval_link)}'">UT Course Evaluations</button>
