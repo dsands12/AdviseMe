@@ -41,7 +41,7 @@ public class addCourseEdit extends HttpServlet{
 				throw new Exception("Must provide semesters taught!");
 			}
 			if(prereqs==null||prereqs.isEmpty()){
-				throw new Exception("Must provide textbooks!");
+				throw new Exception("Must provide Pre-requistites!");
 			}			
 		boolean upper;
 			if(upperDivision.equals("upper")){

@@ -89,6 +89,7 @@
 		pageContext.setAttribute("course_professorList", course.getProfessorList());
 		pageContext.setAttribute("course_semestersTaught", course.getSemesterTaught());
 		pageContext.setAttribute("course_prereq", course.getPrereq());
+		pageContext.setAttribute("course_division", course.getUpperDivision());
 		break;
 			}
 		}
@@ -109,7 +110,7 @@
 			<div class="col-md-10">
 				<h4>Description:</h4>
 				<br>
-				<textarea name="description" rows="1" cols="30">${fn:escapeXml(course_description)}</textarea>
+				<textarea name="coursedescription" rows="1" cols="30">${fn:escapeXml(course_description)}</textarea>
 			</div>
 		</div>
 	</div>
@@ -118,27 +119,27 @@
 			<div class="col-md-3">
 				<h4>Past Professors:</h4>
 				<br>
-				<textarea name="professor" rows="1" cols="30">${fn:escapeXml(course_professorList)}</textarea>
+				<textarea name="professorList" rows="1" cols="30">${fn:escapeXml(course_professorList)}</textarea>
 			</div>
 		</div>
 		<div class="span3">
 			<div class="col-md-3">
 				<h4>Semesters Taught:</h4>
 				<br>
-				<textarea name="semester" rows="1" cols="30">${fn:escapeXml(course_semestersTaught)}</textarea>
+				<textarea name="semestersTaught" rows="1" cols="30">${fn:escapeXml(course_semestersTaught)}</textarea>
 			</div>
 		</div>
 		<div class="span3">
 			<div class="col-md-3">
 				<h4>Pre-Requisites:</h4>
 				<br>
-				<textarea name="prereq" rows="1" cols="30">${fn:escapeXml(course_prereq)}</textarea>
+				<textarea name="prereqs" rows="1" cols="30">${fn:escapeXml(course_prereq)}</textarea>
 			</div>
 		</div>
 	</div>
 	      	<input type="hidden" name="coursename" value="${fn:escapeXml(course_abbreviation)}"/>
 	      	<input type="hidden" name="coursetitle" value="${fn:escapeXml(course_title)}"/>
-	
+	<input type="hidden" name="division" value="${fn:escapeXml(course_division)}"/>
 	    <div><input type="submit" value="Submit Edit" /></div>
       	<input type="button" value="Cancel" onclick="window.location.href='/home.jsp'"> 
 	</form>
