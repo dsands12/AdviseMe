@@ -61,6 +61,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <url-pattern>/changeloginstatus</url-pattern>
 	</servlet-mapping>
 	<servlet>
+	    <servlet-name>coursechange</servlet-name>
+	    <servlet-class>webapp.addServlets.addCourseEdit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>coursechange</servlet-name>
+	    <url-pattern>/changecourse</url-pattern>
+	</servlet-mapping>
+	<servlet>
 	    <servlet-name>checkloginstatus</servlet-name>
 	    <servlet-class>webapp.checkServlets.checkLoginStatus</servlet-class>
 	</servlet>
