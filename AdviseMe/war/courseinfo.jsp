@@ -160,7 +160,13 @@
 	<br>
 	<button type="button" class="btn btn-default" onclick="subscribe()">Subscribe
 		To This Course</button>
-	<button type="button" class="btn btn-default" onclick="window.location='editcourse.jsp?courseName=${fn:escapeXml(course_abbreviation)}'">Edit this Course?</button>
+	
+	<button type="button" id="editbutton" class="btn btn-default" onclick="window.location='editcourse.jsp?courseName=${fn:escapeXml(course_abbreviation)}'">Edit this Course?</button>
+	<script>
+	if ("${fn:escapeXml(guest)}" == "true" || "${fn:escapeXml(isLoggedIn)}" == "false") {
+			document.getElementById("editbutton").style.visibility='hidden';			
+	}
+	</script>
 	<br>
 	<br>
 	<button type="button" class="btn btn-default" onclick="window.location='${fn:escapeXml(course_eval_link)}'">UT Course Evaluations</button>
