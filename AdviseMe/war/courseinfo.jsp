@@ -93,7 +93,7 @@
 		pageContext.setAttribute("course_syllabus_link", course.getSyllabusLink());
 		pageContext.setAttribute("course_eval_link", course.getEvalLink());
 		pageContext.setAttribute("course_num_users_rating", course.getNumRating());
-		pageContext.setAttribute("course_rating", course.getAvg());
+		pageContext.setAttribute("course_rating", ((double)Math.round(course.getAvg() * 10) / 10));
 		break;
 			}
 		}
