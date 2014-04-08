@@ -136,6 +136,9 @@
 			</div>
 		</div>
 	</div>
+	      	<input type="hidden" name="coursename" value="${fn:escapeXml(course_abbreviation)}"/>
+	      	<input type="hidden" name="coursetitle" value="${fn:escapeXml(course_title)}"/>
+	
 	    <div><input type="submit" value="Submit Edit" /></div>
       	<input type="button" value="Cancel" onclick="window.location.href='/home.jsp'"> 
 	</form>
