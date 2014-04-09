@@ -6,6 +6,10 @@
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/objectify-4.0b1.jar"/>
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/jstl-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/recaptcha4j-0.0.7.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="F:/Dropbox/httpunit-1.7.zip"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+>>>>>>> branch 'master' of https://github.com/dsands12/AdviseMe.git
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
