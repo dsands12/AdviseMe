@@ -9,9 +9,11 @@ import com.googlecode.objectify.annotation.Index;
 @Index
 @Entity
 public class CourseEdits implements Comparable<Course> {
-	@Id String courseName ="No course name entered.";
+	private String courseName ="No course name entered.";
+	@Id Long id;
 	private String title = "No course title entered.";
 	private String description= "Default UT description";
+	private String userID= "Default UT description";
 	private Boolean upperDivision; 	//true if upper division; false if lower division
 	private ArrayList<String> professorList;
 	private ArrayList<String> semestersTaught;
